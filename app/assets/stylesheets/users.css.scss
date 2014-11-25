@@ -1,3 +1,38 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+#signup-wrapper {
+	display: inline-block;
+	width: 289px;
+	margin: auto;
+	text-align: center;
+	
+    position: absolute;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+	margin-top: 100px;
+}
+
+#signup-wrapper h1 {
+	margin: 0 auto;
+}
+
+
+
+#fname {
+	padding-top: 10px;
+	margin: 0 auto;
+	border-bottom: 1px solid darkgray;
+}
+
+#lname {
+	padding-top: 10px;
+	margin: 0 auto;
+	border-bottom: 1px solid darkgray;
+}
+

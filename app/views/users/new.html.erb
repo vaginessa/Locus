@@ -1,0 +1,29 @@
+<div id="signup-page">
+		
+		<a class="btn btn-signup" href="<%=new_session_url%>">Log In</a>
+		
+		<div id="signup-wrapper"><h1>Locus</h1>
+			<form action="<%= users_url %>" method="POST">
+				<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+				
+				<div id="fname">
+				<input type="text" name="user[fname]" value="" placeholder="First name"></div>
+	
+	
+				<div id="lname">
+				<input type="text" name="user[lname]" placeholder="Last name (optional)"></div>
+				
+				<div id="email">
+				<input type="text" name="user[email]" value="" placeholder="Email"></div>
+	
+	
+				<div id="password">
+				<input type="password" name="user[password]" placeholder="Password"></div>
+	
+				<input type="submit" value="Sign up" class="btn btn-signup">
+			</form>
+		</div>
+	</div>
+	
+	
+</div>

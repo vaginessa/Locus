@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   validates :email, :password_digest, :session_token, presence: true, uniqueness: true
-  validates :fname, :lname, :collaborate, presence: true
+  validates :fname, presence: true
   
-  after_initialize :ensure_session_token
+  after_initialize :ensure_session_token, :ensure_collaborate
   
   def password=(password)
     @password = password
@@ -32,5 +32,9 @@ class User < ActiveRecord::Base
   private
   def ensure_session_token
     self.session_token ||= self.class.generate_session_token
+  end
+
+  def ensure_collaborate
+    self.collaborate ||= true 
   end
 end
