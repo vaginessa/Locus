@@ -1,0 +1,17 @@
+<div id="login-wrapper"><h1>Locus</h1>
+	<form action="/session" method="POST">
+		<input type="hidden" name="authenticity_token" value="<% form_authenticity_token%>">
+	
+		<div id="email">
+		<label for="email">Email</label>
+		<input type="text" name="user[email]" value=""></div>
+		
+		<br>
+	
+		<div id="password">
+		<label for="password">Password</label>
+		<input type="password" name="user[password]"></div>
+	
+		<input type="submit" value="Log in" class="btn btn-login"></input>
+	</form>
+</div>
