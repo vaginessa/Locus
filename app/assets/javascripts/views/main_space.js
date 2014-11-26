@@ -1,10 +1,16 @@
 Locus.Views.mainSpace = Backbone.CompositeView.extend({
 	
 	initialize: function(){
+		this.hidePostForm();
+		this.addPostForm();
 		this.listenTo(this.collection, "sync", this.render);
 		this.listenTo(this.collection, "sync", this.addUserSideBar);
-		this.listenTo(this.collection, "sync", this.addGallery)
+		this.listenTo(this.collection, "sync", this.addGallery);
 	}, 
+	
+	events: {
+		"click .btn-post-piece" : "displayPostForm"
+	},
 	
 	template: JST["main_space"],
 	
@@ -18,12 +24,25 @@ Locus.Views.mainSpace = Backbone.CompositeView.extend({
 	},
 	
 	addUserSideBar: function() {
-		var userSideBar = new Locus.Views.UserSidebar({ user: this.collection.current_user })
-		this.addSubview("#user-sidebar", userSideBar)
+		var userSideBarView = new Locus.Views.UserSidebar({ user: this.collection.current_user })
+		this.addSubview('#user-sidebar', userSideBarView)
 	},
 	
 	addGallery: function() {
-		var gallery = new Locus.Views.Gallery({ collection: this.collection });
-		this.addSubview("#gallery", gallery);
+		var galleryView = new Locus.Views.Gallery({ collection: this.collection });
+		this.addSubview('#gallery', galleryView);
+	},
+	
+	addPostForm: function(){
+		var pieceFormView = new Locus.Views.PieceForm({ collection: this.collection }) 
+		this.addSubview('#post-form', pieceFormView);
+	},
+	
+	displayPostForm: function(){
+		this.$('#post-form').show();
+	},
+	
+	hidePostForm: function(){
+		this.$('#post-form').show();
 	}
 })

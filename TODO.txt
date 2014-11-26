@@ -1,1 +1,5 @@
 -- errors on login
+
+-- questions
+-- best way to pass user data b/w front and back
+-- file_picker_api key, location?
