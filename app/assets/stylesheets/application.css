@@ -39,47 +39,74 @@ a:visited {
 	padding-bottom: -2px;
 	margin-bottom: 20px;
 	border-bottom: 1px solid darkgray;
+	text-align: bottom;
 }
 
 #logo {
-	margin-top: 20px;
+	text-align: center;
 	display: inline-block;
 	color: black;
+	float: left;
 }
 
-#nav-items {
-	list-style: none;
-	float: right;
-	margin: 0;
-	margin-top: 16px;
-	display: inline-block;
-}
 
-#nav-items > li {
-	display: inline-block;
-}
 
 .btn.btn-logout {
-    font-size: 18px;
-    padding: 8px 16px 8px 16px;
-}
-
-#signout {
-	
-}
-
-
-#home{
 	display: inline-block;
-	margin: 0 auto;
+    font-size: 18px;
+	margin: 0px;
+	padding: 6px 4px 6px 4px;
+	float: left;
 }
+
+
+
+#home-leave {
+	width: 100px;
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	margin: auto;
+	margin-top: 1px;
+	font-size: 150%;
+}
+
+#home-leave > div {
+	float: left;
+	margin: 5px;
+}
+
+a:link.btn-home{
+	color: black;
+	background: white;
+	border: 1px solid black;
+	display: inline-block;
+    font-size: 18px;
+	border-radius: 4px;
+	margin: 0px;
+	padding: 6px 4px 6px 4px;
+	float: left;
+}
+
+a:link.btn-home:hover {
+	color: white;
+	background: black;
+	display: inline-block;
+    font-size: 18px;
+	margin: 0px;
+	padding: 6px 4px 6px 4px;
+	float: left;
+}
+
+
 
 input#search {
 	width: 150px;
-	height: 14px;
+	height: 5px;
 	border: 1px solid black;
-	font-size: 150%;
-	border-radius: 5px;
+	font-size: 100%;
+	border-radius: 4px;
+	float: right;
 }
 
 
@@ -93,6 +120,10 @@ input {
 	font-size: 120%;
 }
 
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
 a.btn {
 	border: 0px;
     border-radius: 5px;
@@ -103,4 +134,10 @@ a.btn {
     text-decoration: none;
 	margin: 5px;
 	float: right;
+}
+
+a.btn:hover {
+	color: black;
+	background: white;
+	border: 1px solid black;
 }

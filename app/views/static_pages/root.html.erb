@@ -2,11 +2,12 @@
 	<div id="nav-bar">
 		<%if(logged_in?)%>
 			<div id="logo"><a href="#/">Locus</a></div>
-			<div id="home">⌂</div>
-			<ul id="nav-items">
-				<li id="search-field"><input type="text" id="search" placeholder="search tags"></id>
-				<li id="signout"><%= button_to "Log Out", session_url, method: :delete, class: "btn btn-logout"%></li>
-			</ul>
+			<div id="home-leave">
+				<div><a class="home btn-home" href="#/pieces" >⟤</a></div>
+				<div>/</div>
+				<div><%= button_to "⟤", session_url, method: :delete, class: "btn btn-logout" %></div>
+			</div>
+			<input type="text" id="search" placeholder="search tags">
 		<%end%>
 	</div>
 	

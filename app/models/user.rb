@@ -4,6 +4,14 @@ class User < ActiveRecord::Base
   
   after_initialize :ensure_session_token, :ensure_collaborate
   
+  has_many(
+    :pieces,
+    class_name: 'Piece',
+    foreign_key: :user_id,
+    primary_key: :id
+  )
+  
+  
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)

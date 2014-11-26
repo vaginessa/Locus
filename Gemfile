@@ -9,8 +9,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
+gem 'turbolinks'
+
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'bcrypt'
 group :development do
@@ -22,5 +23,5 @@ group :development do
 end
 
 # Use debugger
-# gem 'debugger', group: [:development, :test]
+gem 'debugger', group: [:development, :test]
 

@@ -2,7 +2,6 @@ Locus.Routers.Router = Backbone.Router.extend({
 
 	initialize: function(options) {
 		this.$rootEl = options.$rootEl
-// 		this.currentUser = options.currentUser;
 	},
 	
 	

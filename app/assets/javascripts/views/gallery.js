@@ -1,5 +1,6 @@
 Locus.Views.Gallery = Backbone.CompositeView.extend({
-	template: JST['main_space/gallery'],
+	
+	template: JST['main_space/gallery_show'],
 	
 	className: 'main-gallery',
 	

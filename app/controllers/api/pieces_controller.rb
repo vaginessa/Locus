@@ -3,7 +3,8 @@ module Api
     
     def index
       @pieces = Piece.all
-      render json: @pieces
+      @current_user = current_user
+      render :index
     end
     
     private

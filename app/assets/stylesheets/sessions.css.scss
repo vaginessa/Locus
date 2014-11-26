@@ -38,6 +38,14 @@ input.btn {
 	margin: 5px;
 }
 
+input.btn:hover {
+	color: black;
+	background: white;
+	border: 1px solid black;
+	cursor: pointer;
+	cursor: hand;
+}
+
 #email {
 	padding-top: 10px;
 	margin: 0 auto;
