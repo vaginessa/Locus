@@ -23,6 +23,10 @@ html {
 
 }
 
+ul {
+	list-style-type: none;
+}
+
 a:link {
 	text-decoration: none;
 	color: black;
@@ -41,6 +45,7 @@ a:visited {
 	border-bottom: 1px solid darkgray;
 	text-align: bottom;
 }
+
 
 #logo {
 	text-align: center;

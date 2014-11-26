@@ -8,6 +8,7 @@ Locus.Views.UserSidebar = Backbone.View.extend({
 	render: function(){
 		var content = this.template({ user: this.user });
 		this.$el.html(content);
+		this.$("#image-upload").empty()
 		return this;
 	}
 	

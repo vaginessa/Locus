@@ -4,7 +4,7 @@
 			<div id="logo"><a href="#/">Locus</a></div>
 			<div id="home-leave">
 				<div><a class="home btn-home" href="#/pieces" >⟤</a></div>
-				<div>/</div>
+				<div id="slash">//</div>
 				<div><%= button_to "⟤", session_url, method: :delete, class: "btn btn-logout" %></div>
 			</div>
 			<input type="text" id="search" placeholder="search tags">
@@ -14,4 +14,5 @@
 	<div id="main"></div>
 </div>
 <script>$(Locus.initialize);</script>
+
 
