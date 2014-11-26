@@ -1,4 +1,16 @@
 <div class="backdrop">
+	<div id="nav-bar">
+		<%if(logged_in?)%>
+			<div id="logo"><a href="#/">Locus</a></div>
+			<div id="home">⌂</div>
+			<ul id="nav-items">
+				<li id="search-field"><input type="text" id="search" placeholder="search tags"></id>
+				<li id="signout"><%= button_to "Log Out", session_url, method: :delete, class: "btn btn-logout"%></li>
+			</ul>
+		<%end%>
+	</div>
+	
 	<div id="main"></div>
 </div>
 <script>$(Locus.initialize);</script>
+

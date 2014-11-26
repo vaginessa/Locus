@@ -4,10 +4,8 @@ window.Locus = {
   Views: {},
   Routers: {},
   initialize: function() {
-    
+	  new Locus.Routers.Router({ $rootEl: $("#main") });
+	  Backbone.history.start();
   }
 };
 
-$(document).ready(function(){
-  Locus.initialize();
-});

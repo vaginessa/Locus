@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141125182745) do
+ActiveRecord::Schema.define(version: 20141125222954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "pieces", force: true do |t|
+    t.string   "title"
+    t.string   "user_id"
+    t.string   "filepicker_url"
+    t.string   "statement"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pieces", ["user_id"], name: "index_pieces_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "fname",           null: false

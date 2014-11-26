@@ -1,6 +1,6 @@
 Locus.Collections.Pieces = Backbone.Collection.extend({
 	model: Locus.Models.Piece,
-	url: "/api/pieces",
+	url: "api/pieces",
 	
 	getOrFetch: function(){
 		
@@ -9,4 +9,4 @@ Locus.Collections.Pieces = Backbone.Collection.extend({
 	
 });
 
-Locus.pieces = Locus.Collections.Pieces();
+Locus.pieces = new Locus.Collections.Pieces();
