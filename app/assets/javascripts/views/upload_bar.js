@@ -1,7 +1,6 @@
 Locus.Views.UploadBar = Backbone.View.extend({
 	
 	initialize: function(options){
-		debugger 
 		this.user = options.user
 	},
 	
@@ -29,7 +28,7 @@ Locus.Views.UploadBar = Backbone.View.extend({
 			newImage.save({ }, {
 				url: "api/pieces",
 				success: function(){
-					
+					view.collection.add(newImage);
 				}
 			})
 		});

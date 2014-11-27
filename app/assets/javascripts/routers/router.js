@@ -7,6 +7,7 @@ Locus.Routers.Router = Backbone.Router.extend({
 	
 	routes: {
 		"" : "mainSpace",
+		"api/pieces/:id/edit" : "editPiece"
 	},
 	
 	mainSpace: function(){
@@ -21,6 +22,9 @@ Locus.Routers.Router = Backbone.Router.extend({
 		this.$rootEl.html(view.render().$el);
 	},
 	
-	
+	editPiece: function(id){
+		var pieceToEdit = this.pieces.getOrFetch(id);
+		var mainSpace = new Locus.Views.mainSpace( );
+	}
 	
 });
