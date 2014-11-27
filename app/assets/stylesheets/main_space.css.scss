@@ -61,20 +61,17 @@
 	padding: 20px;
 }
 
-#image-button button {
-	display: inline-block;
-	border: 0px;
-    border-radius: 5px;
-    color: #ffffff;
-    font-size: 20px;
-    background: #000000;
-	padding-top: 15px;
-    text-decoration: none;
-	margin: 5px;
-	float: left;
-}
+//#image-button {
+//	height: 100%;
+//    color: #ffffff;
+//    font-size: 20px;
+//    text-decoration: none;
+//	float: left;
+//	padding: 20px;
+//	padding-bottom: 0px;
+//}
 
-#audio-button {
+#upload-bar .upbar > div {
 	border-left: 1px solid white;
 	height: 100%;
     color: #ffffff;
@@ -85,6 +82,17 @@
 	padding-bottom: 0px;
 }
 
+
+#upload-bar .upbar > div:hover {
+    background-color: #ffffff;
+	color: black;
+	cursor: pointer;
+	cursor: hand;
+}
+//#audio-button {
+//
+//}
+//
 #video-button {
 	border-left: 1px solid white;
 	height: 100%;
@@ -94,6 +102,13 @@
 	float: left;
 	padding: 20px;
 	padding-bottom: 0px;
+}
+
+#video-button:hover {
+	cursor: pointer;
+	cursor: hand;
+    background-color: #ffffff;
+	color: black;
 }
 
 #upload-bar {

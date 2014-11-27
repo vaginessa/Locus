@@ -10,8 +10,9 @@ module Api
     
     def create
       @piece = Piece.new(piece_params)
+      @piece.user_id = current_user.id
       if @piece.save!
-        render json: @piece
+        render :show
       else
         render json: @piece.errors.full_message, status: :unprocessable
       end

@@ -19,7 +19,7 @@ Locus.Collections.Pieces = Backbone.Collection.extend({
 		
 		if(payload.current_user){
 			this.current_user = { 
-				id: payload.current_user.id, 
+				id: payload.current_user.current_user_id, 
 				fname: payload.current_user.fname, 
 				lname: payload.current_user.lname
 			}

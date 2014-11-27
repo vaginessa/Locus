@@ -6,7 +6,7 @@ Locus.Routers.Router = Backbone.Router.extend({
 	
 	
 	routes: {
-		"" : "mainSpace"
+		"" : "mainSpace",
 	},
 	
 	mainSpace: function(){
