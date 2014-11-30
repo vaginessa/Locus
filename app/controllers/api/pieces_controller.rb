@@ -7,6 +7,11 @@ module Api
       render :index
     end
     
+    def show
+      @piece = Piece.find(params[:id])
+      render json: @piece
+    end
+    
     
     def create
       @piece = Piece.new()

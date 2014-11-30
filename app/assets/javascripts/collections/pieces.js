@@ -17,11 +17,6 @@ Locus.Collections.Pieces = Backbone.Collection.extend({
 	
 	parse: function(payload){
 		
-		if(payload.pieces){
-			this.set(payload.pieces, { parse: true })
-			delete payload.pieces
-		}
-		
 		if(payload.current_user){
 			this.current_user = { 
 				id: payload.current_user.current_user_id, 
@@ -30,10 +25,19 @@ Locus.Collections.Pieces = Backbone.Collection.extend({
 			}
 			delete payload.current_user
 		}
+		
+		if(payload.pieces){
+			this.set(payload.pieces, { parse: true, remove: false })
+			delete payload.pieces
+		}
+		
+		debugger
+		
+	
 		return payload;
 	}
 		
 	
 });
 
-Locus.pieces = new Locus.Collections.Pieces();
+Locus.pieces = new Locus.Collections.Pieces;

@@ -60,6 +60,7 @@ Locus.Views.UploadBar = Backbone.CompositeView.extend({
 	},
 	
 	showPieceForm: function(piece, newImage){
+		debugger
 		var pieceFormView = new Locus.Views.PieceForm( { model: piece, collection: this.collection, media: newImage })
 		this.addSubview("#piece-form", pieceFormView);
 		$("#piece-form").show();

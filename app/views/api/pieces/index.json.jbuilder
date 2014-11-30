@@ -10,6 +10,7 @@ json.pieces(@pieces) do |piece|
   json.id piece.id
   json.title piece.title
   json.image piece.image
+  json.statement piece.statement
   json.artist_fname piece.artist.fname
   json.artist_lname piece.artist.lname
 end
