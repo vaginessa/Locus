@@ -1,1 +1,1 @@
-json.(@piece, :title, :user_id, :filepicker_url, :statement )
+json.(@piece, :id, :title, :user_id, :statement )

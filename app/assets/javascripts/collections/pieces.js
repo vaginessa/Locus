@@ -7,6 +7,11 @@ Locus.Collections.Pieces = Backbone.Collection.extend({
 	},
 	
 	getOrFetch: function(){
+		// var piece = this.get(id);
+	//
+	// 	if(piece === undefined){
+	// 		piece = new Locus.Models.Piece();
+	// 	}
 		
 	},
 	

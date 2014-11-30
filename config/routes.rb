@@ -7,5 +7,7 @@ Locus::Application.routes.draw do
   
   namespace :api, defaults: { format: :json } do
     resources :pieces
+    resources :images
   end
+  
 end

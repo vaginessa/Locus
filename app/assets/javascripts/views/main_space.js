@@ -1,7 +1,7 @@
 Locus.Views.mainSpace = Backbone.CompositeView.extend({
 	
 	initialize: function(){
-		this.listenTo(this.collection, "sync add", this.render);
+		this.listenTo(this.collection, "sync add set", this.render);
 		this.listenTo(this.collection, "sync", this.addUserSideBar);
 		this.listenTo(this.collection, "sync", this.addGallery);
 		this.listenTo(this.collection, "sync", this.addUploadBar);
@@ -35,13 +35,12 @@ Locus.Views.mainSpace = Backbone.CompositeView.extend({
 	},
 	
 	addUploadBar: function(){
-		var uploadBarView = new Locus.Views.UploadBar({ user: this.collection.current_user });
+		var uploadBarView = new Locus.Views.UploadBar({ collection: this.collection, user: this.collection.current_user });
 		this.addSubview('#upload-bar', uploadBarView);
 	},
 	
 	
 	displayPostForm: function(){
-		debugger
 		var $postForm = this.$("#post-form");
 		$postForm.show();
 	},

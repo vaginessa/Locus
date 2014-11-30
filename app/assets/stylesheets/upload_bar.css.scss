@@ -1,0 +1,49 @@
+#overlay{
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	margin-top: -160px;
+	width: 1260px;
+	height: 10000px;
+	z-index: 1000;
+	opacity: .95;
+	background-color: darkgray;
+}
+
+#overlay div {
+	border-radius: 3px;
+	background-opacity: 1;
+	opacity: 1;
+	width: 400px;
+	min-height: 400px;
+	margin: auto;
+	margin-top: 160px;
+	background-color: white;
+	border: 1px solid black;
+	padding: 15px;
+	z-index: 100;
+}
+
+#piece-form-title {
+	width: 60%;
+	height: 10px;
+	border: 1px solid black;
+	font-size: 80%;
+}
+
+#piece-form-text {
+	margin-top: 15px;
+	margin-left: 0px;
+	width: 80%;
+	height: 160px;
+	border: 1px solid black;
+	font-size: 80%;
+}
+
+#overlay .btn {
+	margin-left: -2px;
+}
+
+#overlay div img {
+	background: white;
+}

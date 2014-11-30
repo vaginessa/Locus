@@ -9,7 +9,7 @@ module Api
     
     
     def create
-      @piece = Piece.new(piece_params)
+      @piece = Piece.new()
       @piece.user_id = current_user.id
       if @piece.save!
         render :show
@@ -18,9 +18,19 @@ module Api
       end
     end
     
+    def update
+      @piece = Piece.find(params[:id])
+      if @piece.update(piece_params)
+        render json: @piece
+      else
+        render json: @piece.errors.full_messages, status: :unprocessable
+      end
+
+    end
+    
     private
     def piece_params
-      params.require(:piece).permit(:title, :statement, :filepicker_url)
+      params.require(:piece).permit(:title, :statement)
     end
   end
 end

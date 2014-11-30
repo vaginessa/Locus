@@ -11,15 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141125222954) do
+ActiveRecord::Schema.define(version: 20141129203612) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "images", force: true do |t|
+    t.string   "url",        null: false
+    t.integer  "piece_id",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "images", ["url"], name: "index_images_on_url", using: :btree
+
   create_table "pieces", force: true do |t|
     t.string   "title"
     t.string   "user_id"
-    t.string   "filepicker_url"
     t.string   "statement"
     t.datetime "created_at"
     t.datetime "updated_at"

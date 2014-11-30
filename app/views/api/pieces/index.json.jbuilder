@@ -9,7 +9,7 @@ end
 json.pieces(@pieces) do |piece|
   json.id piece.id
   json.title piece.title
-  json.filepicker_url piece.filepicker_url
+  json.image piece.image
   json.artist_fname piece.artist.fname
   json.artist_lname piece.artist.lname
 end
