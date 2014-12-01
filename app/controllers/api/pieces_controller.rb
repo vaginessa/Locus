@@ -14,7 +14,7 @@ module Api
     
     
     def create
-      @piece = Piece.new()
+      @piece = Piece.new(piece_params)
       @piece.user_id = current_user.id
       if @piece.save!
         render :show
@@ -35,7 +35,7 @@ module Api
     
     private
     def piece_params
-      params.require(:piece).permit(:title, :statement)
+      params.require(:piece).permit(:title, :statement, :media_type)
     end
   end
 end

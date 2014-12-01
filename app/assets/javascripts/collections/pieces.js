@@ -16,6 +16,7 @@ Locus.Collections.Pieces = Backbone.Collection.extend({
 	},
 	
 	parse: function(payload){
+	
 		
 		if(payload.current_user){
 			this.current_user = { 
@@ -26,12 +27,13 @@ Locus.Collections.Pieces = Backbone.Collection.extend({
 			delete payload.current_user
 		}
 		
+	
 		if(payload.pieces){
-			this.set(payload.pieces, { parse: true, remove: false })
+			this.set(payload.pieces, {remove: false })
 			delete payload.pieces
 		}
 		
-		debugger
+	
 		
 	
 		return payload;

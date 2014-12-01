@@ -11,10 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141129203612) do
+ActiveRecord::Schema.define(version: 20141201010154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "audios", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "images", force: true do |t|
     t.string   "url",        null: false
@@ -31,6 +36,7 @@ ActiveRecord::Schema.define(version: 20141129203612) do
     t.string   "statement"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "media_type", null: false
   end
 
   add_index "pieces", ["user_id"], name: "index_pieces_on_user_id", using: :btree

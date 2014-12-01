@@ -2,6 +2,7 @@ Locus.Views.UploadBar = Backbone.CompositeView.extend({
 	
 	initialize: function(options){
 		this.user = options.user
+		filepicker.setKey("Aej0E2YFRSEuECMt5FTXjz")
 	},
 	
 	template: JST["main_space/upload_bar"],
@@ -21,10 +22,10 @@ Locus.Views.UploadBar = Backbone.CompositeView.extend({
 	
 	uploadImage: function() {
 		var view = this;
-		var picker_options = {mimetype: 'image/*', service: 'COMPUTER', }
-		filepicker.setKey("Aej0E2YFRSEuECMt5FTXjz")
+		var picker_options = {mimetype: 'image/*', service: 'COMPUTER' }
+		
 		filepicker.pick(picker_options, function(blob) {
-			var newPiece = new Locus.Models.Piece()
+			var newPiece = new Locus.Models.Piece({ media_type: "image"})
 			newPiece.save({}, {
 				url: "api/pieces",
 				success: function() {
@@ -52,6 +53,35 @@ Locus.Views.UploadBar = Backbone.CompositeView.extend({
 	},
 	
 	uploadAudio: function(){
+		var view = this;
+		var picker_options = {mimetype: 'audio/*', service: 'COMPUTER' }
+		filepicker.pick(picker_options, function(blob) {
+			var newPiece = new Locus.Models.Piece({ media_type: "audio"})
+				
+			newPiece.save({}, {
+				url: "api/pieces",
+				success: function() {
+					alert("piece saved")
+					view.saveAudioToPiece(newPiece, blob.url);
+				}
+			})
+		})
+		
+	},
+	
+	saveAudioToPiece: function(piece, audUrl){
+		var view = this;
+		var newAudio = new Locus.Models.Audio({
+			url: audUrl,
+			piece_id: piece.id
+		});
+		debugger
+		newAudio.save({}, {
+			url: "api/audio",
+			success: function(){
+				view.showPieceForm(piece, newAudio);
+			}
+		})
 		
 	},
 	
@@ -59,9 +89,9 @@ Locus.Views.UploadBar = Backbone.CompositeView.extend({
 		
 	},
 	
-	showPieceForm: function(piece, newImage){
+	showPieceForm: function(piece, newMedia){
 		debugger
-		var pieceFormView = new Locus.Views.PieceForm( { model: piece, collection: this.collection, media: newImage })
+		var pieceFormView = new Locus.Views.PieceForm( { model: piece, collection: this.collection, media: newMedia })
 		this.addSubview("#piece-form", pieceFormView);
 		$("#piece-form").show();
 	},
