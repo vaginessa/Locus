@@ -13,7 +13,7 @@ Locus.Models.Piece = Backbone.Model.extend({
 	
 	mediaHtml: function(options){
 		if(!options){
-			options = {}
+			options = {};
 		}
 
 		var m = this.get('media_type')
