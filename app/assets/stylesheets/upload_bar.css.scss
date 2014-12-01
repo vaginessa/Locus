@@ -1,4 +1,6 @@
-#overlay{
+
+
+#upload-bar #overlay{
 	position: absolute;
 	left: 0px;
 	right: 0px;
@@ -10,7 +12,7 @@
 	background-color: darkgray;
 }
 
-#overlay div {
+#upload-bar #overlay #div-form {
 	border-radius: 3px;
 	background-opacity: 1;
 	opacity: 1;

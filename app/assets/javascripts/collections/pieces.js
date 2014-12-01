@@ -1,18 +1,13 @@
 Locus.Collections.Pieces = Backbone.Collection.extend({
 	model: Locus.Models.Piece,
 	url: "api/pieces",
+	comparator: function(piece){
+		var date = new Date(piece.get('updated_at'));
+		return -date.getTime();
+	},
 	
 	initialize: function(){
 		this.current_user = {}
-	},
-	
-	getOrFetch: function(){
-		// var piece = this.get(id);
-	//
-	// 	if(piece === undefined){
-	// 		piece = new Locus.Models.Piece();
-	// 	}
-		
 	},
 	
 	parse: function(payload){
@@ -27,16 +22,7 @@ Locus.Collections.Pieces = Backbone.Collection.extend({
 			delete payload.current_user
 		}
 		
-	
-		if(payload.pieces){
-			this.set(payload.pieces, {remove: false })
-			delete payload.pieces
-		}
-		
-	
-		
-	
-		return payload;
+		return payload.pieces;
 	}
 		
 	

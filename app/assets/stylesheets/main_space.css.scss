@@ -29,19 +29,7 @@
 	cursor: hand;
 }
 
-#gallery-wrapper{
-	display: inline block;
-	min-width: 800px;
-	float: left;
-	padding: 20px;
-	padding-top: 0px;
-}
 
-#gallery {
-	border: 1px solid black;
-	width: 100%;
-	min-height: 400px;
-}
 
 #main-space {
 	margin-top: 50px;
@@ -61,15 +49,6 @@
 	padding: 20px;
 }
 
-//#image-button {
-//	height: 100%;
-//    color: #ffffff;
-//    font-size: 20px;
-//    text-decoration: none;
-//	float: left;
-//	padding: 20px;
-//	padding-bottom: 0px;
-//}
 
 #upload-bar .upbar > div {
 	border-left: 1px solid white;
@@ -89,10 +68,7 @@
 	cursor: pointer;
 	cursor: hand;
 }
-//#audio-button {
-//
-//}
-//
+
 #video-button {
 	border-left: 1px solid white;
 	height: 100%;

@@ -1,6 +1,11 @@
 <ul class="gallery-item">
-	<img src="">
-	<div class="piece-title"><%=piece.escape('title')%></div>
-	<div class="piece-artist"><%= piece.escape('artist_fname')%> <br> <%= piece.escape('artist_lname')%></div>
-	<div class="piece-statement"><%= piece.escape('statement')%></div>
+	<div class="piece-media"><%=piece.mediaHtml()%> </div>
+	
+	<div class="piece-info-wrapper">
+		<div class="piece-title"><%=piece.escape('title')%></div>
+		<div class="piece-artist"><%= piece.escape('artist_fname')%> <%= piece.escape('artist_lname')%></div>
+	</div>
 </ul>
+
+<div id="piece-show" style="display: none">
+</div>

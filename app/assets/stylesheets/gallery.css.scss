@@ -1,13 +1,122 @@
-
-
-.gallery-item > img {
-	height: 10px;
-	width: 10px;
-	border: 1px solid black;
+#gallery-wrapper{
+	display: inline block;
+	width: 900px;
+	height: 100%;
+	float: left;
+	padding: 20px;
+	padding-top: 0px;
+	margin: 0px;
+	margin-top: -10px;
 }
+
+#gallery {
+	width: 100%;
+	height: 100%;
+}
+
+#gallery-items {
+	margin-top: -20px;
+}
+
+ 
+#gallery #overlay{
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	margin-top: -200px;
+	width: 1260px;
+	height: 10000px;
+	z-index: 1000;
+	opacity: .95;
+	background-color: darkgray;
+}
+
+#gallery #overlay #gallery-item {
+	border-radius: 3px;
+	opacity: 1 !important;
+	width: 400px;
+	min-height: 400px;
+	margin: auto;
+	margin-top: 160px;
+	background-color: white;
+	
+	padding: 15px;
+	z-index: 100;
+}
+
+#gallery #overlay #piece-show {
+	border-radius: 3px;
+	opacity: 1 !important;
+	width: 400px;
+	min-height: 400px;
+	margin: auto;
+	margin-top: 160px;
+	background-color: white;
+	
+	padding: 15px;
+	z-index: 100;
+}
+
 
 .gallery-item {
-	width: 400px;
-	height: 200px;
-	border: 1px solid black;
+	padding: 20px;
+	padding-left: 0px;
+	width: 98%;
+	min-height: 200px;
+	margin: 8px;
+	margin-left: -38px;
+	float: left;
+	cursor: pointer;
+	border-bottom: 1px solid black;
 }
+
+.gallery-item:hover {
+	cursor: hand;
+}
+
+.gallery-item > div {
+	float: left;
+	margin-left: 10px;
+}
+
+.gallery-item .piece-media  {
+	display: inline-block;
+	min-height: 10px;
+	min-width: 10px;
+	float: left;
+	margin-left: 0px;
+	padding: 5px;
+}
+
+.gallery-item .piece-info-wrapper {
+	display: inline-block;
+	border-radius: 3px;
+	float: left;
+	border: 1px solid black;
+	min-height: 40px;
+}
+
+.gallery-item .piece-title {
+	padding: 5px;
+	font-size: 100%;	
+	font-weight: bold;
+	margin: 5px;
+	
+}
+
+.gallery-item .piece-artist {
+	float: left;
+	padding: 5px;
+	font-size: 80%;
+}
+
+.gallery-item .piece-statement {
+	float: left;
+	font-size: 100%;
+	margin: 5px;
+	
+}
+
+
+
+

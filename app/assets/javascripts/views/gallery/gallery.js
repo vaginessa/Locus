@@ -7,8 +7,6 @@ Locus.Views.Gallery = Backbone.CompositeView.extend({
 	
 	template: JST['main_space/gallery_show'],
 	
-	className: 'main-gallery',
-	
 	render: function(){
 		var content = this.template({ pieces: this.collection });
 		this.$el.html(content);
@@ -17,8 +15,9 @@ Locus.Views.Gallery = Backbone.CompositeView.extend({
 	},
 	
 	addGalleryItem: function(model){
+		debugger
 		var galleryItem = new Locus.Views.GalleryItem({ model: model });
-		this.addSubview('#gallery-items', galleryItem);
+		this.addSubview('#gallery-items', galleryItem, { prepend: true });
 	},
 	
 	addGalleryItems: function(){

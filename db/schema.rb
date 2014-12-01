@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141201010154) do
+ActiveRecord::Schema.define(version: 20141201222100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20141201010154) do
   create_table "audios", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "url",        null: false
+    t.integer  "piece_id",   null: false
   end
 
   create_table "images", force: true do |t|
@@ -33,7 +35,7 @@ ActiveRecord::Schema.define(version: 20141201010154) do
   create_table "pieces", force: true do |t|
     t.string   "title"
     t.string   "user_id"
-    t.string   "statement"
+    t.text     "statement"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "media_type", null: false
@@ -54,5 +56,14 @@ ActiveRecord::Schema.define(version: 20141201010154) do
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["session_token"], name: "index_users_on_session_token", using: :btree
+
+  create_table "videos", force: true do |t|
+    t.string   "url",        null: false
+    t.integer  "piece_id",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "videos", ["url"], name: "index_videos_on_url", using: :btree
 
 end

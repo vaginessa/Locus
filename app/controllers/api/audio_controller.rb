@@ -4,7 +4,7 @@ module Api
     def new;end
   
     def create
-      @audio = Audio.new(audio_params)
+      @audio = Audio.new(audio_params  )
       if @audio.save!
         render json: @audio
       else
