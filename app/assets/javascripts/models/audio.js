@@ -2,8 +2,14 @@ Locus.Models.Audio = Backbone.Model.extend({
 	
 	rootUrl: "api/audio",
 	
-	url: function(){
-		return this.rootUrl + "/" + this.id;
+	mediaHtml: function(options){
+		if(!options){
+			options = {};
+		}
+		
+		var url = "'" + this.get('url') + "'";
+
+		return '<audio controls> <source src =' + url + ' type="audio/mpeg"></audio>'
 	}
 	
 });

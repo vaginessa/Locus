@@ -9,6 +9,7 @@ Locus::Application.routes.draw do
     resources :pieces
     resources :images
     resources :audio
+    resources :videos
   end
   
 end

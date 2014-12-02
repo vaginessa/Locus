@@ -62,6 +62,7 @@ Locus.Views.UploadBar = Backbone.CompositeView.extend({
 			newPiece.save({}, {
 				url: "api/pieces",
 				success: function() {
+					view.collection.add(newPiece, {silent: true})
 					view.saveAudio(newPiece, blob.url);
 				}
 			})
@@ -96,7 +97,7 @@ Locus.Views.UploadBar = Backbone.CompositeView.extend({
 			newPiece.save({}, {
 				url: "api/pieces",
 				success: function() {
-					view.collection.add(newPiece)
+					view.collection.add(newPiece, {silent: true});
 					view.saveVideo(newPiece, blob.url);
 				}
 			})
@@ -110,10 +111,13 @@ Locus.Views.UploadBar = Backbone.CompositeView.extend({
 			url: imgUrl,
 			piece_id: piece.id
 		});
+		
+	
 
 		newVideo.save({ }, {
 			url: "api/videos",
 			success: function(){
+				alert("video saved!");
 				view.showPieceForm(piece, newVideo);
 			}
 		})
@@ -122,6 +126,7 @@ Locus.Views.UploadBar = Backbone.CompositeView.extend({
 	
 	showPieceForm: function(piece, newMedia){
 		var pieceFormView = new Locus.Views.PieceForm( { model: piece, collection: this.collection, media: newMedia })
+		debugger
 		this.addSubview("#piece-form", pieceFormView);
 		$('#piece-form').data('piece_id', piece.id);
 		$("#piece-form").show();
@@ -131,7 +136,9 @@ Locus.Views.UploadBar = Backbone.CompositeView.extend({
 		event.preventDefault();
 		
 		var view = this;
+		
 		var piece = this.collection.get($('#piece-form').data('piece_id'));
+		debugger
 		var attrs = $(event.currentTarget).serializeJSON();
 		
 		piece.save(attrs, { 
