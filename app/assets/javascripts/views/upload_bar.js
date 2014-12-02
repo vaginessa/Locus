@@ -70,6 +70,7 @@ Locus.Views.UploadBar = Backbone.CompositeView.extend({
 
 	submitPieceForm: function(event){
 		event.preventDefault();
+		this.model = new Locus.Models.Piece();
 		this.$('#piece-form').empty();
 		this.$('#piece-form').hide();
 	}

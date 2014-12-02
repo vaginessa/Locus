@@ -2,6 +2,7 @@ Locus.Models.Piece = Backbone.Model.extend({
 	urlRoot: "api/pieces",
 	
 	media: function(){
+		debugger
 		if(this.get('image')){
 			return this.get('image');
 		} else if(this.get('audio')){
