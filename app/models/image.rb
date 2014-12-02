@@ -1,5 +1,5 @@
 class Image < ActiveRecord::Base
-  validates :url, :piece_id, presence: true
+  validates :url, :piece, presence: true
   
-  belongs_to :piece
+  belongs_to :piece, inverse_of: :image
 end

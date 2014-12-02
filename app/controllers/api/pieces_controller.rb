@@ -1,5 +1,6 @@
 module Api
   class PiecesController < ApplicationController
+    wrap_parameters :piece, include: [:media, :title, :media_type, :statement]
     
     def index
       @pieces = Piece.all
@@ -34,8 +35,9 @@ module Api
     end
     
     private
+    
     def piece_params
-      params.require(:piece).permit(:title, :statement, :media_type)
+      params.require(:piece).permit(:title, :statement, :media_type, media: [:url])
     end
   end
 end

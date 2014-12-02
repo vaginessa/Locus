@@ -3,6 +3,7 @@ Locus.Views.Gallery = Backbone.CompositeView.extend({
 	initialize: function(){
 		this.addGalleryItems();
 		this.listenTo(this.collection, "add", this.addGalleryItem);
+		this.listenTo(this.collection, "unshift", this.unshiftGalleryItem);
 	},
 	
 	template: JST['main_space/gallery_show'],
@@ -15,8 +16,13 @@ Locus.Views.Gallery = Backbone.CompositeView.extend({
 	},
 	
 	addGalleryItem: function(model){
-		var galleryItem = new Locus.Views.GalleryItem({ model: model, collection: this.collections });
+		var galleryItem = new Locus.Views.GalleryItem({ model: model, collection: this.collection });
 		this.addSubview('#gallery-items', galleryItem);
+	},
+	
+	unshiftGalleryItem: function(model){
+		var galleryItem = new Locus.Views.GalleryItem({ model: model, collection: this.collection });
+		this.addSubview('#gallery-items', galleryItem, { prepend: true });
 	},
 	
 	addGalleryItems: function(){

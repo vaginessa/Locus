@@ -1,5 +1,5 @@
 Locus.Models.Piece = Backbone.Model.extend({
-	rootUrl: "api/pieces",
+	urlRoot: "api/pieces",
 	
 	media: function(){
 		if(this.get('image')){
@@ -25,7 +25,7 @@ Locus.Models.Piece = Backbone.Model.extend({
 		}
 
 		var m = this.get('media_type')
-		if(m){
+		if(m) {
 			var url = "'" + this.media()['url'] + "'";
 			if(m === 'image'){
 				return "<img src="+ url + " width="+width+" height="+height+">"
@@ -36,7 +36,5 @@ Locus.Models.Piece = Backbone.Model.extend({
 				
 			}
 		}
-		
-		
 	}
 });

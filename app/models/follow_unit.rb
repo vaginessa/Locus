@@ -1,5 +1,6 @@
 class FollowUnit < ActiveRecord::Base
   validates :follower_id, :followee_id, presence: true
+  
   belongs_to(
     :follower,
     class_name: 'User',

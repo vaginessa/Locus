@@ -3,14 +3,15 @@ Locus.Views.UploadBar = Backbone.CompositeView.extend({
 	initialize: function(options){
 		this.user = options.user;
 		filepicker.setKey("Aej0E2YFRSEuECMt5FTXjz");
+		this.model = new Locus.Models.Piece();
 	},
 	
 	template: JST["main_space/upload_bar"],
 	
 	events: {
-		"click #image-button" : 'uploadImage',
-		'click #audio-button' : 'uploadAudio',
-		'click #video-button' : 'uploadVideo',
+		'click #image-button' : 'uploadMedia',
+		'click #audio-button' : 'uploadMedia',
+		'click #video-button' : 'uploadMedia',
 		'submit form' : 'submitPieceForm'
 	},
 	
@@ -20,136 +21,57 @@ Locus.Views.UploadBar = Backbone.CompositeView.extend({
 		return this;
 	},
 	
-	uploadImage: function() {
+	uploadMedia: function(event) {
 		var view = this;
-		var picker_options = { mimetype: 'image/*', service: 'COMPUTER' }
-		
+		var uploadType = event.currentTarget.id;
+		var picker_options = this.pickerOptions(uploadType);
 		filepicker.pick(picker_options, function(blob) {
-			var newPiece = new Locus.Models.Piece({ media_type: "image"})
-			newPiece.save({}, {
-				url: "api/pieces",
-				success: function() {
-					view.collection.add(newPiece, {silent: true})
-					view.saveImage(newPiece, blob.url);
-				}
-			})
+			var newMedia = view.newMedia.set({ url: blob.url });
+			view.model.set({ media: newMedia, 
+				media_type: view.mediaType, 
+				image: {url: blob.url},
+				audio: {url: blob.url},
+			 	video: {url: blob.url}
+			});
+			view.showPieceForm(view.model, newMedia);
 		});
 		
 	},
 	
 	
-	saveImage: function(piece, imgUrl){
-		var view = this;
-		var newImage = new Locus.Models.Image({
-			url: imgUrl,
-			piece_id: piece.id
-		});
-		newImage.save({ }, {
-			url: "api/images",
-			success: function(){
-				view.showPieceForm(piece, newImage);
-			}
-		})
-		
+	pickerOptions: function(uploadType){
+		if(uploadType === "image-button"){
+			this.mediaType = 'image';
+			this.newMedia = new Locus.Models.Image();
+			return {mimetype: 'image/*', service: 'COMPUTER'}
+		} else if(uploadType === "audio-button"){
+			this.mediaType = 'audio'
+			this.newMedia = new Locus.Models.Audio();
+			return { mimetype: 'audio/*', service: 'COMPUTER'}
+		} else {
+			this.mediaType = 'video'
+			this.newMedia = new Locus.Models.Video();
+			return {mimetype: 'video/*', service: 'COMPUTER'}
+		}
 	},
-	
-	uploadAudio: function() {
-		var view = this;
-		var picker_options = { mimetype: 'audio/*', service: 'COMPUTER' }
-		
-		filepicker.pick(picker_options, function(blob) {
-			var newPiece = new Locus.Models.Piece({ media_type: "audio"})
-			newPiece.save({}, {
-				url: "api/pieces",
-				success: function() {
-					view.collection.add(newPiece, {silent: true})
-					view.saveAudio(newPiece, blob.url);
-				}
-			})
-		});
-		
-	},
-	
-	saveAudio: function(piece, imgUrl){
-		var view = this;
-		var newAudio = new Locus.Models.Audio({
-			url: imgUrl,
-			piece_id: piece.id
-		});
 
-		newAudio.save({ }, {
-			url: "api/audio",
-			success: function(){
-				view.showPieceForm(piece, newAudio);
-			}
-		})
-		
-	},
-	
-
-	
-	uploadVideo: function(){
-		var view = this;
-		var picker_options = { mimetype: 'video/*', service: 'COMPUTER' }
-		
-		filepicker.pick(picker_options, function(blob) {
-			var newPiece = new Locus.Models.Piece({ media_type: "video"})
-			newPiece.save({}, {
-				url: "api/pieces",
-				success: function() {
-					view.collection.add(newPiece, {silent: true});
-					view.saveVideo(newPiece, blob.url);
-				}
-			})
-		});
-		
-	},
-	
-	saveVideo: function(piece, imgUrl){
-		var view = this;
-		var newVideo = new Locus.Models.Video({
-			url: imgUrl,
-			piece_id: piece.id
-		});
-		
-	
-
-		newVideo.save({ }, {
-			url: "api/videos",
-			success: function(){
-				alert("video saved!");
-				view.showPieceForm(piece, newVideo);
-			}
-		})
-		
-	},
 	
 	showPieceForm: function(piece, newMedia){
-		var pieceFormView = new Locus.Views.PieceForm( { model: piece, collection: this.collection, media: newMedia })
-		debugger
-		this.addSubview("#piece-form", pieceFormView);
-		$('#piece-form').data('piece_id', piece.id);
-		$("#piece-form").show();
-	},
-	
-	submitPieceForm: function(event){
-		event.preventDefault();
-		
-		var view = this;
-		
-		var piece = this.collection.get($('#piece-form').data('piece_id'));
-		debugger
-		var attrs = $(event.currentTarget).serializeJSON();
-		
-		piece.save(attrs, { 
-			patch: true,
-			success: function(){
-				view.collection.add(piece, {merge: true})
-				alert('piece successfully updated')
-			}
+		var pieceFormView = new Locus.Views.PieceForm({ 
+			model: piece, 
+			collection: this.collection, 
+			media: newMedia 
 		});
 		
-		$('#piece-form').hide();
+		this.$('#piece-form').empty();
+		this.addSubview("#piece-form", pieceFormView);
+		$("#piece-form").show();
+	},
+
+	submitPieceForm: function(event){
+		event.preventDefault();
+		this.$('#piece-form').empty();
+		this.$('#piece-form').hide();
 	}
 });
 

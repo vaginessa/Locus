@@ -1,8 +1,15 @@
 Backbone.CompositeView = Backbone.View.extend({
 	
 	addSubview: function (selector, subview, options) {
+		if(options === undefined) {
+			options = {}
+		}
 		
-		this.subviews(selector).push(subview);
+		if(options.prepend){ 
+		  this.subviews(selector).unshift(subview);
+		} else {
+  		  this.subviews(selector).push(subview);
+	    }
 		this.attachSubview(selector, subview.render(), options);
 	},
 	

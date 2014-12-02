@@ -15,4 +15,13 @@ class Piece < ActiveRecord::Base
   
   has_one :video
   
+  default_scope {
+    order(updated_at: :desc);
+  }
+  
+  def media=(media_params)
+    if media_type == 'image'
+      self.image = Image.new(url: media_params[:url])
+    end
+  end
 end

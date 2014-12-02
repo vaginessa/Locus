@@ -12,11 +12,12 @@ module Api
         render json: @follow_unit.errors.full_messages, status: :unprocessable
       end
     end
-  end
+
   
-  private
-  def follow_unit_params
-    params.require(:follow_unit).permit(:followee_id)
-  end
+    private
+    def follow_unit_params
+      params.require(:follow_unit).permit(:followee_id)
+    end
   
+  end
 end

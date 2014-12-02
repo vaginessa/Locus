@@ -20,22 +20,18 @@ Locus.Views.PieceForm = Backbone.View.extend({
 		event.preventDefault();
 		var view = this;
 		var target = $(event.currentTarget)
-			
 		var attrs = target.serializeJSON();
 		
 		var piece = this.model;
 		piece.set(attrs['piece']);
-		piece.save({},{
-			url: piece.url(),
+		piece.save({}, {
+			url: 'api/pieces',
 			success: function(){
-				view.collection.set( piece,  {remove: false});
+				view.collection.unshift(piece, { silent: true });
+				view.collection.trigger('unshift', piece);
 				view.remove();
 				Backbone.history.navigate("/", { trigger: true } );
 			}
-		})
-		
+		});
 	}
-
-
-	
 });
