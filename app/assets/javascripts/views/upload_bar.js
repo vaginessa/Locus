@@ -9,6 +9,8 @@ Locus.Views.UploadBar = Backbone.CompositeView.extend({
 	template: JST["main_space/upload_bar"],
 	
 	events: {
+		'click #random-tab' : 'toggleButton',
+		'click #home-tab' : 'toggleButton',
 		'click #image-button' : 'uploadMedia',
 		'click #audio-button' : 'uploadMedia',
 		'click #video-button' : 'uploadMedia',
@@ -73,6 +75,11 @@ Locus.Views.UploadBar = Backbone.CompositeView.extend({
 		this.model = new Locus.Models.Piece();
 		this.$('#piece-form').empty();
 		this.$('#piece-form').hide();
+	},
+	
+	toggleButton: function(){
+		this.$('#random-tab').toggle();
+		this.$('#home-tab').toggle();
 	}
 });
 

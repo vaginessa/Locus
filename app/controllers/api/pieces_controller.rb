@@ -55,6 +55,15 @@ module Api
       elsif f == 'own'
         result = []
         return result << Piece.find_by_user_id(current_user.id)
+      elsif f == 'random'
+        Piece.find_by_sql([
+          "SELECT pieces.*
+          FROM pieces LEFT OUTER JOIN follow_units ON pieces.user_id = follow_units.followee_id
+          WHERE follow_units.follower_id != ? AND pieces.user_id != ? ORDER BY pieces.updated_at DESC, RANDOM()
+          LIMIT 100",
+          current_user.id,
+          current_user.id,
+        ])
       end
     end
     

@@ -14,7 +14,7 @@ Locus.Views.GalleryItem = Backbone.CompositeView.extend({
 	},
 	
 	render: function(){
-		var content = this.template({ piece: this.model });
+		var content = this.template({ piece: this.model, current_user: this.collection.current_user});
 		this.$el.html(content);
 		this.attachSubviews();
 		return this;
@@ -51,6 +51,8 @@ Locus.Views.GalleryItem = Backbone.CompositeView.extend({
 				view.toggleFollowButton();
 			}
 		});
+		
+		
 	},
 	
 	unfollowUser: function(event){
