@@ -1,12 +1,13 @@
 <div id="overlay">
-	<div id="gallery-item">
+	<div id="gallery-item-show">
 		<div class="piece-media"><%=piece.mediaHtml({show: true})%> </div>
 	
 		<div class="piece-info-wrapper">
-			<div class="piece-title"><%=piece.escape('title')%></div>
-			<div class="piece-artist"><%= piece.escape('artist_fname')%> <br> <%= piece.escape('artist_lname')%></div>
-			<br>
-			<br>
+			<div class="title-and-artist">
+				<div class="piece-title"><%=piece.escape('title')%></div>
+				<br>
+				<div class="piece-artist"><%= piece.escape('artist_fname')%> <br> <%=piece.escape('artist_lname')%></div>
+			</div>
 			<div class="piece-statement"><%= piece.escape('statement')%></div>
 		</div>
 	</div>

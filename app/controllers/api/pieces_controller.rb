@@ -3,7 +3,7 @@ module Api
     wrap_parameters :piece, include: [:media, :title, :media_type, :statement]
     
     def index
-      @pieces = Piece.all
+      @pieces = filter_index
       @current_user = current_user
       render :index
     end
@@ -39,5 +39,24 @@ module Api
     def piece_params
       params.require(:piece).permit(:title, :statement, :media_type, media: [:url])
     end
+    
+    def filter_index
+      f = params[:filter]
+      if f == 'feed'
+        Piece.find_by_sql([
+          "SELECT pieces.*
+          FROM pieces LEFT OUTER JOIN follow_units ON pieces.user_id = follow_units.followee_id
+          WHERE follow_units.follower_id = ? OR pieces.user_id = ? ORDER BY pieces.updated_at DESC",
+          current_user.id,
+          current_user.id
+        ])
+      elsif f == 'search'
+        return Piece.all
+      elsif f == 'own'
+        result = []
+        return result << Piece.find_by_user_id(current_user.id)
+      end
+    end
+    
   end
 end

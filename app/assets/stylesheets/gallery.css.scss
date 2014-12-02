@@ -25,41 +25,24 @@
 	right: 0px;
 	margin-top: -200px;
 	width: 1260px;
-	height: 10000px;
+	height: 1000px;
 	z-index: 1000;
 	opacity: .95;
 	background-color: darkgray;
 }
 
-#gallery #overlay #gallery-item {
+#gallery #overlay #gallery-item-show {
 	border-radius: 3px;
 	opacity: 1 !important;
-	width: 80%;
-	min-height: 600;
-	margin: auto;
-	margin-top: 160px;
-	background-color: white;
-	
-	padding: 15px;
-	z-index: 100;
-}
-
-#gallery #overlay #piece-show {
-	border-radius: 3px;
-	opacity: 1 !important;
-	width: 400px;
+	width: 70%;
 	min-height: 400px;
 	margin: auto;
 	margin-top: 160px;
-	background-color: white;
-	
+	background-color: black;
+	color: white;
 	padding: 15px;
+	padding-bottom: 180px;
 	z-index: 100;
-	box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-}
-
-#gallery #overlay #piece-show #piece-info-wrapper {
-	margin-top: 10px;
 }
 
 
@@ -73,7 +56,30 @@
 	min-width: 100px;
 }
 
-#gallery #overlay #piece-show .piece-title {
+
+
+.piece-statement {
+	min-height: 50px;
+	width: 65%;
+	display: inline-block;
+	border-left: 1px solid white;
+	float: left;
+	font-size: 100%;
+	margin-left: 5px;
+	padding-top: 5px;
+	padding-left: 5px;
+	margin-bottom: 0px;
+	
+}
+
+.title-and-artist {
+	float: left;
+	display: inline-block;
+}
+
+.title-and-artist .piece-title {
+	display: block;
+	float: left;
 	padding: 5px;
 	font-size: 200%;	
 	font-weight: bold;
@@ -81,17 +87,11 @@
 	
 }
 
-#gallery #overlay #piece-show .piece-artist {
+.title-and-artist .piece-artist {
+	display: block;
 	float: left;
 	padding: 5px;
 	font-size: 100%;
-}
-
-#gallery #overlay #piece-show .piece-statement {
-	float: left;
-	font-size: 100%;
-	margin: 5px;
-	
 }
 
 .gallery-item {
@@ -108,6 +108,7 @@
 
 .gallery-item:hover {
 	cursor: hand;
+	background-color: oldlace;
 }
 
 .gallery-item > div {

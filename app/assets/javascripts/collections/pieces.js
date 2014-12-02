@@ -2,10 +2,6 @@ Locus.Collections.Pieces = Backbone.Collection.extend({
 	model: Locus.Models.Piece,
 	url: "api/pieces",
 	
-	comparator: function(piece){
-		return -(new Date(piece.get('updated_at'))).getTime();
-	},
-	
 	initialize: function(){
 		this.current_user = {}
 	},

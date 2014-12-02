@@ -2,7 +2,6 @@ Locus.Models.Piece = Backbone.Model.extend({
 	urlRoot: "api/pieces",
 	
 	media: function(){
-		debugger
 		if(this.get('image')){
 			return this.get('image');
 		} else if(this.get('audio')){
@@ -19,7 +18,7 @@ Locus.Models.Piece = Backbone.Model.extend({
 		
 		if(options.show){
 			var width = "100%"
-			var height = "80%"
+			var height = "60%"
 		} else {
 			var width = "60%"
 			var height = "60%"

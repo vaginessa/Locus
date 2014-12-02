@@ -2,18 +2,9 @@ Locus.Views.GalleryItem = Backbone.CompositeView.extend({
 
 	template: JST['gallery/item'], 
 	
-	// initialize: function(){
-	// 	this.current_user = this.collection.current_user
-	// 	debugger
-	//
-	// 	if(_.contains(this.current_user.followees, this.model.artist_id){
-	// 		this.$('.unfollow-btn').hide();
-	// 		this.$('.follow-btn').show();
-	// 	} else {
-	// 		this.$('.follow-btn').hide();
-	// 		this.$('.unfollow-btn').show();
-	// 	}
-	// },
+	initialize: function(){
+		this.$('.follow-btn').hide();
+	},
 	
 	events: {
 		'click .follow-btn' : 'followUser',

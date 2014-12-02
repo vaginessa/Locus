@@ -11,11 +11,7 @@ Locus.Routers.Router = Backbone.Router.extend({
 	mainSpace: function(){
 		var pieces = Locus.pieces;
 		
-		pieces.fetch({
-			success: function(){
-				pieces = pieces.filterByFollow();
-			}
-		});
+		pieces.fetch({data: {filter: 'feed'}});
 		var mainSpace = new Locus.Views.mainSpace({collection: pieces});
 		this._swapView(mainSpace);
 	},
