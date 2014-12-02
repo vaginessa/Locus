@@ -3,8 +3,13 @@ json.current_user do
   json.current_user_id @current_user.id
   json.fname @current_user.fname
   json.lname @current_user.lname
-  json.array!(@current_user.followers)
-  json.array!(@current_user.followees)
+  json.followers(@current_user.followers) do |follower|
+    json.follower_id follower.id
+  end
+  
+  json.followees(@current_user.followees) do |followee|
+    json.followee_id followee.id
+  end
 end
 
 
@@ -18,6 +23,7 @@ json.pieces(@pieces) do |piece|
   json.audio piece.audio
   json.video piece.video
   json.statement piece.statement
+  json.artist_id piece.artist.id
   json.artist_fname piece.artist.fname
   json.artist_lname piece.artist.lname
 end

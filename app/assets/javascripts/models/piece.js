@@ -13,14 +13,14 @@ Locus.Models.Piece = Backbone.Model.extend({
 	
 	mediaHtml: function(options){
 		if(!options){
-			options = {};
+			options = {}
 		}
 		
 		if(options.show){
-			var width = "95%"
-			var height = "95%"
+			var width = "100%"
+			var height = "80%"
 		} else {
-			var width = "50%"
+			var width = "60%"
 			var height = "60%"
 		}
 

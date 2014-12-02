@@ -2,11 +2,8 @@ Locus.Views.mainSpace = Backbone.CompositeView.extend({
 	
 	initialize: function(){
 		this.addUploadBar();
-		this.addUserSidebar();
+		this.listenTo(this.collection, "sync", this.addUserSidebar);
 		this.addGallery();
-		
-		// this.listenTo(this.collection, "sync", this.addUserSidebar);
-// 		this.listenTo(this.collection, "sync", this.addGallery);
 		this.listenTo(this.collection, "sync", this.render);
 		this.listenTo(this.collection, "add", this.render);
 	}, 

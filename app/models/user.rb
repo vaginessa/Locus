@@ -12,16 +12,24 @@ class User < ActiveRecord::Base
   )
   
   has_many(
-    :followers,
-    through: :follow_units
-  )
-  
-  has_many(
-    :followees,
-    class_name: 'User',
+    :following_units,
+    class_name: 'FollowUnit',
     foreign_key: :follower_id,
     primary_key: :id
   )
+  
+  has_many(
+    :followed_units,
+    class_name: 'FollowUnit',
+    foreign_key: :followee_id,
+    primary_key: :id
+  )
+  
+  has_many :followers, through: :following_units
+  
+  
+  has_many :followees, through: :followed_units 
+
   
   
   def password=(password)

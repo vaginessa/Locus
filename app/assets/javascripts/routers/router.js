@@ -4,15 +4,19 @@ Locus.Routers.Router = Backbone.Router.extend({
 		this.$rootEl = options.$rootEl
 	},
 	
-	
 	routes: {
 		"" : "mainSpace",
 	},
 	
 	mainSpace: function(){
 		var pieces = Locus.pieces;
-		pieces.fetchSubscribedPieces();
 		
+		pieces.fetch({
+			success: function(){
+				pieces = pieces.filterByFollow();
+			}
+		});
+		debugger
 		var mainSpace = new Locus.Views.mainSpace({collection: pieces});
 		this._swapView(mainSpace);
 	},

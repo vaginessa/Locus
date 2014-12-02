@@ -19,7 +19,7 @@
 }
 
  
-#gallery #overlay{
+#gallery #overlay {
 	position: absolute;
 	left: 0px;
 	right: 0px;
@@ -34,8 +34,8 @@
 #gallery #overlay #gallery-item {
 	border-radius: 3px;
 	opacity: 1 !important;
-	width: 400px;
-	min-height: 400px;
+	width: 80%;
+	min-height: 600;
 	margin: auto;
 	margin-top: 160px;
 	background-color: white;
@@ -55,18 +55,54 @@
 	
 	padding: 15px;
 	z-index: 100;
+	box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+}
+
+#gallery #overlay #piece-show #piece-info-wrapper {
+	margin-top: 10px;
 }
 
 
+#gallery #overlay #piece-show .piece-info-wrapper {
+	color: white;
+	background-color: black;
+	display: inline-block;
+	border-radius: 2px;
+	float: left;
+	min-height: 60px;
+	min-width: 100px;
+}
+
+#gallery #overlay #piece-show .piece-title {
+	padding: 5px;
+	font-size: 200%;	
+	font-weight: bold;
+	margin: 5px;
+	
+}
+
+#gallery #overlay #piece-show .piece-artist {
+	float: left;
+	padding: 5px;
+	font-size: 100%;
+}
+
+#gallery #overlay #piece-show .piece-statement {
+	float: left;
+	font-size: 100%;
+	margin: 5px;
+	
+}
+
 .gallery-item {
 	padding: 20px;
-	padding-left: 0px;
-	width: 98%;
+	width: 100%;
 	min-height: 200px;
 	margin: 8px;
 	margin-left: -38px;
 	float: left;
 	cursor: pointer;
+	border-radius: 1px;
 	border-bottom: 1px solid black;
 }
 
@@ -79,26 +115,32 @@
 	margin-left: 10px;
 }
 
-.gallery-item .piece-media  {
-	display: inline-block;
-	min-height: 10px;
-	min-width: 10px;
+.gallery-item video {
 	float: left;
-	margin-left: 0px;
-	padding: 5px;
 }
 
-.gallery-item .piece-info-wrapper {
-	display: inline-block;
-	border-radius: 3px;
+.gallery-item img {
 	float: left;
-	border: 1px solid black;
-	min-height: 40px;
+}
+
+.gallery-item audio {
+	float: left;
+}
+
+
+.gallery-item .piece-info-wrapper {
+	color: white;
+	background-color: black;
+	display: inline-block;
+	border-radius: 2px;
+	float: left;
+	min-height: 60px;
+	min-width: 100px;
 }
 
 .gallery-item .piece-title {
 	padding: 5px;
-	font-size: 100%;	
+	font-size: 200%;	
 	font-weight: bold;
 	margin: 5px;
 	
@@ -107,13 +149,50 @@
 .gallery-item .piece-artist {
 	float: left;
 	padding: 5px;
-	font-size: 80%;
+	font-size: 100%;
 }
 
 .gallery-item .piece-statement {
 	float: left;
 	font-size: 100%;
 	margin: 5px;
+	
+}
+
+.gallery-item .follow-btn {
+	border: 0px;
+    border-radius: 5px;
+    color: black;
+    font-size: 20px;
+    background: white;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+	margin: 5px;
+	float: left;
+}
+
+.gallery-item .follow-btn:hover {
+    background: green;
+	cursor: pointer;
+	cursor: hand;
+}
+
+.gallery-item .unfollow-btn {
+	border: 0px;
+    border-radius: 5px;
+    color: black;
+    font-size: 20px;
+    background: white;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+	margin: 5px;
+	float: left;
+}
+
+.gallery-item .unfollow-btn:hover {
+    background: red;
+	cursor: pointer;
+	cursor: hand;
 	
 }
 
