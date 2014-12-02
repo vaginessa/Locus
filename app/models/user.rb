@@ -11,6 +11,18 @@ class User < ActiveRecord::Base
     primary_key: :id
   )
   
+  has_many(
+    :followers,
+    through: :follow_units
+  )
+  
+  has_many(
+    :followees,
+    class_name: 'User',
+    foreign_key: :follower_id,
+    primary_key: :id
+  )
+  
   
   def password=(password)
     @password = password

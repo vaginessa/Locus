@@ -11,7 +11,8 @@ Locus.Routers.Router = Backbone.Router.extend({
 	
 	mainSpace: function(){
 		var pieces = Locus.pieces;
-		pieces.fetch();
+		pieces.fetchSubscribedPieces();
+		
 		var mainSpace = new Locus.Views.mainSpace({collection: pieces});
 		this._swapView(mainSpace);
 	},

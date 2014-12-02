@@ -3,6 +3,8 @@ json.current_user do
   json.current_user_id @current_user.id
   json.fname @current_user.fname
   json.lname @current_user.lname
+  json.array!(@current_user.followers)
+  json.array!(@current_user.followees)
 end
 
 

@@ -10,6 +10,7 @@ Locus::Application.routes.draw do
     resources :images
     resources :audio
     resources :videos
+    resources :follow_units
   end
   
 end

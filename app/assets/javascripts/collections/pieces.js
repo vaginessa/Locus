@@ -10,6 +10,14 @@ Locus.Collections.Pieces = Backbone.Collection.extend({
 		this.current_user = {}
 	},
 	
+	fetchSubscribedPieces: function(){
+		this.fetch();
+		_(this.filter(function(model){
+			
+		}))
+		
+	},
+	
 	parse: function(payload){
 	
 		
