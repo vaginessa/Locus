@@ -16,7 +16,6 @@ Locus.Routers.Router = Backbone.Router.extend({
 				pieces = pieces.filterByFollow();
 			}
 		});
-		debugger
 		var mainSpace = new Locus.Views.mainSpace({collection: pieces});
 		this._swapView(mainSpace);
 	},

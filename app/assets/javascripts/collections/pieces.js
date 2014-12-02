@@ -13,7 +13,6 @@ Locus.Collections.Pieces = Backbone.Collection.extend({
 	
 	filterByFollow: function(){
 		var pieces = this;
-		debugger
 		return _(this.models).filter( function(model) { 
 			return _.contains(pieces.current_user.followees_id, model.artist_id); 
 		});

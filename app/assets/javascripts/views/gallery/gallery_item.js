@@ -20,7 +20,6 @@ Locus.Views.GalleryItem = Backbone.CompositeView.extend({
 		var $followButton = $('.follow-btn');
 		var $unfollowButton = $('.unfollow-btn');
 		var $target = $(event.currentTarget);
-		debugger
 		
 		if(!$followButton.is($target) && !$unfollowButton.is($target)){
 			var pieceShowView = new Locus.Views.PieceShow({ model: this.model });
