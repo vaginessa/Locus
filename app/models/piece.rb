@@ -9,7 +9,8 @@ class Piece < ActiveRecord::Base
     primary_key: :id
   )
   
-  
+  has_many :followers, through: :artist 
+
   has_one :image
   
   has_one :audio
@@ -28,5 +29,9 @@ class Piece < ActiveRecord::Base
     else
       self.video = Video.new(url: media_params[:url])
     end
+  end
+  
+  def follow_unit(current_user_id)
+    FollowUnit.find_by_ids(current_user_id, user_id)
   end
 end

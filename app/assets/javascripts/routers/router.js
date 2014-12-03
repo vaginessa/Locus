@@ -13,14 +13,12 @@ Locus.Routers.Router = Backbone.Router.extend({
 		pieces.fetch({
 			data: {filter: 'feed'},
 			success: function(){
-				console.log("in success callback")
 				pieces.each(function(piece){
-					piece.set({following: true}, {silent: true});
-					debugger
+					piece.set({following: true});
 				});
 			}
-			
 		});
+		
 		var mainSpace = new Locus.Views.mainSpace({collection: pieces});
 		this._swapView(mainSpace);
 	},

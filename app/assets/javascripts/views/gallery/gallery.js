@@ -29,7 +29,7 @@ Locus.Views.Gallery = Backbone.CompositeView.extend({
 		var view = this;
 		this.collection.each( function(model){
 			view.addGalleryItem(model)
-		})
+		});
 	}
 	
 	

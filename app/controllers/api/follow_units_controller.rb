@@ -12,6 +12,12 @@ module Api
         render json: @follow_unit.errors.full_messages, status: :unprocessable
       end
     end
+    
+    def destroy
+      @follow_unit = FollowUnit.find(params[:id])
+      @follow_unit.destroy!
+      render json: @follow_unit
+    end
 
   
     private
