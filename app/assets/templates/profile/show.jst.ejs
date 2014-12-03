@@ -10,8 +10,8 @@
 		<% } %>
 		
 		<div id="artist-statement"></div>
-		<% if (!profile.escape('ownprofile')){ %>
-			<% if(profile.escape('follows')){ %>
+		<% if (!profile.get('ownprofile')){ %>
+			<% if(profile.get('follows')){ %>
 				<div class="btn follow-btn" style="display: none">follow</div>
 				<div class="btn unfollow-btn">unfollow</div>
 			<% } else { %>
