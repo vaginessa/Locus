@@ -39,6 +39,9 @@ Locus.Views.mainSpace = Backbone.CompositeView.extend({
 	addGallery: function() {
 		this.$("#gallery").empty();
 		this.addSubview('#gallery', this.galleryView);
+		if(this.collection.length === 0){
+			this.$('#empty-gallery').show()
+		}
 	},
 	
 	addPostForm: function(){

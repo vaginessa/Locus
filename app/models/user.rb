@@ -59,6 +59,11 @@ class User < ActiveRecord::Base
     @user.is_password?(password) ? @user : nil
   end
   
+  def follows(user) 
+    return true if followees.include(user)
+    false
+  end
+  
   private
   def ensure_session_token
     self.session_token ||= self.class.generate_session_token

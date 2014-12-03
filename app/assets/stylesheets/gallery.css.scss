@@ -137,6 +137,7 @@
 	float: left;
 	min-height: 60px;
 	min-width: 100px;
+	max-width: 250px;
 }
 
 .gallery-item .piece-title {
@@ -212,6 +213,17 @@
 	cursor: pointer;
 	cursor: hand;
 	
+}
+
+#empty-gallery {
+	width: 897px;
+	height: 400px;
+	border: 2px dotted black;
+}
+
+#empty-gallery > div {
+	margin: 200px;
+	margin-left: 240px;
 }
 
 
