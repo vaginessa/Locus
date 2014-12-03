@@ -1,14 +1,32 @@
-<div id="user-fname"><%= user['user_fname']%> </div>
-<div id="user-fname"><%= user['user_lname']%> </div>
+<div id= "profile-wrapper">
+	<div id="user-wrapper">
+		<div id="user-name">
+			<%= user['user_fname']%> 
+			<%= user['user_lname']%> 
+		</div>
+	
+		<% if(user['collaborate'] === true) { %>
+			<div id="collaborate-badge">SC</div>
+		<% } %>
+		
+		<div id="artist-statement"></div>
+		<% if (!profile.escape('ownprofile')){ %>
+			<% if(profile.escape('follows')){ %>
+				<div class="btn follow-btn" style="display: none">follow</div>
+				<div class="btn unfollow-btn">unfollow</div>
+			<% } else { %>
+				<div class="btn follow-btn" style>follow</div>
+				<div class="btn unfollow-btn" style="display: none">unfollow</div>
+			<% } %>
+		<% } %>
+		
+		
+	</div>
 
-<% if(user['collaborate'] === true) { %>
-	<div id="collaborate-badge">Seeking Collaboration</div>
-<% } %>
-
-<div id="cover-piece"></div>
-<div id="artist-statement"></div>
-<div id="collaborative-statement"></div>
-<div id="own-gallery"></div>
+	<div id="cover-piece"></div>
+	
+	<div id="own-gallery"></div>
+</div>
 
 
 

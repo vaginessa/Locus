@@ -3,6 +3,7 @@ module Api
     
     def show
       @profile = Profile.find(params[:id])
+      @followed, @follow_unit_id = followed_by_current_user?(@profile.user)
       render :show
     end
     
@@ -18,6 +19,11 @@ module Api
     private
     def profile_params
       params.require(:profile).permit(:cover_piece_id, :artist_statement, :collaborative_statement)
+    end
+    
+   
+    def followed_by_current_user?(user)
+      current_user.follows(user)
     end
   end
 end

@@ -4,15 +4,10 @@ Locus.Views.GalleryItem = Backbone.CompositeView.extend({
 	initialize: function(){
 		this.$('.follow-btn').hide();
 		this.listenTo(this.model, 'change:following', this.render);
-		// var follow_unit_id = this.model.get('follow_unit')[0].id;
-		// this.listenTo(this.mode, 'change: follow_unit_id', this.render)
-		// this.listenTo(this.model, 'sync', this.model.set({follow_unit_id: follow_unit_id }, {silent: true}));
 	},
 	
 	events: {
 		'click .piece-artist' : 'navigateToProfile',
-		'click .follow-btn' : 'followUser',
-		'click .unfollow-btn' : 'unfollowUser',
 		'click .gallery-item' : 'showPiece',
 		'click #overlay' : 'hidePiece'
 	},
@@ -44,41 +39,7 @@ Locus.Views.GalleryItem = Backbone.CompositeView.extend({
 			this.$('#piece-show').hide();
 		}
 	},
-	
-	followUser: function(event){
-		event.stopImmediatePropagation();
-		var view = this;
-		var followUnit = new Locus.Models.FollowUnit({follower_id: this.collection.current_user.id, followee_id: this.model.get('artist_id')});
-		followUnit.save({}, {
-			url: 'api/follow_units',
-			success: function(){
-				view.model.set({follow_unit_id: followUnit.id});
-				view.toggleFollowButton();
-			}
-		});
-		
-		
-	},
-	
-	unfollowUser: function(event){
-		debugger
-		
-		event.stopImmediatePropagation();
-		var view = this;
-		var followUnit = new Locus.Models.FollowUnit({id: this.model.follow_unit_id});
-		followUnit.destroy({
-			url: "/api/follow_units/" + followUnit.id,
-			success: function(){
-				view.toggleFollowButton();
-			}
-		})
 
-	},
-	
-	toggleFollowButton: function(){
-		this.$('.unfollow-btn').toggle(0);
-		this.$('.follow-btn').toggle(0);
-	},
 	
 	navigateToProfile: function(event){
 		event.stopImmediatePropagation();

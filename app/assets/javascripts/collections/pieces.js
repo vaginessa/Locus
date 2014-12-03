@@ -23,7 +23,8 @@ Locus.Collections.Pieces = Backbone.Collection.extend({
 				lname: payload.current_user.lname,
 				following_units: payload.current_user.following_units,
 				followers: payload.current_user.followers,
-				followees: payload.current_user.followees
+				followees: payload.current_user.followees,
+				profile_id: payload.current_user.profile_id
 			}
 			delete payload.current_user
 		}

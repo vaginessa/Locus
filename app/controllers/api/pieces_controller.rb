@@ -53,8 +53,7 @@ module Api
       elsif f == 'search'
         return Piece.all
       elsif f == 'own'
-        result = []
-        return result << Piece.find_by_user_id(current_user.id)
+        Piece.where('user_id= ?', params[:user_id])
       elsif f == 'random'
         Piece.find_by_sql([
           "SELECT pieces.*

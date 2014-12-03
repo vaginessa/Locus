@@ -58,10 +58,12 @@ class User < ActiveRecord::Base
     return nil if @user.nil?
     @user.is_password?(password) ? @user : nil
   end
-  
-  def follows(user) 
-    return true if followees.include(user)
-    false
+
+  def follows(user)
+    following_units.each do |following_unit|
+      return [true, following_unit.id] if user.id = following_unit.followee_id
+    end
+    [false, nil]
   end
   
   private

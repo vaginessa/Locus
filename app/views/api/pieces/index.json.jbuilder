@@ -3,6 +3,7 @@ json.current_user do
   json.current_user_id @current_user.id
   json.fname @current_user.fname
   json.lname @current_user.lname
+  json.profile_id @current_user.profile.id
   
   json.following_units(@current_user.following_units) do |following_unit|
     json.unit_id following_unit.id

@@ -2,20 +2,123 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.artist-statement {
+#a-statement {
 	width: 100px;
 	height: 100px;
-	background-color: green;
+	border: 1px solid black;
+	border-radius: 2px;
+	display: inline-block;
 }
 
-.collaborative-statement {
+#c-statement {
 	width: 100px;
 	height: 100px;
-	background-color: red;
+	border: 1px solid black;
+	border-radius: 2px;
+	display: inline-block;
 }
 
-.cover-piece {
-	width: 300px;
+#cover-piece-form {
+	margin-left: 200;
+	width: 500px;
 	height: 200px;
-	background-color: orange;
+	display: inline-block;
+	border: 2px dashed black;
+	text-align: center;
+	vertical-align: middle;
 }
+#cover-piece-form {
+	display: inline-block;
+	float: left;
+	margin-left: 20px;
+}
+
+form#a-statement-form {
+	width: 100px;
+	height: 100px;
+	border: 1px dotted black;
+}
+
+#profile-wrapper {
+	margin: 50px;
+}
+
+.profile {
+	margin: 10px;
+	height: 100%;
+}
+
+.profile #user-wrapper{
+	padding: 5px;
+	width: 195px;
+	min-height: 300px;
+	background-color: #f1f1f1;
+	float: left;
+}
+
+.profile #user-wrapper div {
+	float: left;
+}
+
+.profile #own-gallery{
+	margin-top: 60px;
+	width: 100%;
+}
+
+.profile #collaborate-badge {
+	display: inline-block;
+	float: left;
+	border: 1px;
+    border-radius: 35px;
+    background-color: black;
+	color: white;
+	width: 20px;
+	height: 30px;
+    font-size: 10px;
+    padding: 5px 10px 5px 10px;
+}
+
+.profile #user-name {
+	float: right;
+	font-size: 150%;
+	margin-right: 3px;
+	margin-top: 6px;
+	vertical-align: middle
+}
+
+.profile .btn {
+    border-radius: 2px;
+    color: white;
+    font-size: 20px;
+    background: black;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+	margin: 5px;
+	float: right;
+}
+
+.profile .follow-btn:hover {
+    background: #003300;
+	cursor: pointer;
+	cursor: hand;
+}
+
+
+.profile .unfollow-btn:hover {
+    background: #4D0000;
+	cursor: pointer;
+	cursor: hand;
+	
+}
+
+.profile #artist-statement {
+	width: 100%;
+	height: 200px;
+	margin-top: 5px;
+	border: 1px solid black;
+}
+
+
+
+
+

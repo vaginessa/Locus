@@ -178,42 +178,7 @@
 	
 }
 
-.gallery-item .follow-btn {
-	border: 0px;
-    border-radius: 5px;
-    color: black;
-    font-size: 20px;
-    background: white;
-    padding: 10px 20px 10px 20px;
-    text-decoration: none;
-	margin: 5px;
-	float: left;
-}
 
-.gallery-item .follow-btn:hover {
-    background: green;
-	cursor: pointer;
-	cursor: hand;
-}
-
-.gallery-item .unfollow-btn {
-	border: 0px;
-    border-radius: 5px;
-    color: black;
-    font-size: 20px;
-    background: white;
-    padding: 10px 20px 10px 20px;
-    text-decoration: none;
-	margin: 5px;
-	float: left;
-}
-
-.gallery-item .unfollow-btn:hover {
-    background: red;
-	cursor: pointer;
-	cursor: hand;
-	
-}
 
 #empty-gallery {
 	width: 897px;
