@@ -1,5 +1,6 @@
-Locus.View.CoverPieceForm = Backbone.View.extend({
-	template: JST['profile/cover_piece_form'];
+Locus.Views.CoverPieceForm = Backbone.View.extend({
+	
+	template: JST['profile/cover_piece_form'],
 	
 	render: function(){
 		var content = this.template();
