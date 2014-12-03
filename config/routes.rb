@@ -11,6 +11,7 @@ Locus::Application.routes.draw do
     resources :audio
     resources :videos
     resources :follow_units
+    resources :profiles
   end
   
 end

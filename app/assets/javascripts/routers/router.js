@@ -6,6 +6,7 @@ Locus.Routers.Router = Backbone.Router.extend({
 	
 	routes: {
 		"" : "mainSpace",
+		"profiles/:id" : "userProfile"
 	},
 	
 	mainSpace: function(){
@@ -21,6 +22,18 @@ Locus.Routers.Router = Backbone.Router.extend({
 		
 		var mainSpace = new Locus.Views.mainSpace({collection: pieces});
 		this._swapView(mainSpace);
+	},
+	
+	userProfile: function(id){
+		var profile = new Locus.Models.Profile({id: id});
+		profile.fetch({
+			url: "api/profiles/" + id
+		})
+		
+		var profileView = new Locus.Views.Profile({ model: profile });
+		this._swapView(profileView);
+		
+		
 	},
 	
 	_swapView: function(view) {

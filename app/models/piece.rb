@@ -17,6 +17,13 @@ class Piece < ActiveRecord::Base
   
   has_one :video
   
+  has_one(
+    :profile,
+    class_name: 'Profile',
+    foreign_key: :cover_piece_id,
+    primary_key: :id
+  )
+  
   default_scope {
     order(updated_at: :desc);
   }

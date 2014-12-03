@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202192659) do
+ActiveRecord::Schema.define(version: 20141203050016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,17 @@ ActiveRecord::Schema.define(version: 20141202192659) do
     t.string   "media_type", null: false
     t.integer  "user_id",    null: false
   end
+
+  create_table "profiles", force: true do |t|
+    t.integer  "user_id",                 null: false
+    t.integer  "cover_piece_id"
+    t.text     "artist_statement"
+    t.text     "collaborative_statement"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "fname",           null: false

@@ -1,0 +1,19 @@
+<div id="user-fname"><%= user['user_fname']%> </div>
+<div id="user-fname"><%= user['user_lname']%> </div>
+<div id="cover-piece">THIS WILL BE A PIECE, GODDAMNIT</div>
+
+<% if(user['collaborate'] === true) { %>
+	<div id="collaborate-badge">Seeking Collaboration</div>
+<% } %>
+
+
+<% if(profile.escape('artist_statement')) { %> 
+	<div id="artist-statement"><%=profile.escape('artist_statement')%></div>
+<% } %>
+
+<% if(profile.escape('collaborative_statement')) { %> 
+	<div id="artist-statement"><%=profile.escape('collaborative_statement')%></div>
+<% } %>
+
+<div id="gallery">All the persons pieces will go here</div>
+

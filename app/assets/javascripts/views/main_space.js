@@ -1,7 +1,6 @@
 Locus.Views.mainSpace = Backbone.CompositeView.extend({
 	
 	initialize: function(){
-		this.randomGalleryView = null;
 		this.galleryView = new Locus.Views.Gallery({ collection: this.collection });
 		this.randomGalleryView = new Locus.Views.Gallery({ 
 			collection: new Locus.Collections.Pieces()
@@ -38,7 +37,6 @@ Locus.Views.mainSpace = Backbone.CompositeView.extend({
 	},
 	
 	addGallery: function() {
-		console.log('adding gallery')
 		this.$("#gallery").empty();
 		this.addSubview('#gallery', this.galleryView);
 	},
@@ -64,27 +62,11 @@ Locus.Views.mainSpace = Backbone.CompositeView.extend({
 				view.showRandomPieces();
 			}
 		})
-				//
-		// var randomPieces = Locus.pieces;
-		// var view = this;
-		// randomPieces.fetch({
-		// 	data: { filter: 'random' },
-		// 	success: function(){
-		// 		randomPieces.each(function(piece){
-		// 			piece.set({following : false}, {silent: true});
-		// 		})
-		// 		view.showRandomPieces(randomPieces);
-		// 	},
-		// 	reset: true,
-		// });
 	},
 	
 	showRandomPieces: function(randomPieces){
 		this.$('#gallery').empty();
 		this.removeSubview('#gallery', this.galleryView);
-		// debugger
-		// var randomGalleryView = new Locus.Views.Gallery({ collection: randomPieces });
-		// this.randomGalleryView = randomGalleryView;
 		this.addSubview('#gallery', this.randomGalleryView);
 	},
 	

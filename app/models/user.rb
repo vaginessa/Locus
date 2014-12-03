@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   
   after_initialize :ensure_session_token, :ensure_collaborate
   
+  has_one :profile
+  
   has_many(
     :pieces,
     class_name: 'Piece',

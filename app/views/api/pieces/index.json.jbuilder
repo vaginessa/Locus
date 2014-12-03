@@ -32,6 +32,7 @@ json.pieces(@pieces) do |piece|
   json.artist_id piece.artist.id
   json.artist_fname piece.artist.fname
   json.artist_lname piece.artist.lname
+  json.profile_id piece.artist.profile.id
 end
 
 
