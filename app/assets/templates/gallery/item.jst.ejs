@@ -5,6 +5,10 @@
 		<div class="piece-title"><%=piece.escape('title')%></div>
 		<div class="piece-artist"><%= piece.escape('artist_fname')%> <%= piece.escape('artist_lname')%></div>
 	</div>
+
+	<%if(piece.get('ownprofile')){ %>
+		<div class="set-cover-piece">set as cover piece</div>
+	<%}%>
 </ul>
 
 <div id="piece-show" style="display: none">

@@ -3,10 +3,11 @@ Locus.Views.GalleryItem = Backbone.CompositeView.extend({
 	
 	initialize: function(){
 		this.$('.follow-btn').hide();
-		this.listenTo(this.model, 'change:following', this.render);
+		this.listenTo(this.model, 'change:following change:ownprofile', this.render);
 	},
 	
 	events: {
+		'click .set-cover-piece' : 'setAsCoverPiece',
 		'click .piece-artist' : 'navigateToProfile',
 		'click .gallery-item' : 'showPiece',
 		'click #overlay' : 'hidePiece'
@@ -45,6 +46,11 @@ Locus.Views.GalleryItem = Backbone.CompositeView.extend({
 		event.stopImmediatePropagation();
 		var url = '#/profiles/' + this.model.get('profile_id');
 		Backbone.history.navigate(url, {trigger:true})
+	},
+	
+	setAsCoverPiece: function(event){
+		event.stopImmediatePropagation();
+		this.model.get('profile').setCoverPiece(this.model);
 	}
 	
 });

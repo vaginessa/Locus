@@ -1,1 +1,13 @@
-<div>okay okay this will be a cover piece</div>
+<div class="cover-piece">
+	<%= piece.mediaHtml() %> 
+
+	<div class="piece-info-wrapper">
+		<div class="piece-title"><%=piece.escape('title')%></div>
+		<div class="piece-artist"><%= piece.escape('statement')%> </div>
+	</div>
+
+	<%if(piece.get('ownprofile')){ %>
+		<div class="remove-cover-piece">remove as cover piece</div>
+	<%}%>
+	
+</div>

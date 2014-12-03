@@ -23,6 +23,9 @@
 		
 	</div>
 
+	<% if(profile.get('cover_piece') === null){ %>
+		<div id="cover-piece-form">select a cover piece from below</div>
+	<% } %>
 	<div id="cover-piece"></div>
 	
 	<div id="own-gallery"></div>

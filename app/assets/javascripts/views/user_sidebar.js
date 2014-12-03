@@ -16,7 +16,6 @@ Locus.Views.UserSidebar = Backbone.View.extend({
 	},
 	
 	navigateToOwnProfile: function(){
-		debugger
 		var url = '#/profiles/' + this.user['profile_id'];
 		Backbone.history.navigate(url, {trigger:true})
 	}
