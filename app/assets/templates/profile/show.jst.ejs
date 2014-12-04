@@ -6,10 +6,19 @@
 		</div>
 	
 		<% if(user['collaborate'] === true) { %>
-			<div id="collaborate-badge">SC</div>
+			<div id="collaborate-badge">C</div>
+			<div id="collaborative-statment" style="display: none">
+				<div id="pencil">✎</div>
+			</div>
 		<% } %>
 		
+		<% if(profile.get('ownprofile')){%>
+			<div class="pencil">✎</div>
+		<%}%>
+		<div id='edit' style="display: none">edit</div>
 		<div id="artist-statement"></div>
+		
+		
 		<% if (!profile.get('ownprofile')){ %>
 			<% if(profile.get('follows')){ %>
 				<div class="btn follow-btn" style="display: none">follow</div>
@@ -26,9 +35,12 @@
 	<% if(profile.get('cover_piece') === null){ %>
 		<div id="cover-piece-form">select a cover piece from below</div>
 	<% } %>
+	
+	
 	<div id="cover-piece"></div>
 	
-	<div id="own-gallery"></div>
+	<label id='gallery-title'>
+	<div id="own-gallery"></div></label>
 </div>
 
 
