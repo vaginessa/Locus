@@ -6,6 +6,10 @@ Locus.Views.PieceShow = Backbone.View.extend({
 		var content = this.template({ piece: this.model });
 		this.$el.html(content);
 		return this;
-	}
+	},
+	
+	show: function(){
+		this.$('#gallery-item-show').popup('show');
+	},
 	
 });

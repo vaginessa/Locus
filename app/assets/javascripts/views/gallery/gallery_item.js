@@ -22,18 +22,9 @@ Locus.Views.GalleryItem = Backbone.CompositeView.extend({
 	
 	showPiece: function(event){
 		event.preventDefault();
-		debugger
-		var $followButton = $('.follow-btn');
-		var $unfollowButton = $('.unfollow-btn');
-		var $target = $(event.currentTarget);
-		
-		if(!$followButton.is($target) && !$unfollowButton.is($target)){
-			var pieceShowView = new Locus.Views.PieceShow({ model: this.model });
-			this.addSubview("#piece-show", pieceShowView);
-			this.$("#piece-show").popup();
-			this.$("#piece-show").popup('show');
-			
-		}
+		var pieceShowView = new Locus.Views.PieceShow({ model: this.model });
+		this.addSubview("#piece-show", pieceShowView);
+		pieceShowView.show();
 	},
 	
 	hidePiece: function(event){

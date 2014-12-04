@@ -49,7 +49,7 @@ form#a-statement-form {
 .profile #user-wrapper{
 	padding: 5px;
 	width: 195px;
-	min-height: 300px;
+	min-height: 70px;
 	background-color: #f1f1f1;
 	float: left;
 }
@@ -86,6 +86,7 @@ form#a-statement-form {
 }
 
 .profile .btn {
+	clear: both;
     border-radius: 2px;
     color: white;
     font-size: 20px;
@@ -93,6 +94,7 @@ form#a-statement-form {
     padding: 10px 20px 10px 20px;
     text-decoration: none;
 	margin: 5px;
+	margin-left: 0px;
 	float: right;
 }
 
@@ -178,7 +180,7 @@ form#a-statement-form {
 
 #artist-statement {
 	clear: both;
-	height: 240px;
+	min-height: 20px;
 }
 
 

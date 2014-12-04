@@ -31,31 +31,6 @@
 	background-color: darkgray;
 }
 
-#gallery #overlay #gallery-item-show {
-	border-radius: 3px;
-	opacity: 1 !important;
-	width: 70%;
-	min-height: 400px;
-	margin: auto;
-	margin-top: 160px;
-	background-color: black;
-	color: white;
-	padding: 15px;
-	padding-bottom: 180px;
-	z-index: 100;
-}
-
-
-#gallery #overlay #piece-show .piece-info-wrapper {
-	color: white;
-	background-color: black;
-	display: inline-block;
-	border-radius: 2px;
-	float: left;
-	min-height: 60px;
-	min-width: 100px;
-}
-
 
 
 .piece-statement {
@@ -190,6 +165,49 @@
 	margin: 200px;
 	margin-left: 240px;
 }
+
+
+#gallery-item-show {
+	margin-top: 180px;
+	margin-bottom: 180px;
+	border-radius: 2px;
+	max-width: 65%;
+	min-height: 500px;
+	padding: 10px;
+	background: black;
+	color: white;
+}
+
+.s-piece-info-wrapper {
+	margin-top: 8px;
+	width: 100%;
+}
+
+.s-title-and-artist {
+	display: inline-block;
+	width: 25%;
+	float: left;
+	height: 110%;
+}
+
+.s-piece-statement{
+	border-left: 1px solid white;
+	display: inline-block;
+	width: 65%;
+	float: left;
+	margin-left: 5px;
+	padding-left: 5px;
+}
+
+.s-piece-artist {
+	margin-top: 2px;
+	font-size: 75%;
+}
+
+
+
+
+
 
 
 

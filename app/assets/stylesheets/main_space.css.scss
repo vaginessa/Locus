@@ -23,6 +23,31 @@
 	font-style: italic;
 }
 
+#user-sidebar #user-name {
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+#user-sidebar .btn {
+	clear: both;
+	border-radius: 2px;
+	color: white;
+	font-size: 15px;
+	background: black;
+	padding: 10px 20px 10px 20px;
+	text-decoration: none;
+	margin: 5px;
+	margin-left: 0px;
+	width: 65px;
+}
+
+#user-sidebar .btn:hover {
+	cursor: pointer;
+	color: black;
+	background: white;
+}
+
+
 #user-sidebar:last-child{
 	margin-bottom: 0px;
 }
@@ -119,4 +144,6 @@
 	width: 100%;
 	height: 100%;
 }
+
+
 
