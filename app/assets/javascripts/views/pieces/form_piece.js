@@ -5,7 +5,7 @@ Locus.Views.PieceForm = Backbone.View.extend({
 	},
 	
 	events: {
-		"submit form" : "postPiece"
+		"click .btn" : "postPiece"
 	},
 	
 	template: JST["piece/form"],
@@ -16,12 +16,17 @@ Locus.Views.PieceForm = Backbone.View.extend({
 		return this;
 	},
 	
+	show: function(){
+		this.$('#p-piece-form').popup('show');
+	},
+	
 	postPiece: function(event){
+		debugger
+		event.stopImmediatePropagation();
 		event.preventDefault();
 		var view = this;
 		var target = $(event.currentTarget)
 		var attrs = target.serializeJSON();
-		
 		var piece = this.model;
 		piece.set(attrs['piece']);
 		piece.save({}, {

@@ -1,32 +1,4 @@
 
-
-
-#upload-bar #overlay{
-	position: absolute;
-	left: 0px;
-	right: 0px;
-	margin-top: -160px;
-	width: 1260px;
-	height: 10000px;
-	z-index: 1000;
-	opacity: .95;
-	background-color: white;
-}
-
-#upload-bar #overlay #div-form {
-	border-radius: 3px;
-	background-opacity: 1;
-	opacity: 1;
-	width: 400px;
-	min-height: 400px;
-	margin: auto;
-	margin-top: 160px;
-	background-color: white;
-	border: 1px solid black;
-	padding: 15px;
-	z-index: 100;
-}
-
 #piece-form-title {
 	width: 60%;
 	height: 10px;
@@ -43,10 +15,27 @@
 	font-size: 80%;
 }
 
-#overlay .btn {
-	margin-left: -2px;
+#p-piece-form {
+	
+	margin-top: 180px;
+	margin-bottom: 80px;
+	border-radius: 2px;
+	max-width: 65%;
+	min-height: 500px;
+	padding: 10px;
+	background: black;
+	color: white;
 }
 
-#overlay div img {
-	background: white;
+#p-piece-form .piece-media {
+	margin: auto;
 }
+
+#p-piece-form form{
+	margin-top: 5px;
+}
+
+
+
+
+

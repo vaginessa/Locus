@@ -70,8 +70,23 @@ module Api
           current_user.id,
           current_user.id
         ])
+      elsif f == 'search'
+        tags = params[:query_tags]
+        search_tags = to_sql(tags)
+        Piece.find_by_sql([
+          "SELECT pieces.*
+          FROM pieces JOIN tag_units ON pieces.id = tag_units.piece_id JOIN tags ON tags.id = tag_units.tag_id
+          WHERE tags.name IN (?)",
+          search_tags
+        ])
       end
+      
+    end
+    
+    def to_sql(tags)
+      tags.map {|tag| "'#{tag}'"}
     end
     
   end
 end
+

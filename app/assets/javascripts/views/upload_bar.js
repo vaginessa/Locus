@@ -14,7 +14,6 @@ Locus.Views.UploadBar = Backbone.CompositeView.extend({
 		'click #image-button' : 'uploadMedia',
 		'click #audio-button' : 'uploadMedia',
 		'click #video-button' : 'uploadMedia',
-		'submit form' : 'submitPieceForm'
 	},
 	
 	render: function(){
@@ -67,14 +66,7 @@ Locus.Views.UploadBar = Backbone.CompositeView.extend({
 		
 		this.$('#piece-form').empty();
 		this.addSubview("#piece-form", pieceFormView);
-		$("#piece-form").show();
-	},
-
-	submitPieceForm: function(event){
-		event.preventDefault();
-		this.model = new Locus.Models.Piece();
-		this.$('#piece-form').empty();
-		this.$('#piece-form').hide();
+		pieceFormView.show();
 	},
 	
 	toggleButton: function(){

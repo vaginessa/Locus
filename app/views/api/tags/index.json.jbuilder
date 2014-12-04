@@ -1,1 +1,1 @@
-json.array!(@tags)
+json.array! @tags 
