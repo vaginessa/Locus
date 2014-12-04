@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require jquery.serializeJSON
 //= require underscore
-//= require jquery-popup-overlay-gh-pages
+//= require jquery.ui.all
 //= require backbone
 //= require locus_app
 //= require_tree ../templates

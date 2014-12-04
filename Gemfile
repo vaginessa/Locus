@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'turbolinks'
 gem 'newrelic_rpm'
 gem 'figaro' 	
+gem 'jquery-ui-rails'
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'bcrypt'

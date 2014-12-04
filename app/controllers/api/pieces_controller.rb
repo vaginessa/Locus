@@ -1,6 +1,6 @@
 module Api
   class PiecesController < ApplicationController
-    wrap_parameters :piece, include: [:media, :title, :media_type, :statement]
+    wrap_parameters :piece, include: [:media, :title, :media_type, :statement, :tags]
     
     def index
       @pieces = filter_index
@@ -17,6 +17,7 @@ module Api
     def create
       @piece = Piece.new(piece_params)
       @piece.user_id = current_user.id
+      # createTagUnits(params[:tags])
       if @piece.save!
         render :show
       else
@@ -35,9 +36,15 @@ module Api
     end
     
     private
+    #
+    # def create_tag_units(tag_params)
+    #   tag_params.each do |tag_key|
+    #     @tag = Tag.new({name: tag})
+    #   end
+    # end
     
     def piece_params
-      params.require(:piece).permit(:title, :statement, :media_type, media: [:url])
+      params.require(:piece).permit(:title, :statement, :media_type, media: [:url], tags: [:name])
     end
     
     def filter_index

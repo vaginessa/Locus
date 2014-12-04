@@ -10,11 +10,12 @@ class Piece < ActiveRecord::Base
   )
   
   has_many :followers, through: :artist 
+  
+  has_many :tag_units
+  has_many :tags, through: :tag_units
 
   has_one :image
-  
   has_one :audio
-  
   has_one :video
   
   has_one(

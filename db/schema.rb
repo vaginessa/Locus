@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141203050016) do
+ActiveRecord::Schema.define(version: 20141204055104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,23 @@ ActiveRecord::Schema.define(version: 20141203050016) do
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
+
+  create_table "tag_units", force: true do |t|
+    t.integer  "tag_id",     null: false
+    t.integer  "piece_id",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tag_units", ["tag_id", "piece_id"], name: "index_tag_units_on_tag_id_and_piece_id", using: :btree
+
+  create_table "tags", force: true do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "fname",           null: false

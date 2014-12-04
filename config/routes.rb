@@ -12,6 +12,8 @@ Locus::Application.routes.draw do
     resources :videos
     resources :follow_units
     resources :profiles
+    resources :tags
+    resources :tag_units
   end
   
 end
