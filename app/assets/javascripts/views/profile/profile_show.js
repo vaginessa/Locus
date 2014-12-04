@@ -1,5 +1,6 @@
 Locus.Views.Profile = Backbone.CompositeView.extend({
 	initialize: function(){
+		this.coverPiece = this.model.coverPiece();
 	
 		this.coverPieceView = null;
 		this.galleryView = new Locus.Views.Gallery({
@@ -43,7 +44,8 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 	
 	conditionallyAddSubviews: function(){
 		var m = this.model
-		if(m.get('cover_piece') !== null){
+			debugger
+		if(m.coverPiece() !== null){
 			this.addCoverPiece();
 		} 
 		
@@ -61,7 +63,7 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 	},
 	
 	addCoverPiece: function(){
-		this.coverPieceView = new Locus.Views.CoverPiece( {model: this.model.get('cover_piece')}); 
+		this.coverPieceView = new Locus.Views.CoverPiece({model: this.model.coverPiece()}); 
 		this.addSubview('#cover-piece', this.coverPieceView); 	
 	},
 
@@ -143,7 +145,17 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 	
 	setCoverPiece: function(piece){
 		debugger
+		var view = this
+		
+		this.model.save({cover_piece_id: piece.id}, {
+			url: 'api/profiles/' + view.model.id,
+			success: function(){
+				alert("persisted")
+			}
+		});
+		
 		this.model.set({cover_piece: piece});
+		
 		if(this.coverPieceView !== null){
 			this.removeSubview('#cover-piece', this.coverPieceView)
 		} else {
