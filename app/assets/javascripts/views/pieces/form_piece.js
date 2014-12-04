@@ -1,11 +1,13 @@
 Locus.Views.PieceForm = Backbone.View.extend({
 	initialize: function(options){
 		this.media = options.media
+		this.listenTo(this.model, 'sync', this.render);
+		this.listenTo(this.collection, 'sync', this.render);
 		this.listenTo(this.model, "update", this.remove)
 	},
 	
 	events: {
-		"click .btn" : "postPiece"
+		"submit form" : "postPiece"
 	},
 	
 	template: JST["piece/form"],
@@ -18,12 +20,14 @@ Locus.Views.PieceForm = Backbone.View.extend({
 	
 	show: function(){
 		this.$('#p-piece-form').popup('show');
+		$("#p-piece-form").find("form").on("submit", this.postPiece.bind(this));
 	},
 	
 	postPiece: function(event){
+		event.preventDefault();
 		debugger
 		event.stopImmediatePropagation();
-		event.preventDefault();
+		
 		var view = this;
 		var target = $(event.currentTarget)
 		var attrs = target.serializeJSON();
@@ -32,6 +36,7 @@ Locus.Views.PieceForm = Backbone.View.extend({
 		piece.save({}, {
 			url: 'api/pieces',
 			success: function(){
+				$("#p-piece-form").popup('hide')
 				view.collection.unshift(piece, { silent: true });
 				view.collection.trigger('unshift', piece);
 				view.remove();

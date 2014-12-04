@@ -10,23 +10,20 @@ Locus.Collections.Tags = Backbone.Collection.extend({
 		return tagArray;
 	},
 	
-	
 	fetchandMakeTags: function(){
-		debugger
 		var tags = this;
 		var tagArray = [];
 		this.fetch({
 			url: 'api/tags',
 			success: function(){
-				debugger
 				tagArray = tags.widgetify();
 				
 				$('#tags').tagit({
+					fieldName: 'tag[name]',
 					availableTags: tagArray,
-					autocomplete: 'on',
+					singleField: true,
 					showAutocompleteOnFocus: true,
-					
-					placeholdertext: 'search tags (e.g. projection)'
+					placeholderText: 'search tags (e.g. projection)'
 				})
 			}
 		});

@@ -2,15 +2,13 @@ Locus.Views.GalleryItem = Backbone.CompositeView.extend({
 	template: JST['gallery/item'], 
 	
 	initialize: function(){
-		this.$('.follow-btn').hide();
-		this.listenTo(this.model, 'change:following change:ownprofile', this.render);
+		this.listenTo(this.model, 'change:ownprofile', this.render);
 	},
 	
 	events: {
 		'click .set-cover-piece' : 'setAsCoverPiece',
 		'click .piece-artist' : 'navigateToProfile',
 		'click .gallery-item' : 'showPiece',
-		'click #overlay' : 'hidePiece'
 	},
 	
 	render: function(){
@@ -26,17 +24,6 @@ Locus.Views.GalleryItem = Backbone.CompositeView.extend({
 		this.addSubview("#piece-show", pieceShowView);
 		pieceShowView.show();
 	},
-	
-	hidePiece: function(event){
-		event.preventDefault();
-		var $pieceShow = $('#piece-show');
-		var $target = $(event.currentTarget);
-		if(!$pieceShow.is($target)){
-			this.$('#piece-show').empty();
-			this.$('#piece-show').popup('hide');
-		}
-	},
-
 	
 	navigateToProfile: function(event){
 		event.stopImmediatePropagation();

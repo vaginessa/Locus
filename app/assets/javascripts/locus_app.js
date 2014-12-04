@@ -5,8 +5,8 @@ window.Locus = {
   Routers: {},
   initialize: function() {
 	  var $main = $('#main');
-	  new Locus.Views.SearchBar();
-	  new Locus.Routers.Router({$rootEl: $main});
+	  var searchBar = new Locus.Views.SearchBar();
+	  new Locus.Routers.Router({$rootEl: $main, searchBar: searchBar});
 	  Backbone.history.start();
   }
 };

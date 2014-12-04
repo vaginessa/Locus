@@ -1,12 +1,14 @@
 Locus.Routers.Router = Backbone.Router.extend({
 
 	initialize: function(options) {
-		this.$rootEl = options.$rootEl
+		this.$rootEl = options.$rootEl;
+		this.searchBar = options.searchBar;
 	},
 	
 	routes: {
 		"" : "mainSpace",
-		"profiles/:id" : "userProfile"
+		"profiles/:id" : "userProfile",
+		"search" : 'searchGallery'
 	},
 	
 	mainSpace: function(){
@@ -32,8 +34,27 @@ Locus.Routers.Router = Backbone.Router.extend({
 		
 		var profileView = new Locus.Views.Profile({ model: profile });
 		this._swapView(profileView);
-		
-		
+	},
+	
+	searchGallery: function(){
+		// var tags = {}
+		// var bool = false
+		// var searchPieces = new Locus.Collections.Pieces();
+		// if(this.searchBar.tagParams[:tags]){
+		// 	tags = this.searchBar.tagParams[:tags]
+		// 	bool = true
+		// }
+		//
+		// searchPieces.fetch({
+		// 	data: { filter: 'search', tagged: bool, tags: tags },
+		// 	url: 'api/pieces',
+		// 	success: function(){
+		// 		alert("ok")
+		// 	}
+		// })
+		//
+		// var searchView = new Locus.Views.Search({collection: searchPieces});
+		// this._swapView(searchView);
 	},
 	
 	_swapView: function(view) {

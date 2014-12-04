@@ -57,8 +57,6 @@ module Api
           current_user.id,
           current_user.id
         ])
-      elsif f == 'search'
-        return Piece.all
       elsif f == 'own'
         Piece.where('user_id= ?', params[:user_id])
       elsif f == 'random'
@@ -66,21 +64,23 @@ module Api
           "SELECT pieces.*
           FROM pieces LEFT OUTER JOIN follow_units ON pieces.user_id = follow_units.followee_id
           WHERE (follow_units.follower_id != ? OR follow_units.follower_id is null) AND pieces.user_id != ? ORDER BY pieces.updated_at DESC, RANDOM()
-          LIMIT 100",
+          LIMIT 5",
           current_user.id,
           current_user.id
         ])
       elsif f == 'search'
-        tags = params[:query_tags]
-        search_tags = to_sql(tags)
-        Piece.find_by_sql([
-          "SELECT pieces.*
-          FROM pieces JOIN tag_units ON pieces.id = tag_units.piece_id JOIN tags ON tags.id = tag_units.tag_id
-          WHERE tags.name IN (?)",
-          search_tags
-        ])
+        unless params[:tagged] 
+          Piece.all
+        else
+          search_tags = to_sql(params[:tags])
+          Piece.find_by_sql([
+            "SELECT pieces.*
+            FROM pieces JOIN tag_units ON pieces.id = tag_units.piece_id JOIN tags ON tags.id = tag_units.tag_id
+            WHERE tags.name IN (?)",
+            search_tags
+          ])
+        end
       end
-      
     end
     
     def to_sql(tags)
