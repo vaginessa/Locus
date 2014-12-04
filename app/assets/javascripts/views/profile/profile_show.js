@@ -175,12 +175,10 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 	},
 	
 	submitArtistStatement: function(event){
-		debugger
 		event.preventDefault();
 		var view = this;
 		var $target = $(event.currentTarget);
 		var attrs = $target.serializeJSON();
-		debugger
 		this.model.set(attrs['profile']);
 		this.model.save({}, {
 			url: 'api/profiles/' + this.model.id,

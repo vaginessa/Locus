@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
 
   def follows(user)
     following_units.each do |following_unit|
-      return [true, following_unit.id] if user.id = following_unit.followee_id
+      return [true, following_unit.id] if user.id == following_unit.followee_id
     end
     [false, nil]
   end
