@@ -25,7 +25,6 @@ Locus.Views.PieceForm = Backbone.View.extend({
 	
 	postPiece: function(event){
 		event.preventDefault();
-		debugger
 		event.stopImmediatePropagation();
 		
 		var view = this;

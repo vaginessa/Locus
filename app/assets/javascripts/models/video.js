@@ -7,8 +7,13 @@ Locus.Models.Video = Backbone.Model.extend({
 		}
 		
 		var url = "'" + this.get('url') + "'";
-		var width = "95%"
-		var height = "95%"
+		if(options.form){
+			var width = '100%'
+			var	height = '100%'
+		} else {
+			var width = "50%"
+			var height = "60%"
+		}
 			
 		return "<video class='video-js vjs-default-skin' controls preload='auto' width=" + width +" height=" + height +"> <source src=" + url + " type='video/mp4'></video>"
 	}

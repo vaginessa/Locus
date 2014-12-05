@@ -39,7 +39,6 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 
 		var content = this.template({ profile: this.model, user: user});
 		this.$el.html(content);
-		debugger
 		this.attachSubviews();
 		return this;
 	},
@@ -58,7 +57,6 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 	conditionallyAddSubviews: function(){
 		var m = this.model
 		if(m.coverPiece() !== null){
-			debugger
 			this.addCoverPiece();
 		} 
 		
@@ -74,7 +72,6 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 	},
 	
 	addCoverPiece: function(){
-		debugger
 		this.coverPieceView = new Locus.Views.CoverPiece({model: this.model.coverPiece()}); 
 		this.addSubview('#cover-piece', this.coverPieceView); 	
 	},
@@ -142,7 +139,6 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 	},
 	
 	setCoverPiece: function(piece){
-		debugger
 		var view = this
 		this.model.save({cover_piece_id: piece.id}, {
 			url: 'api/profiles/' + view.model.id,

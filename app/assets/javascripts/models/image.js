@@ -8,8 +8,13 @@ Locus.Models.Image = Backbone.Model.extend({
 		}
 		
 		var url = "'" + this.get('url') + "'";
-		var width = "50%"
-		var height = "60%"
+		if(options.form){
+			var width = '100%'
+			var	height = '100%'
+		} else {
+			var width = "50%"
+			var height = "60%"
+		}
 		return "<img src="+ url + " width="+width+" height="+height+">"
 	}
 });

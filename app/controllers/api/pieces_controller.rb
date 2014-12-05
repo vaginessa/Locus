@@ -64,8 +64,8 @@ module Api
           "SELECT pieces.*
           FROM pieces LEFT OUTER JOIN follow_units ON pieces.user_id = follow_units.followee_id
           WHERE (follow_units.follower_id != ? OR follow_units.follower_id is null) AND pieces.user_id != ? 
-          ORDER BY pieces.updated_at DESC, 
-          RANDOM() LIMIT 5",
+          ORDER BY RANDOM(), pieces.updated_at DESC 
+          LIMIT 5",
           current_user.id,
           current_user.id
         ])

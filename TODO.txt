@@ -1,8 +1,6 @@
 
--- file_picker_api key, location?
--- when post: artist name doesn't appear
--- user-sidbar on profile needs to be bigger
--- artist name doesn't display immediately 
--- make cover piece title bold
+
+-- when post: artist name doesn't appear 
 -- link from show piece to artist profile
+--cover piece situation
 

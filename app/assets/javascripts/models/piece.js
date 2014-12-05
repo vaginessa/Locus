@@ -16,7 +16,7 @@ Locus.Models.Piece = Backbone.Model.extend({
 			options = {}
 		}
 		
-		if(options.show){
+		if(options.show || options.form){
 			var width = "100%"
 			var height = "60%"
 		} else {
