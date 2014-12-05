@@ -31,6 +31,7 @@ class User < ActiveRecord::Base
   
   
   has_many :followees, through: :following_units 
+  has_many :followed_pieces, through: :followees, source: :pieces
 
   
   

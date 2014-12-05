@@ -60,19 +60,25 @@ module Api
       elsif f == 'own'
         Piece.where('user_id= ?', params[:user_id])
       elsif f == 'random'
-        Piece.find_by_sql([
-          "SELECT p.* FROM(
-                SELECT pieces.*
-                FROM pieces LEFT OUTER JOIN follow_units ON pieces.user_id = follow_units.followee_id
-                WHERE follow_units.follower_id != ? OR follow_units.follower_id is NULL 
-                ORDER BY RANDOM()
-                LIMIT 15
-          ) AS p 
-          WHERE p.user_id != ?
-          ORDER BY p.updated_at DESC",
-          current_user.id,
-          current_user.id
-        ])
+        #5 random pieces
+        #not followed by user
+        #also not belonging to user
+        pieces = Piece.all - current_user.pieces - current_user.followed_pieces
+        pieces.sample(5)
+                #
+        # Piece.find_by_sql([
+        #   "SELECT p.* FROM(
+        #         SELECT pieces.*
+        #         FROM pieces LEFT OUTER JOIN follow_units ON pieces.user_id = follow_units.followee_id
+        #         WHERE follow_units.follower_id != ? OR follow_units.follower_id is NULL
+        #         ORDER BY RANDOM()
+        #         LIMIT 15
+        #   ) AS p
+        #   WHERE p.user_id != ?
+        #   ORDER BY p.updated_at DESC",
+        #   current_user.id,
+        #   current_user.id
+        # ])
       elsif f == 'search'
         unless params[:tagged] 
           Piece.all
