@@ -87,6 +87,16 @@ button:focus {
     outline: none;
 }
 
+textarea {
+    border: none;
+    overflow: auto;
+    outline: none;
+
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
 
 input {
 	border: 0;

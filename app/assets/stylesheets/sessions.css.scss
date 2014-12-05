@@ -29,6 +29,7 @@ form {
 }
 
 input.btn {
+	border: 1px solid black;
     border-radius: 2px;
     color: #ffffff;
     font-size: 20px;
@@ -41,7 +42,6 @@ input.btn {
 input.btn:hover {
 	color: black;
 	background: white;
-	border: 1px solid black;
 	cursor: pointer;
 	cursor: hand;
 }

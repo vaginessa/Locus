@@ -32,24 +32,18 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 	template: JST['profile/show'],
 	
 	render: function(){
-		// if(this.model.user !== undefined){
-			debugger
-			var user = {}
-			if(this.model.user){
-				user = this.model.user
-			}
-			debugger
-			var content = this.template({ profile: this.model, user: user});
-			debugger
-			this.$el.html(content);
-			this.attachSubviews();
-		// }
-		debugger
+		var user = {}
+		if(this.model.user){
+			user = this.model.user
+		}
+
+		var content = this.template({ profile: this.model, user: user});
+		this.$el.html(content);
+		this.attachSubviews();
 		return this;
 	},
 	
 	ownProfile: function(){
-		debugger
 		if(this.model.user['user_id'] === this.model.get('current_user_id')){
 			this.model.set({ownprofile: true})
 			return true
