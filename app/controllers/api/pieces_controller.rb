@@ -73,7 +73,8 @@ module Api
         unless params[:tagged] 
           Piece.all
         else
-          search_tags = to_sql(params[:tags])
+          search_tags = []
+          search_tags << params[:tags].strip
           Piece.find_by_sql([
             "SELECT pieces.*
             FROM pieces JOIN tag_units ON pieces.id = tag_units.piece_id JOIN tags ON tags.id = tag_units.tag_id
@@ -83,10 +84,10 @@ module Api
         end
       end
     end
-    
-    def to_sql(tags)
-      tags.map {|tag| "'#{tag}'"}
-    end
+    #
+    # def to_sql(tags)
+    #   tags.map {|tag| #{tag}'"}
+    # end
     
   end
 end

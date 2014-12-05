@@ -1,8 +1,8 @@
 Locus.Routers.Router = Backbone.Router.extend({
 
 	initialize: function(options) {
+		this.searchBar = new Locus.Views.SearchBar();
 		this.$rootEl = options.$rootEl;
-		this.searchBar = options.searchBar;
 	},
 	
 	routes: {
@@ -37,24 +37,26 @@ Locus.Routers.Router = Backbone.Router.extend({
 	},
 	
 	searchGallery: function(){
-		// var tags = {}
-		// var bool = false
-		// var searchPieces = new Locus.Collections.Pieces();
-		// if(this.searchBar.tagParams[:tags]){
-		// 	tags = this.searchBar.tagParams[:tags]
-		// 	bool = true
-		// }
-		//
-		// searchPieces.fetch({
-		// 	data: { filter: 'search', tagged: bool, tags: tags },
-		// 	url: 'api/pieces',
-		// 	success: function(){
-		// 		alert("ok")
-		// 	}
-		// })
-		//
-		// var searchView = new Locus.Views.Search({collection: searchPieces});
-		// this._swapView(searchView);
+		debugger
+		var tags = {}
+		var bool = false
+		var searchPieces = new Locus.Collections.Pieces();
+		
+		if(this.searchBar.tagParams['tag']){
+			tags = this.searchBar.tagParams['tag']['name']
+			bool = true
+		}
+
+		searchPieces.fetch({
+			data: { filter: 'search', tagged: bool, tags: tags },
+			url: 'api/pieces',
+			success: function(){
+				alert("ok")
+			}
+		})
+
+		var searchView = new Locus.Views.Gallery({collection: searchPieces, mode: 'search'});
+		this._swapView(searchView);
 	},
 	
 	_swapView: function(view) {

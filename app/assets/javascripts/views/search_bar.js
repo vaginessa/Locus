@@ -1,24 +1,30 @@
 Locus.Views.SearchBar = Backbone.View.extend({
 	
 	initialize: function(){
-		this.autoCompleteTags();
+		$('#search-bar').on('submit', this.searchByTags.bind(this))
+		// this.tags = new Locus.Collections.Tags();
+	// 	this.tags.fetch({
+	// 		url: 'api/tags'
+	// 	});
+	// 	this.listenTo(this.tags, "sync", this.autoCompleteTags)
 	}, 
 	
 	events: {
-		'keypress #search' : 'autoCompleteTags',
-		'submit form' : 'searchByTags'
+		// 'click #search-bar' : 'autoCompleteTags'
 	},
 	
 	autoCompleteTags: function(){
-		var tags = new Locus.Collections.Tags();
-		tags.fetchandMakeTags();
+		// var tags = this.tags.widgetify();
+		
+		// $('#tags').autocomplete({
+	// 		source: tags
+	// 	})
 	},
 	
 	searchByTags: function(event){
-		debugger
-		event.preventDefault();
+		event.preventDefault()
 		var $target = $(event.currentTarget)
-			debugger
+		debugger
 		this.tagParams = $target.serializeJSON();
 		Backbone.history.navigate("search", {trigger: true})
 	}

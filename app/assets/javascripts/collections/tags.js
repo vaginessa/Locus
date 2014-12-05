@@ -9,28 +9,7 @@ Locus.Collections.Tags = Backbone.Collection.extend({
 		})
 		return tagArray;
 	},
-	
-	fetchandMakeTags: function(){
-		var tags = this;
-		var tagArray = [];
-		this.fetch({
-			url: 'api/tags',
-			success: function(){
-				tagArray = tags.widgetify();
-				$('#tags').autocomplete({
-					source: tagArray
-				})
-				// $('#tags').tagit({
-	// 				fieldName: 'tag[name]',
-	// 				availableTags: tagArray,
-	// 				singleField: true,
-	// 				showAutocompleteOnFocus: true,
-	// 				placeholderText: 'search tags'
-	// 			})
-			}
-		});
-	}
-	
+
 })
 
 

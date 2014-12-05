@@ -17,7 +17,6 @@
 //= require jquery-ui
 //= require backbone
 //= require locus_app
-//= require tag-it
 //= require jquery.popupoverlay
 //= require_tree ../templates
 //= require_tree ./utils
