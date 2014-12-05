@@ -10,7 +10,7 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 		this.listenTo(this.model, "sync", this.ownProfile)
 		this.listenTo(this.model, "sync", this.conditionallyAddSubviews);
 		this.listenTo(this.model, "sync", this.addGallery);
-		this.listenTo(this.model, "change:cover_piece", this.render)
+		// this.listenTo(this.model, "change:cover_piece", this.render)
 		this.listenTo(this.model, "sync", this.render);
 	},
 	
@@ -139,6 +139,7 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 	},
 	
 	setCoverPiece: function(piece){
+		debugger
 		var view = this
 		this.model.save({cover_piece_id: piece.id}, {
 			url: 'api/profiles/' + view.model.id,

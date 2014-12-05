@@ -33,16 +33,18 @@
 		<% } %>
 	
 	
-		
+	</div>
 
-		<% if(profile.get('cover_piece') === null){ %>
+		<% if(profile.get('cover_piece') === null && profile.get('ownprofile')){ %>
 			<div id="cover-piece-form">select a cover piece from below</div>
+		<% } else { %>
+			<div id="cover-piece"></div>
 		<% } %>
 	
-	</div>
 	
 	
-	<div id="cover-piece"></div>
+	
+	
 	
 	<div id="line"></div>
 	

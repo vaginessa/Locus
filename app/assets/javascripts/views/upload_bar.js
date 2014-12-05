@@ -2,7 +2,7 @@ Locus.Views.UploadBar = Backbone.CompositeView.extend({
 	
 	initialize: function(options){
 		this.user = options.user;
-		filepicker.setKey("Aej0E2YFRSEuECMt5FTXjz");
+		filepicker.setKey(fp_key);
 		this.model = new Locus.Models.Piece();
 	},
 	

@@ -13,8 +13,10 @@
   <script src="http://vast-engineering.github.io/jquery-popup-overlay/jquery.popupoverlay.js"></script>
 </head>
 <body>
-
 	<%= yield %>
+	<script type="text/javascript">
+		window.fp_key = '<%= ENV['FILEPICKER_API_KEY'] %>';
+	</script>
 
 </body>
 </html>
