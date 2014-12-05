@@ -78,6 +78,13 @@ ul {
 	border-radius: 2px;
 }
 
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
 
 input {
 	border: 0;
@@ -91,6 +98,23 @@ input {
 
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+input#tags {
+	font-size: 18px;
+	height: 15px;
+	width: 100px;
+	margin-top: 20px;
+	margin-right: 10px;
+	background-color: black;
+	border-radius: 2px;
+	float: right;
+}
+
+input#tags:focus {
+	background: white;
+	color: black;
+	border: 1px solid black;
 }
 
 a.btn {

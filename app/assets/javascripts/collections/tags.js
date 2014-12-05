@@ -17,14 +17,16 @@ Locus.Collections.Tags = Backbone.Collection.extend({
 			url: 'api/tags',
 			success: function(){
 				tagArray = tags.widgetify();
-				
-				$('#tags').tagit({
-					fieldName: 'tag[name]',
-					availableTags: tagArray,
-					singleField: true,
-					showAutocompleteOnFocus: true,
-					placeholderText: 'search tags (e.g. projection)'
+				$('#tags').autocomplete({
+					source: tagArray
 				})
+				// $('#tags').tagit({
+	// 				fieldName: 'tag[name]',
+	// 				availableTags: tagArray,
+	// 				singleField: true,
+	// 				showAutocompleteOnFocus: true,
+	// 				placeholderText: 'search tags'
+	// 			})
 			}
 		});
 	}

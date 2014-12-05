@@ -1,13 +1,12 @@
 Locus.Views.SearchBar = Backbone.View.extend({
 	
-	initialize: function(router){
-		this.router = router
+	initialize: function(){
 		this.autoCompleteTags();
 	}, 
 	
 	events: {
 		'keypress #search' : 'autoCompleteTags',
-		'submit search' : 'searchByTags'
+		'submit form' : 'searchByTags'
 	},
 	
 	autoCompleteTags: function(){
@@ -16,8 +15,10 @@ Locus.Views.SearchBar = Backbone.View.extend({
 	},
 	
 	searchByTags: function(event){
+		debugger
 		event.preventDefault();
 		var $target = $(event.currentTarget)
+			debugger
 		this.tagParams = $target.serializeJSON();
 		Backbone.history.navigate("search", {trigger: true})
 	}

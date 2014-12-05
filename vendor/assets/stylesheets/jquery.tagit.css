@@ -1,25 +1,28 @@
 ul.tagit {
-	width: 180px;
+	padding: 1px 5px;
+	border: none;
+	min-width: 200px;
+	max-width: 400px;
 	height: 30px;
-	background-color: black ;
-	font-size: 100%;
-	border-radius: 3px;
+	display
+	width: 60px;
+	background: #f1f1f1;
 	float: right;
-	margin-top: 28px;
-	margin-left: 5px;
-	color: white;
-}
-
-ul.tagit:active {
-	background: white;
-	color: black;
+	margin-top: 26px;
+	font-family: arial;
 }
 
 ul.tagit li {
-    display: block;
+    display: inline-block;
     float: left;
-    margin: 2px 5px 2px 0;
+	font-style: arial;
+	color: white;
 }
+
+ul.tagit li:last-child {
+    float: right;
+}
+
 ul.tagit li.tagit-choice {    
     position: relative;
     line-height: inherit;
@@ -36,7 +39,13 @@ ul.tagit li.tagit-choice-editable {
 } 
 
 ul.tagit li.tagit-new {
-    padding: .25em 4px .25em 0;
+	float: right;
+	display: inline-block;
+	height: 0px;
+	font-size: medium;
+	width: 120px;
+	margin-bottom: 28px;
+	border-radius: 2px;
 }
 
 ul.tagit li.tagit-choice a.tagit-label {
@@ -65,17 +74,21 @@ ul.tagit li.tagit-choice input {
 }
 
 ul.tagit input[type="text"] {
- 	 -moz-box-sizing:    border-box;
+ 	-moz-box-sizing:    border-box;
     -webkit-box-sizing: border-box;
     box-sizing:         border-box;
 
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
     box-shadow: none;
+	display: inline-block;
+	float: right;
+	margin-top: -16px;
+	background: black;
+	color: white;
+	font-family: arial;
+	border-radius: 2px;
 
- 
-	 /*background: white;
-	 color: black;*/
 	
 
 }

@@ -119,6 +119,7 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 		followUnit.save({}, {
 			url: 'api/follow_units',
 			success: function(){
+				view.model.set({follow_unit_id: followUnit.id})
 				view.toggleFollowButton();
 			}
 		});
