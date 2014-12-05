@@ -7,7 +7,7 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 			collection: new Locus.Collections.Pieces(),
 			mode: 'masonry'
 		});
-
+		this.listenTo(this.model, "sync", this.ownProfile)
 		this.listenTo(this.model, "sync", this.conditionallyAddSubviews);
 		this.listenTo(this.model, "sync", this.addGallery);
 		this.listenTo(this.model, "change:cover_piece", this.render)
@@ -15,13 +15,14 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 	},
 	
 	events: {
-		'click #collaborate-badge' : 'showCollaborateStatement'
+		'click #collaborate-badge' : 'showCollaborateStatement',
 		'click .follow-btn' : 'followUser',
 		'click .unfollow-btn' : 'unfollowUser',
 		'click .set-cover-piece' : 'setCoverPiece',
-		'mouseenter .pencil' : 'showEdit',
-		'mouseleave .pencil' : 'hideEdit',
-		'click .pencil' : 'editArtistStatement',
+		'mouseenter .art.pencil' : 'showEdit',
+		'mouseleave .art.pencil' : 'hideEdit',
+		'click .art.pencil' : 'editArtistStatement',
+		'click .col.pencil' : 'editCollaborativeStatement',
 		'click #collaborate-badge' : 'showCollaborativeStatment',
 		'submit form#a-s' : 'submitArtistStatement'
 	},
@@ -31,19 +32,29 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 	template: JST['profile/show'],
 	
 	render: function(){
-		if(this.model.user !== undefined){
-			var content = this.template({ profile: this.model, user: this.model.user});
+		// if(this.model.user !== undefined){
+			debugger
+			var user = {}
+			if(this.model.user){
+				user = this.model.user
+			}
+			debugger
+			var content = this.template({ profile: this.model, user: user});
+			debugger
 			this.$el.html(content);
 			this.attachSubviews();
-		} 
+		// }
+		debugger
 		return this;
 	},
 	
 	ownProfile: function(){
+		debugger
 		if(this.model.user['user_id'] === this.model.get('current_user_id')){
 			this.model.set({ownprofile: true})
 			return true
 		} else {
+			this.model.set({ownprofile: false})
 			false
 		}
 	},
@@ -80,22 +91,11 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 		
 	},
 	
-	addCollaborativeStatement: function(bool){
-		var colStatementView = undefined;
-		if(this.ownProfile()){
-			var colStatementView = 
-				new Locus.Views.CollaborativeStatementForm({
-					model: this.model.get('collaborative_statment')
-				});
+	addCollaborativeStatement: function(){
+		if(!this.colStatementView){
+			this.colStatementView = new Locus.Views.CollaborativeStatement({model: this.model.get('collaborative_statment')});
 		}
-		
-		if(bool){
-			colStatementView = new Locus.Views.CollaborativeStatement({model: this.model.get('collaborative_statment')});
-		}
-		
-		if(colStatementView){
-			this.addSubview('#collaborative-statement', colStatementView);
-		}
+		this.addSubview('#collaborative-statement', this.colStatementView);
 	},
 	
 	
@@ -161,11 +161,12 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 	},
 	
 	showEdit: function(){
-		$('#edit').show(400, 'linear');
+		$('#edit').show(400);
 	},
 	
 	hideEdit: function(){
-		$('#edit').hide(400);
+		
+		$("#edit").hide(400);
 	},
 	
 	editArtistStatement: function(){
@@ -175,6 +176,14 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 		
 		this.artistStatementView = new Locus.Views.ArtistStatementForm({ text: this.model.get('artist_statement') });
 		this.addArtistStatement();
+	},
+	
+	editCollaborativeStatement: function(){
+		if(this.colStatementView !== null){
+			this.removeSubview('#collaborative-statement', this.colStatementView);
+		}
+		this.colStatementView = new Locus.Views.CollaborativeStatementForm({ text: this.model.get('collaborative_statement') });
+		this.addCollaborativeStatement();
 	},
 	
 	submitArtistStatement: function(event){
@@ -194,14 +203,7 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 		})
 	},
 	
-	showCollaborateStatment: function(){
-		this.$('#collaborative-statement').popup({
-			type: 'tooltip',
-			color: '#f1f1f1',
-			horizontal: 'leftedge',
-			vertical: 'topedge',
-			transition: 'all 0.3s',
-			autoopen: true
-		});
+	showCollaborativeStatment: function(){
+		var po = this.$('#c-pop-up').toggle(600)
 	}
 });

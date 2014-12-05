@@ -1,6 +1,8 @@
--- errors on login
 
--- questions
--- best way to pass user data b/w front and back
 -- file_picker_api key, location?
+-- fix post form to look nice
+-- when post: artist name doesn't appear
+-- user-sidbar on profile needs to be bigger
+-- artist name doesn't display immediately 
+-- make cover piece title bold
 

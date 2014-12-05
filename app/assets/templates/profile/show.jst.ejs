@@ -6,22 +6,19 @@
 			<%= user['user_lname']%> 
 		</div>
 
-		<% if(user['collaborate'] === true) { %>
-			<div id="collaborate-badge">C</div>
-			<div id="c-pop-up">
-				<% if(profile.get('ownprofile')){%>
-					<div class="pencil">✎</div>
-				<%}%>
-				<div id="collaborative-statement" style="display: none">
-				
-				</div>
-			</div>
-		<% } %>
+		<div id="collaborate-badge">C</div>
+		<div id="c-pop-up" style="display: none">
+			<% if(profile.get('ownprofile')){%>
+				<div class="col pencil">✎</div>
+			<%}%>
+			<div id="collaborative-statement" ></div>
+		</div>
 	
 		<% if(profile.get('ownprofile')){%>
-			<div class="pencil">✎</div>
+			<div class="art pencil">✎</div>
+			<div id='edit' style="display: none">edit</div>
 		<%}%>
-		<div id='edit' style="display: none">edit</div>
+		
 		<div id="artist-statement"></div>
 	
 	
