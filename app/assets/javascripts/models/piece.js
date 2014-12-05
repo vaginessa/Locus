@@ -20,7 +20,7 @@ Locus.Models.Piece = Backbone.Model.extend({
 			var width = "100%"
 			var height = "60%"
 		} else {
-			var width = "60%"
+			var width = "65%"
 			var height = "60%"
 		}
 

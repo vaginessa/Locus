@@ -27,6 +27,7 @@
 	text-align: center;
 	vertical-align: middle;
 }
+
 #cover-piece-form {
 	display: inline-block;
 	float: left;
@@ -39,6 +40,7 @@ form#a-statement-form {
 
 #profile-wrapper {
 	margin: 50px;
+	min-height: 100%;
 }
 
 .profile {
@@ -58,23 +60,28 @@ form#a-statement-form {
 	float: left;
 }
 
-.profile #own-gallery{
-	margin-top: 60px;
-	width: 100%;
-}
+
 
 .profile #collaborate-badge {
 	display: inline-block;
 	float: left;
-	border: 1px;
-    border-radius: 35px;
+	border: 1px solid black;
+    border-radius: 36px;
     background-color: black;
 	color: white;
-	width: 20px;
-	height: 30px;
-    font-size: 27px;
+	width: 14px;
+	height: 25px;
+    font-size: 21px;
 	text-align: center;
     padding: 5px 10px 5px 10px;
+}
+
+.profile #collaborate-badge:hover{
+	background-color: white;
+	border: 1px solid black;
+	color: black;
+	cursor: pointer;
+	cursor: hand;
 }
 
 .profile #user-name {
@@ -117,18 +124,21 @@ form#a-statement-form {
 .profile .set-cover-piece {
     border-radius: 1px;
     color: black;
-    font-size: 20px;
+    font-size: 10px;
     background: white;
-    padding: 10px 20px 10px 20px;
+    padding: 5px 10px 5px 10px;
     text-decoration: none;
 	margin: 5px;
 	float: left;
 	border: 1px solid black;
+	width: 25%;
+	height: 10px;
 }
 
 .profile .set-cover-piece:hover {
     color: white;
 	background: black;
+	border: 1px solid white;
 }
 
 .profile .cover-piece {
@@ -155,7 +165,7 @@ form#a-statement-form {
 }
 
 .profile .piece-title {
-	font-size: 200%;
+	font-size: 110%;
 	margin-bottom: 3px;
 }
 
@@ -181,7 +191,34 @@ form#a-statement-form {
 #artist-statement {
 	clear: both;
 	min-height: 20px;
+	word-break: break-all;
 }
+
+
+.profile #own-gallery {
+	clear:both;
+	min-height: 600px;
+	margin: auto;
+}
+
+.profile #own-gallery > div:first-child {
+	background: #f1f1f1;
+	border-radius: 2px;
+	padding-bottom: 5px;
+}
+
+
+
+#line {
+	clear: both;
+	width: 100%;
+	padding-top: 40px;
+	margin-bottom: 5px;
+	height: 2px;
+	border-bottom: 3px dashed black;
+}
+
+
 
 
 

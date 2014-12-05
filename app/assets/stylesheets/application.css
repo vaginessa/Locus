@@ -22,8 +22,10 @@ html {
 	background-color: #fffffa;
 }
 
-.backdrop {
-	width: 100%;
+
+
+.main {
+	clear: both;
 	height: 100%;
 }
 
@@ -133,4 +135,9 @@ a.btn:hover {
 	color: black;
 	background: white;
 	border: 1px solid black;
+}
+
+
+a.btn:hover #nav-bar {
+	background: #fffffa ;
 }

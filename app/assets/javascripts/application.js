@@ -18,6 +18,8 @@
 //= require backbone
 //= require locus_app
 //= require jquery.popupoverlay
+//= require packery.pkgd.js
+//= require imagesloaded.pkgd.js
 //= require_tree ../templates
 //= require_tree ./utils
 //= require_tree ./models

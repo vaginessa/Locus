@@ -2,6 +2,7 @@ Locus.Views.GalleryItem = Backbone.CompositeView.extend({
 	template: JST['gallery/item'], 
 	
 	initialize: function(){
+		this.$el.addClass('gi')
 		this.listenTo(this.model, 'change:ownprofile', this.render);
 	},
 	

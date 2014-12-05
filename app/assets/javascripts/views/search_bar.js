@@ -24,8 +24,10 @@ Locus.Views.SearchBar = Backbone.View.extend({
 	searchByTags: function(event){
 		event.preventDefault()
 		var $target = $(event.currentTarget)
-		debugger
 		this.tagParams = $target.serializeJSON();
+		debugger
+		$('#search-bar').find('#tags').val("");
+		$('#search-bar').find('#tags').blur();
 		Backbone.history.navigate("search", {trigger: true})
 	}
 	

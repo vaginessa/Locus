@@ -2,23 +2,44 @@ Locus.Views.Gallery = Backbone.CompositeView.extend({
 	
 	initialize: function(options){
 		this.mode = options.mode
+		this.addClassSearch();
 		this.addGalleryItems();
 		this.listenTo(this.collection, "add", this.addGalleryItem);
 		this.listenTo(this.collection, "unshift", this.unshiftGalleryItem);
 		this.listenTo(this.collection, "sync", this.render)
+		this.listenTo(this.collection, "sync", this.makeMasonry)
+		this.listenTo(this.collection, "all", this.addClassSearch)
+	},
+	
+	addClassSearch: function(){
+		if(this.mode === 'masonry'){
+			$('#gallery-items').addClass('masonry')
+		}	
 	},
 	
 	template: JST['main_space/gallery_show'],
 	
 	render: function(){
 		var content = this.template({ pieces: this.collection });
-		debugger
-		if(this.mode === 'search'){
-			this.$('#gallery-items').addClass('search');
-		}
 		this.$el.html(content);
 		this.attachSubviews();
+		this.makeMasonry();
 		return this;
+	},
+	
+	makeMasonry: function(){
+		if(this.mode === 'masonry'){
+			$('#gallery-items').imagesLoaded(function(){
+			 	$('#gallery-items').packery({
+					containerStyle: null,
+					itemSelector: '.gi',
+					gutter: 20,
+					columnWidth: 190,
+					rowHeight: 200
+				})
+			});
+		}
+		
 	},
 	
 	addGalleryItem: function(model){

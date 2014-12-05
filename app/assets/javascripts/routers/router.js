@@ -49,14 +49,12 @@ Locus.Routers.Router = Backbone.Router.extend({
 
 		searchPieces.fetch({
 			data: { filter: 'search', tagged: bool, tags: tags },
-			url: 'api/pieces',
-			success: function(){
-				alert("ok")
-			}
+			url: 'api/pieces'
 		})
 
-		var searchView = new Locus.Views.Gallery({collection: searchPieces, mode: 'search'});
+		var searchView = new Locus.Views.Gallery({collection: searchPieces, mode: 'masonry'});
 		this._swapView(searchView);
+
 	},
 	
 	_swapView: function(view) {

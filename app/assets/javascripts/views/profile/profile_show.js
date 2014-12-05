@@ -4,7 +4,8 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 	
 		this.coverPieceView = null;
 		this.galleryView = new Locus.Views.Gallery({
-			collection: new Locus.Collections.Pieces()
+			collection: new Locus.Collections.Pieces(),
+			mode: 'masonry'
 		});
 
 		this.listenTo(this.model, "sync", this.conditionallyAddSubviews);
@@ -14,6 +15,7 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 	},
 	
 	events: {
+		'click #collaborate-badge' : 'showCollaborateStatement'
 		'click .follow-btn' : 'followUser',
 		'click .unfollow-btn' : 'unfollowUser',
 		'click .set-cover-piece' : 'setCoverPiece',
@@ -190,7 +192,16 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 				view.addArtistStatement();
 			}
 		})
-		
+	},
 	
+	showCollaborateStatment: function(){
+		this.$('#collaborative-statement').popup({
+			type: 'tooltip',
+			color: '#f1f1f1',
+			horizontal: 'leftedge',
+			vertical: 'topedge',
+			transition: 'all 0.3s',
+			autoopen: true
+		});
 	}
 });
