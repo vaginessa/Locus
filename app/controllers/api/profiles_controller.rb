@@ -21,7 +21,7 @@ module Api
     def update
       @profile = Profile.find(params[:id]);
       if @profile.update(profile_params)
-        render :show
+        show
       else
         render json: @profile.errors.full_message, status: :unprocessable
       end

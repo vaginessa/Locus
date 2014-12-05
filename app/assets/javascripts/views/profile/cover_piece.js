@@ -1,8 +1,5 @@
 Locus.Views.CoverPiece = Backbone.View.extend({
-	initialize: function(){
-		// this.listenTo(this.model, 'change', this.render)
-	},
-	
+
 	template: JST['profile/cover_piece'],
 	
 	render: function(){

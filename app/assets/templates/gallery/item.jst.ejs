@@ -7,7 +7,9 @@
 	</div>
 
 	<%if(piece.get('ownprofile')){ %>
-		<div class="set-cover-piece">set as cover piece</div>
+		<%if(!piece.get('cp')){%>
+			<div class="set-cover-piece">set as cover piece</div>
+		<%}%>
 	<%}%>
 </ul>
 

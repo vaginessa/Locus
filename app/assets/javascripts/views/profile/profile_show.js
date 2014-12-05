@@ -10,7 +10,6 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 		this.listenTo(this.model, "sync", this.ownProfile)
 		this.listenTo(this.model, "sync", this.conditionallyAddSubviews);
 		this.listenTo(this.model, "sync", this.addGallery);
-		// this.listenTo(this.model, "change:cover_piece", this.render)
 		this.listenTo(this.model, "sync", this.render);
 	},
 	
@@ -72,8 +71,17 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 	},
 	
 	addCoverPiece: function(){
+		if(this.coverPieceView !== null){
+			this.removeSubview('#cover-piece', this.coverPieceView)
+		} else {
+			$('#cover-piece-form').remove()
+		}
+		
 		this.coverPieceView = new Locus.Views.CoverPiece({model: this.model.coverPiece()}); 
-		this.addSubview('#cover-piece', this.coverPieceView); 	
+		this.addSubview('#cover-piece', this.coverPieceView); 
+		if(this.model.get('cover_piece')){
+			this.model.unset('cover_piece')
+		}	
 	},
 
 	
@@ -139,18 +147,12 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 	},
 	
 	setCoverPiece: function(piece){
-		var view = this
+		var view = this;
 		this.model.save({cover_piece_id: piece.id}, {
 			url: 'api/profiles/' + view.model.id,
 		});
 		
 		this.model.set({cover_piece: piece});
-		
-		if(this.coverPieceView !== null){
-			this.removeSubview('#cover-piece', this.coverPieceView)
-		} else {
-			$('#cover-piece-form').remove()
-		}
 		this.addCoverPiece();
 	},
 	

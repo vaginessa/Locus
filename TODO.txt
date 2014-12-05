@@ -1,6 +1,6 @@
 
 
 -- when post: artist name doesn't appear 
--- link from show piece to artist profile
---cover piece situation
+
+
 

@@ -135,6 +135,8 @@
 	font-style: italic;
 }
 
+
+
 #empty-gallery {
 	width: 897px;
 	height: 400px;
@@ -182,12 +184,15 @@
 	padding-left: 5px;
 }
 
-#gallery-item-show .piece-artist {
+.s-piece-artist {
 	margin-top: 5px;
 	font-size: 75%;
-	margin-left: -4px;
 	cursor: pointer;
 	cursor: hand;
+}
+
+.s-piece-artist:hover {
+	font-style: italic;
 }
 
 .s-piece-title{

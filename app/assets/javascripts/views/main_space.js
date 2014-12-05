@@ -58,13 +58,9 @@ Locus.Views.mainSpace = Backbone.CompositeView.extend({
 		var view = this;
 		this.randomGalleryView.collection.fetch({
 			data: { filter: 'random' },
-		    success: function () {
-				view.randomGalleryView.collection.each(function (piece) {
-					piece.set({ following: false });
-				});
-				view.showRandomPieces();
-			}
 		})
+		
+		this.showRandomPieces()
 	},
 	
 	showRandomPieces: function(randomPieces){
