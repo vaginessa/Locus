@@ -63,8 +63,9 @@ module Api
         #5 random pieces
         #not followed by user
         #also not belonging to user
-        pieces = Piece.all - current_user.pieces - current_user.followed_pieces
-        pieces.sample(5)
+        Piece.all.sample(5)
+        # pieces = Piece.all - current_user.pieces - current_user.followed_pieces
+        # pieces.sample(5)
                 #
         # Piece.find_by_sql([
         #   "SELECT p.* FROM(
