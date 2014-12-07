@@ -96,13 +96,11 @@ module Api
         unless params[:tagged] 
           Piece.all
         else
-          search_tags = []
-          search_tags << params[:tags].strip
           Piece.find_by_sql([
             "SELECT pieces.*
             FROM pieces JOIN tag_units ON pieces.id = tag_units.piece_id JOIN tags ON tags.id = tag_units.tag_id
             WHERE tags.name IN (?)",
-            search_tags
+            params[:tags]
           ])
         end
       end

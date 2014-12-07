@@ -3,7 +3,9 @@
 		<%if(logged_in?)%>
 			<div id="logo"><a href="#/">Locus/</a></div>
 				<div><%= button_to "leave", session_url, method: :delete, class: "btn btn-logout" %></div>
+			<div id="submit-search">S</div>
 			<ul id="search-tags"></ul>
+			
 		<%end%>
 	</div>
 	

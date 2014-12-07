@@ -12,13 +12,13 @@ Locus.Views.SearchBar = Backbone.View.extend({
 			}
 		});
 		
-		$('#search-bar').on('submit', this.searchByTags.bind(this))
+		$('#submit-search').on('click', this.searchByTags.bind(this))
 	}, 
-	
 	
 	searchByTags: function(event){
 		event.preventDefault()
-		this.searchTags = this.extractTags();
+		debugger
+		this.extractTags();
 		Backbone.history.navigate("search", {trigger: true})
 	},
 	
@@ -31,7 +31,7 @@ Locus.Views.SearchBar = Backbone.View.extend({
 	 },
 	 
 	 extractTags: function(){
-		 this.tagList = $('#search-tags').tagit('assignedTags');
+		 this.searchTags = $('#search-tags').tagit('assignedTags');
 	 }
 	
 	
