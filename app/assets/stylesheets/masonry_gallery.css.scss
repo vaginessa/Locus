@@ -1,15 +1,16 @@
 ul#gallery-items.masonry {
 	position: relative;
 	margin: auto;
-	margin-left: 95px;
-	padding: auto;
+	margin-left: 0px;
+	padding-left: 20px;
+	margin-right: 10px;
 	padding-top: 5px;
 	min-height: 600px;
 	width: 100%;
 
 }
 .masonry .gi {
-	max-width: 30%;
+	max-width: 25%;
 	max-height: 40%;
 }
 
@@ -19,7 +20,7 @@ ul#gallery-items.masonry {
 	background: black;
 	border-radius: 2px;
 	min-height: 40px;
-	min-width: 190px;
+	min-width: 160px;
 	margin: 5px;
 }
 

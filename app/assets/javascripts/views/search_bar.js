@@ -4,6 +4,8 @@ Locus.Views.SearchBar = Backbone.View.extend({
 		if(!this.searchTags){
 			this.searchTags = []
 		}
+		
+		
 		this.tags = new Locus.Collections.Tags();
 		var view = this;
 		this.tags.fetch({
@@ -11,6 +13,8 @@ Locus.Views.SearchBar = Backbone.View.extend({
 				view.makeTagit();
 			}
 		});
+		
+		
 		
 		$('#submit-search').on('click', this.searchByTags.bind(this))
 	}, 

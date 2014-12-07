@@ -34,7 +34,7 @@ Locus.Views.Gallery = Backbone.CompositeView.extend({
 					containerStyle: null,
 					itemSelector: '.gi',
 					gutter: 20,
-					columnWidth: 190,
+					columnWidth: 160,
 					rowHeight: 200
 				})
 			});
