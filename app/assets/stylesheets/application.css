@@ -17,6 +17,8 @@
  */
 
 
+
+
 html {
 	font-family: Arial;
 	background-color: white;
@@ -33,6 +35,15 @@ html {
 
 ul {
 	list-style-type: none;
+}
+
+ul.tagit li.tagit-choice a.tagit-label {
+    cursor: pointer !important;
+    text-decoration: none;
+	border-radius: 2px;
+	background: black !important;
+	color: white !important;
+	font-family: arial;
 }
 
 #nav-bar a:link {
@@ -112,22 +123,11 @@ input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
 
-input#tags {
-	font-size: 18px;
-	height: 15px;
-	width: 100px;
-	margin-top: 20px;
+ul#search-tags {
+	margin-top: 26px;
 	margin-right: 10px;
-	background-color: black;
-	border-radius: 2px;
-	float: right;
 }
 
-input#tags:focus {
-	background: white;
-	color: black;
-	border: 1px solid black;
-}
 
 a.btn {
 	border: 1px;

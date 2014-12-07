@@ -1,35 +1,38 @@
 Locus.Views.SearchBar = Backbone.View.extend({
 	
 	initialize: function(){
+		if(!this.searchTags){
+			this.searchTags = []
+		}
+		this.tags = new Locus.Collections.Tags();
+		var view = this;
+		this.tags.fetch({
+			success: function(){
+				view.makeTagit();
+			}
+		});
+		
 		$('#search-bar').on('submit', this.searchByTags.bind(this))
-		// this.tags = new Locus.Collections.Tags();
-	// 	this.tags.fetch({
-	// 		url: 'api/tags'
-	// 	});
-	// 	this.listenTo(this.tags, "sync", this.autoCompleteTags)
 	}, 
 	
-	events: {
-		// 'click #search-bar' : 'autoCompleteTags'
-	},
-	
-	autoCompleteTags: function(){
-		// var tags = this.tags.widgetify();
-		
-		// $('#tags').autocomplete({
-	// 		source: tags
-	// 	})
-	},
 	
 	searchByTags: function(event){
 		event.preventDefault()
-		var $target = $(event.currentTarget)
-		this.tagParams = $target.serializeJSON();
-		debugger
-		$('#search-bar').find('#tags').val("");
-		$('#search-bar').find('#tags').blur();
+		this.searchTags = this.extractTags();
 		Backbone.history.navigate("search", {trigger: true})
-	}
+	},
+	
+	 makeTagit: function(){
+	 	$('#search-tags').tagit({
+			fieldName: 'tags',
+	 		availableTags: this.tags.widgetify(),
+			placeholderText: 'search by tag'
+	 	})
+	 },
+	 
+	 extractTags: function(){
+		 this.tagList = $('#search-tags').tagit('assignedTags');
+	 }
 	
 	
 	

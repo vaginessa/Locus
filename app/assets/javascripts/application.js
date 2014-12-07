@@ -19,6 +19,7 @@
 //= require locus_app
 //= require jquery.popupoverlay
 //= require packery.pkgd.js
+//= require tag-it.js
 //= require imagesloaded.pkgd.js
 //= require_tree ../templates
 //= require_tree ./utils

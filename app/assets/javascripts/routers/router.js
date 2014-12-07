@@ -38,12 +38,12 @@ Locus.Routers.Router = Backbone.Router.extend({
 	
 	searchGallery: function(){
 		debugger
-		var tags = {}
+		var tags = []
 		var bool = false
 		var searchPieces = new Locus.Collections.Pieces();
 		
-		if(this.searchBar.tagParams['tag']){
-			tags = this.searchBar.tagParams['tag']['name']
+		if(this.searchBar.searchTags){
+			tags = this.searchBar.searchTags
 			bool = true
 		}
 

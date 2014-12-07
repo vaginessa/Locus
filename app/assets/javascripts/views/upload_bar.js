@@ -4,6 +4,7 @@ Locus.Views.UploadBar = Backbone.CompositeView.extend({
 		this.user = options.user;
 		filepicker.setKey(fp_key);
 		this.model = new Locus.Models.Piece();
+		this.tags = new Locus.Collections.Tags();
 	},
 	
 	template: JST["main_space/upload_bar"],
@@ -29,6 +30,7 @@ Locus.Views.UploadBar = Backbone.CompositeView.extend({
 	
 	uploadMedia: function(event) {
 		var view = this;
+		this.tags.fetch()
 		var uploadType = event.currentTarget.id;
 		var picker_options = this.pickerOptions(uploadType);
 		filepicker.pick(picker_options, function(blob) {
@@ -66,7 +68,8 @@ Locus.Views.UploadBar = Backbone.CompositeView.extend({
 		pieceFormView = new Locus.Views.PieceForm({ 
 			model: piece, 
 			collection: this.collection, 
-			media: newMedia
+			media: newMedia,
+			tags: this.tags
 		});
 		
 		this.addSubview("#piece-form", pieceFormView);

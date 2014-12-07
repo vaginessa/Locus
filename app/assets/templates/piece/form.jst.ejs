@@ -2,11 +2,12 @@
 	<div id="div-form">
 		<div class="piece-media"><%= media.mediaHtml({form: true}) %> </div>
 		<form >
-			<input type="text" id="piece-form-title" name="piece[title]" placeholder="Piece Title">
-			<textarea id="piece-form-text" name="piece[statement]" placeholder="Piece Statement"></textarea>
-	
+			<input type="text" id="piece-form-title" name="piece[title]" placeholder="title - optional">
+			<textarea id="piece-form-text" name="piece[statement]" placeholder="statement - optional"></textarea>
+			<ul type="tags" id="piece-form-tags"></ul>
 			<input type="submit" value="post" class="btn">
 		</form>
+		
 	</div>
 </div>
 

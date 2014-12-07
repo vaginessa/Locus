@@ -17,8 +17,8 @@ module Api
     def create
       @piece = Piece.new(piece_params)
       @piece.user_id = current_user.id
-      # createTagUnits(params[:tags])
       if @piece.save!
+        create_tag_units(params[:tags], @piece.id)
         render :show
       else
         render json: @piece.errors.full_message, status: :unprocessable
@@ -36,12 +36,16 @@ module Api
     end
     
     private
-    #
-    # def create_tag_units(tag_params)
-    #   tag_params.each do |tag_key|
-    #     @tag = Tag.new({name: tag})
-    #   end
-    # end
+    
+    def create_tag_units(tag_params, piece_id)
+      tag_params.each do |tag_name|
+        tag = Tag.find_by_name(tag_name)
+        unless tag
+          tag = Tag.create!({name: tag_name})
+        end
+        TagUnit.create!({ piece_id: piece_id, tag_id: tag.id })
+      end
+    end
     
     def piece_params
       params.require(:piece).permit(:title, :statement, :media_type, media: [:url], tags: [:name])
