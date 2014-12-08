@@ -9,10 +9,10 @@ class Piece < ActiveRecord::Base
     primary_key: :id
   )
   
-  has_many :followers, through: :artist 
+  has_many :followers, through: :artist, source: :followers
   
   has_many :tag_units
-  has_many :tags, through: :tag_units
+  has_many :tags, through: :tag_units, source: :piece
 
   has_one :image
   has_one :audio

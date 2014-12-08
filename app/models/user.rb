@@ -27,10 +27,10 @@ class User < ActiveRecord::Base
     primary_key: :id
   )
   
-  has_many :followers, through: :followed_units
+  has_many :followers, through: :followed_units, source: :follower
   
   
-  has_many :followees, through: :following_units 
+  has_many :followees, through: :following_units, source: :followee
   has_many :followed_pieces, through: :followees, source: :pieces
 
   
