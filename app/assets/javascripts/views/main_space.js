@@ -2,10 +2,6 @@ Locus.Views.mainSpace = Backbone.CompositeView.extend({
 	
 	initialize: function(){
 		this.galleryView = new Locus.Views.Gallery({ collection: this.collection });
-		// this.randomGalleryView = new Locus.Views.Gallery({
-	// 		collection: new Locus.Collections.Pieces()
-	// 	});
-		
 		this.addUploadBar();
 		this.listenTo(this.collection, "sync", this.addGallery);
 		this.listenToOnce(this.collection, "sync", this.addUserSidebar);
@@ -15,7 +11,8 @@ Locus.Views.mainSpace = Backbone.CompositeView.extend({
 	
 	events: {
 		'click #random-tab' : 'getRandomPieces',
-		'click #home-tab' : 'showMainGallery'
+		'click #home-tab' : 'showMainGallery',
+		'click #followers-btn' : 'showFollowers'
 	},
 	
 	
@@ -33,6 +30,7 @@ Locus.Views.mainSpace = Backbone.CompositeView.extend({
 	addUserSidebar: function() {
 		$("#user-sidebar").empty();
 		var userSideBarView = new Locus.Views.UserSidebar({ user: this.collection.current_user })
+
 		this.addSubview('#user-sidebar', userSideBarView)
 	},
 	
@@ -76,6 +74,23 @@ Locus.Views.mainSpace = Backbone.CompositeView.extend({
 		}
 		this.$('#gallery').empty();
 		this.addGallery();
+	},
+	
+	showFollowers: function(){
+
+		var followers = this.collection.current_user['followers']
+			
+		var followersList = $('#followers');
+		followersList.empty();
+		_.each(followers, function(follower){
+
+			var profileUrl = '#/profiles/' + follower.profile_id
+			var profileLink = '<a href=' + profileUrl + '>' + follower.follower_fname + " " + follower.follower_lname + '</a>'
+			var follower = $('<li>').addClass('follower-li').html(profileLink);
+			followersList.append(follower);
+		});
+		
+		$('#follower-popup').popup('show');
 	}
 
 	

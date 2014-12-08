@@ -3,4 +3,3 @@ Locus.Collections.Followees = Backbone.Collection.extend({
 	
 });
 
-Locus.followees = new Locus.Collections.Followees;

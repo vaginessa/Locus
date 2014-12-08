@@ -1,0 +1,4 @@
+--2014-12-08 13:42:05--  ftp://heroku%20pgbackups/https://sheltered-castle-3185.herokuapp.com/
+           => '.listing'
+Resolving heroku pgbackups... failed: nodename nor servname provided, or not known.
+wget: unable to resolve host address 'heroku pgbackups'
