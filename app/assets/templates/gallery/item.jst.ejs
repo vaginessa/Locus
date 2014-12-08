@@ -3,11 +3,18 @@
 	
 	<div class="piece-info-wrapper">
 		<div class="piece-title"><%=piece.escape('title')%></div>
+
 		<div class="piece-artist"><%= piece.escape('artist_fname')%> <%= piece.escape('artist_lname')%></div>
 		<%if(piece.get('ownprofile')){ %>
 			<%if(!piece.get('cp')){%>
 				<div class="set-cover-piece">set as cover piece</div>
+				<!-- <div id="edit-pencil">✎</div>
+				<div class="remove-piece"></div> -->
 			<%}%>
+		<%}%>
+		
+		<%if(piece.get('ownprofile')){ %>
+				<div id="edit-pencil">✎</div>
 		<%}%>
 	</div>
 

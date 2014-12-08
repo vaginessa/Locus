@@ -150,6 +150,33 @@ input.btn.save-as {
 	border: 1px solid black;
 }
 
+.profile .remove-piece {
+	display: inline-block;
+    border-radius: 1px;
+    color: white;
+    font-size: 10px;
+    background: black;
+    padding: 5px 10px 5px 10px;
+	margin: 5px;
+	float: left;
+	border: 1px solid white;
+	width: 50%;
+	height: 40px;
+}
+
+.profile .remove-piece:hover{
+	
+	background: #4D0000;
+	border: 1px solid #4D0000;
+
+}
+
+#edit-pencil {
+	position: absolute;
+	right: 0px;
+	top: 120px;
+}
+
 .profile .cover-piece {
 	color: white;
 	background: black;
@@ -162,6 +189,7 @@ input.btn.save-as {
 }
 
 .cover-piece .piece-info-wrapper {
+	position: relative;
 	display: inline-block;
 	max-width: 250px;
 	float: left;
