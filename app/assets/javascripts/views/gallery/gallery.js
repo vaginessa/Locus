@@ -34,9 +34,7 @@ Locus.Views.Gallery = Backbone.CompositeView.extend({
 			 	$('#gallery-items').packery({
 					containerStyle: null,
 					itemSelector: '.gi',
-					gutter: 20,
-					columnWidth: 160,
-					rowHeight: 160
+					gutter: 60
 				})
 			});
 		}
