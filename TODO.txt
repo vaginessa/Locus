@@ -1,6 +1,12 @@
 
 
 -- when post: artist name doesn't appear 
-
-
+-- change boolean 'collaborate'
+-- send collaborate data to db prop
+-- get random working on heroku
+-- make pieces editable, maybe
+-- messaging
+-- get autocomplete for form on correct z-index
+-- followers
+-- followees
 

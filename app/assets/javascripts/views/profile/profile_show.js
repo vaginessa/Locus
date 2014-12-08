@@ -18,9 +18,14 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 		'mouseenter .art.pencil' : 'showEdit',
 		'mouseleave .art.pencil' : 'hideEdit',
 		'click .art.pencil' : 'editArtistStatement',
-		'click .col.pencil' : 'editCollaborativeStatement',
-		'click #collaborate-badge' : 'showCollaborativeStatment',
-		'submit form#a-s' : 'submitArtistStatement'
+		'mouseenter #collaborate-badge' : 'showCol',
+		'mouseleave #collaborate-badge' : 'hideCol',
+		'mouseenter #un-collaborate-badge' : 'showCol',
+		'mouseleave #un-collaborate-badge' : 'hideCol',
+		
+		'submit form#a-s' : 'submitArtistStatement',
+		'click #collaborate-badge' : 'stopCollaborating',
+		'click #un-collaborate-badge' : 'startCollaborating'
 	},
 	
 	className: 'profile',
@@ -42,12 +47,15 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 				$('#cover-piece-form').remove()
 			}
 		}
+		
+	
 		return this;
 	},
 	
 	ownProfile: function(){
 		if(this.model.user['user_id'] === this.model.get('current_user_id')){
 			this.model.set({ownprofile: true})
+			$('#collaborate-badge').addClass('owner')
 			return true
 		} else {
 			this.model.set({ownprofile: false})
@@ -215,7 +223,30 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 		})
 	},
 	
-	showCollaborativeStatment: function(){
-		var po = this.$('#c-pop-up').toggle(600)
+	showCol: function(event){
+		event.stopImmediatePropagation();
+		this.$('#c-pop-up').toggle()
+	},
+	
+	hideCol: function(event){
+		event.stopImmediatePropagation();
+		this.$('#c-pop-up').toggle()
+	},
+	
+	
+	stopCollaborating: function(){
+		$.ajax({
+			type: 'PUT',
+			url: 'users/' + this.model.user['user_id'],
+			data: {user: {collaborate: false, id: this.model.user['id']}},
+			success: function(){
+				$('#collaborate-badge').toggle();
+				$('#un-collaborate-badge').toggle();
+			}
+		})
+	},
+	
+	startCollaborating: function(){
+		
 	}
 });

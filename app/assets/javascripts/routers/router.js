@@ -37,7 +37,6 @@ Locus.Routers.Router = Backbone.Router.extend({
 	},
 	
 	searchGallery: function(){
-		debugger
 		var tags = []
 		var bool = false
 		var searchPieces = new Locus.Collections.Pieces();

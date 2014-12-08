@@ -5,14 +5,23 @@
 			<%= user['user_fname']%> 
 			<%= user['user_lname']%> 
 		</div>
-
-		<div id="collaborate-badge">C</div>
+		
+		
+	<div id="collaborate-badge">C
 		<div id="c-pop-up" style="display: none">
-			<% if(profile.get('ownprofile')){%>
-				<div class="col pencil">✎</div>
-			<%}%>
-			<div id="collaborative-statement" ></div>
+			<p>stop seeking collaborations</p>
 		</div>
+	</div>
+
+	<% if(profile.get('ownprofile')){ %>
+		<div id="un-collaborate-badge" style="display:none">C
+			<div id="c-pop-up" style="display: none">
+				<p>start seeking collaborations</p>
+			</div>
+		</div>
+	<% } %>
+	
+	
 	
 		<% if(profile.get('ownprofile')){%>
 			<div class="art pencil">✎</div>
