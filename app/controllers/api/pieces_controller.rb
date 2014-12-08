@@ -69,6 +69,7 @@ module Api
       elsif f == 'own'
         Piece.where('user_id= ?', params[:user_id])
       elsif f == 'random'
+        fail
         (Piece.all - current_user.followed_pieces - current_user.pieces).sample(10)
       elsif f == 'search'
         unless params[:tagged] 
