@@ -21,7 +21,6 @@
 		
 		<div id="artist-statement"></div>
 	
-	
 		<% if (!profile.get('ownprofile')){ %>
 			<% if(profile.get('follows')){ %>
 				<div class="btn follow-btn" style="display: none">follow</div>
@@ -31,23 +30,14 @@
 				<div class="btn unfollow-btn" style="display: none">unfollow</div>
 			<% } %>
 		<% } %>
-	
-	
 	</div>
 
-		<% if(profile.get('cover_piece') === null && profile.get('ownprofile')){ %>
-			<div id="cover-piece-form">select a cover piece from below</div>
-		<% } else { %>
-			<div id="cover-piece"></div>
-		<% } %>
+	<% if(profile.get('ownprofile')){ %>
+		<div id="cover-piece-form"><p>select a cover item from your existent posts</p></div>
+	<% } %>
 	
-	
-	
-	
-	
-	
+	<div id="cover-piece"></div>
 	<div id="line"></div>
-	
 	<div id="own-gallery"></div>
 </div>
 

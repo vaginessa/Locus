@@ -44,7 +44,6 @@ ul.tagit li.tagit-choice-editable {
 
 ul.tagit li.tagit-new {
 	position: relative !important;
-	z-index: 100001;
 	float: left;
 	display: inline-block;
 	font-size: medium;
@@ -93,9 +92,7 @@ ul.tagit input[type="text"] {
 	height: 100%;
 }
 
-.ui-autcomplete {
-	z-index: 100000 !important;
-}
+
 
 
 

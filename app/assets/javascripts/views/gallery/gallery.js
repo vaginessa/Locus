@@ -21,7 +21,6 @@ Locus.Views.Gallery = Backbone.CompositeView.extend({
 	template: JST['main_space/gallery_show'],
 	
 	render: function(){
-		debugger
 		var content = this.template({ pieces: this.collection });
 		this.$el.html(content);
 		this.attachSubviews();

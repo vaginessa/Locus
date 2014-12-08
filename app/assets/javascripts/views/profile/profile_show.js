@@ -31,6 +31,8 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 	template: JST['profile/show'],
 	
 	render: function(){
+		debugger
+		this.checkCoverPiece()
 		var user = {}
 		if(this.model.user){
 			user = this.model.user
@@ -39,6 +41,12 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 		var content = this.template({ profile: this.model, user: user});
 		this.$el.html(content);
 		this.attachSubviews();
+		debugger
+		if($('.cover-piece').length !== 0){
+			if($('#cover-piece-form')){
+				$('#cover-piece-form').remove()
+			}
+		}
 		return this;
 	},
 	
@@ -52,12 +60,25 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 		}
 	},
 
+	checkCoverPiece: function(){
+		var cp = this.model.coverPiece();
+		if(cp.get('image') === null && cp.get('audio') === null && cp.get('video') === null){
+			this.model.unset('cover_piece')
+			$('#cover-piece').empty()
+			return true
+		} else {
+			debugger
+		
+			return false
+		}
+	},
 	
 	conditionallyAddSubviews: function(){
 		var m = this.model
-		if(m.coverPiece() !== null){
+		debugger
+		if(m.coverPiece() !== null && !this.checkCoverPiece()){
 			this.addCoverPiece();
-		} 
+		}
 		
 		if(m.get('artist_statemnt') !== null){
 			this.addArtistStatement();
@@ -71,12 +92,6 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 	},
 	
 	addCoverPiece: function(){
-		if(this.coverPieceView !== null){
-			this.removeSubview('#cover-piece', this.coverPieceView)
-		} else {
-			$('#cover-piece-form').remove()
-		}
-		
 		this.coverPieceView = new Locus.Views.CoverPiece({model: this.model.coverPiece()}); 
 		this.addSubview('#cover-piece', this.coverPieceView); 
 		if(this.model.get('cover_piece')){
@@ -153,6 +168,11 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 		});
 		
 		this.model.set({cover_piece: piece});
+		
+		if(this.coverPieceView !== null){
+			this.removeSubview('#cover-piece', this.coverPieceView)
+			$('#cover-piece').remove();
+		}
 		this.addCoverPiece();
 	},
 	
