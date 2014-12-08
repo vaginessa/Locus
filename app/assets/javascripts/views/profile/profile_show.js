@@ -1,8 +1,5 @@
 Locus.Views.Profile = Backbone.CompositeView.extend({
 	initialize: function(){
-		this.coverPiece = this.model.coverPiece();
-	
-		this.coverPieceView = null;
 		this.galleryView = new Locus.Views.Gallery({
 			collection: new Locus.Collections.Pieces(),
 			mode: 'masonry'
@@ -11,6 +8,7 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 		this.listenTo(this.model, "sync", this.conditionallyAddSubviews);
 		this.listenTo(this.model, "sync", this.addGallery);
 		this.listenTo(this.model, "sync", this.render);
+		// this.listenTo(this.model, "set", this.render)
 	},
 	
 	events: {
@@ -31,6 +29,7 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 	template: JST['profile/show'],
 	
 	render: function(){
+		debugger
 		this.checkCoverPiece()
 		var user = {}
 		if(this.model.user){
@@ -72,6 +71,7 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 	conditionallyAddSubviews: function(){
 		var m = this.model
 		if(m.coverPiece() !== null && !this.checkCoverPiece()){
+			debugger
 			this.addCoverPiece();
 		}
 		
@@ -87,12 +87,40 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 	},
 	
 	addCoverPiece: function(){
-		this.coverPieceView = new Locus.Views.CoverPiece({model: this.model.coverPiece()}); 
-		this.addSubview('#cover-piece', this.coverPieceView); 
+		
+		if(this.coverPieceView !== undefined){
+			this.removeSubview('#cover-piece', this.coverPieceView)
+		}
+		
+		this.coverPieceView = new Locus.Views.CoverPiece({ model: this.model.coverPiece()})
+		this.addSubview('#cover-piece', this.coverPieceView);
+		debugger
 		if(this.model.get('cover_piece')){
 			this.model.unset('cover_piece')
 		}	
 	},
+	
+	
+	setCoverPiece: function(piece){
+		var view = this;
+		this.model.save({cover_piece_id: piece.id}, {
+			url: 'api/profiles/' + view.model.id,
+			silent: true
+		});
+		
+		this.model.set({cover_piece: piece});
+		this.model.coverPiece().set(piece)
+		debugger
+			//
+		// if(this.coverPieceView !== null){
+		// 	this.removeSubview('#cover-piece', this.coverPieceView)
+		// 	$('#cover-piece').empty();
+		// 	this.coverPieceView =  new Locus.Views.CoverPiece({model: piece})
+		// }
+		// .set(this.model)
+		this.addCoverPiece();
+	},
+	
 
 	
 	addArtistStatement: function(){
@@ -155,22 +183,7 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 		this.$('.unfollow-btn').toggle(400);
 		this.$('.follow-btn').toggle(400);
 	},
-	
-	setCoverPiece: function(piece){
-		var view = this;
-		this.model.save({cover_piece_id: piece.id}, {
-			url: 'api/profiles/' + view.model.id,
-		});
-		
-		this.model.set({cover_piece: piece});
-		
-		if(this.coverPieceView !== null){
-			this.removeSubview('#cover-piece', this.coverPieceView)
-			$('#cover-piece').remove();
-		}
-		this.addCoverPiece();
-	},
-	
+
 	showEdit: function(){
 		$('#edit').show(400);
 	},

@@ -17,7 +17,6 @@ Locus.Models.Profile = Backbone.Model.extend({
 			this.coverPiece().set({audio: payload.profile.cover_piece.c_p_aud});
 			this.coverPiece().set({video: payload.profile.cover_piece.c_p_vid});
 			delete payload.profile.cover_piece
-			
 		}
 		return payload.profile;
 	},
