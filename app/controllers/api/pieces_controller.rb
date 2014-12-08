@@ -32,7 +32,12 @@ module Api
       else
         render json: @piece.errors.full_messages, status: :unprocessable
       end
-
+    end
+    
+    def destroy
+      @piece = Piece.find(params[:id])
+      @piece.destroy!
+      render json: @piece
     end
     
     private

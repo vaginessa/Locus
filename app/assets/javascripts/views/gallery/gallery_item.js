@@ -1,15 +1,17 @@
 Locus.Views.GalleryItem = Backbone.CompositeView.extend({
 	template: JST['gallery/item'], 
 	
-	initialize: function(){
-		this.$el.addClass('gi')
+	initialize: function(options){
+		this.view = options.view
+		this.$el.addClass('gi');
 		this.listenTo(this.model, 'change:ownprofile', this.render);
 	},
 	
 	events: {
+		'click .remove-piece' : 'deletePiece',
 		'click .set-cover-piece' : 'setAsCoverPiece',
 		'click .piece-artist' : 'navigateToProfile',
-		'click .gallery-item' : 'showPiece',
+		'click .gallery-item' : 'showPiece'
 	},
 	
 	render: function(){
@@ -35,6 +37,16 @@ Locus.Views.GalleryItem = Backbone.CompositeView.extend({
 	setAsCoverPiece: function(event){
 		event.stopImmediatePropagation();
 		this.model.get('profile').setCoverPiece(this.model);
+	},
+	
+	deletePiece: function(event){
+		event.stopImmediatePropagation();
+		var view = this;
+		this.model.destroy({
+			url: "api/pieces/" + this.model.id,
+		})
+		this.collection.remove(this.model);
+		this.view.removeSubview('.gallery-item', this);
 	}
 	
 });

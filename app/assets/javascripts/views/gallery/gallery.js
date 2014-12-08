@@ -9,6 +9,7 @@ Locus.Views.Gallery = Backbone.CompositeView.extend({
 		this.listenTo(this.collection, "sync", this.render)
 		this.listenTo(this.collection, "sync", this.makeMasonry)
 		this.listenTo(this.collection, "all", this.addClassSearch)
+		this.listenTo(this.collection, "remove", this.render)
 	},
 	
 	addClassSearch: function(){
@@ -20,6 +21,7 @@ Locus.Views.Gallery = Backbone.CompositeView.extend({
 	template: JST['main_space/gallery_show'],
 	
 	render: function(){
+		debugger
 		var content = this.template({ pieces: this.collection });
 		this.$el.html(content);
 		this.attachSubviews();
@@ -43,7 +45,7 @@ Locus.Views.Gallery = Backbone.CompositeView.extend({
 	},
 	
 	addGalleryItem: function(model){
-		var galleryItem = new Locus.Views.GalleryItem({ model: model, collection: this.collection });
+		var galleryItem = new Locus.Views.GalleryItem({ model: model, collection: this.collection, view: this });
 		this.addSubview('#gallery-items', galleryItem);
 	},
 	
