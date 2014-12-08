@@ -31,7 +31,6 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 	template: JST['profile/show'],
 	
 	render: function(){
-		debugger
 		this.checkCoverPiece()
 		var user = {}
 		if(this.model.user){
@@ -41,7 +40,6 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 		var content = this.template({ profile: this.model, user: user});
 		this.$el.html(content);
 		this.attachSubviews();
-		debugger
 		if($('.cover-piece').length !== 0){
 			if($('#cover-piece-form')){
 				$('#cover-piece-form').remove()
@@ -67,15 +65,12 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 			$('#cover-piece').empty()
 			return true
 		} else {
-			debugger
-		
 			return false
 		}
 	},
 	
 	conditionallyAddSubviews: function(){
 		var m = this.model
-		debugger
 		if(m.coverPiece() !== null && !this.checkCoverPiece()){
 			this.addCoverPiece();
 		}

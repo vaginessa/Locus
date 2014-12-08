@@ -55,7 +55,6 @@ Locus.Views.mainSpace = Backbone.CompositeView.extend({
 	},
 	
 	getRandomPieces: function(){
-		debugger
 		var view = this;
 		var randomPieces = new Locus.Collections.Pieces();
 		randomPieces.fetch({
