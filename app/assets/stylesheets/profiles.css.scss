@@ -31,9 +31,7 @@
 	margin-bottom: 5px;
 }
 
-.c-pieces-statement{
-	
-}
+
 
 #profile-wrapper {
 	margin: 50px;
@@ -294,6 +292,16 @@ input.btn.save-as {
 	color: white;
 }
 
+#sug-col {
+	position: absolute;
+	width: 80px;
+	height: 40px;
+	background: black;
+	color: white;
+	z-index: 10001;
+	text-align: center;
+	font-size: small;
+}
 
 
 

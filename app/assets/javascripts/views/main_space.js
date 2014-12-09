@@ -111,9 +111,4 @@ Locus.Views.mainSpace = Backbone.CompositeView.extend({
 		$('#follow-popup').popup('show');
 	},
 	
-	hidePopup: function(){
-		
-	}
-
-	
 })

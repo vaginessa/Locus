@@ -22,10 +22,12 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 		'mouseleave #collaborate-badge' : 'hideCol',
 		'mouseenter #un-collaborate-badge' : 'showCol',
 		'mouseleave #un-collaborate-badge' : 'hideCol',
+		'submit form#a-s' : 'submitArtistStatement'
 		
-		'submit form#a-s' : 'submitArtistStatement',
-		'click #collaborate-badge' : 'stopCollaborating',
-		'click #un-collaborate-badge' : 'startCollaborating'
+		// 'click #own-collaborate-badge' : 'stopCollaborating',
+	// 	'click #un-collaborate-badge' : 'startCollaborating',
+	//
+	// 	'click #collaborate-badge' : 'suggestCollaboration'
 	},
 	
 	className: 'profile',
@@ -223,30 +225,34 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 		})
 	},
 	
-	showCol: function(event){
-		event.stopImmediatePropagation();
-		this.$('#c-pop-up').toggle()
-	},
-	
-	hideCol: function(event){
-		event.stopImmediatePropagation();
-		this.$('#c-pop-up').toggle()
-	},
-	
-	
-	stopCollaborating: function(){
-		$.ajax({
-			type: 'PUT',
-			url: 'users/' + this.model.user['user_id'],
-			data: {user: {collaborate: false, id: this.model.user['id']}},
-			success: function(){
-				$('#collaborate-badge').toggle();
-				$('#un-collaborate-badge').toggle();
-			}
-		})
-	},
-	
-	startCollaborating: function(){
-		
-	}
+	// showCol: function(event){
+	// 	event.stopImmediatePropagation();
+	// 	this.$('#c-pop-up').toggle()
+	// },
+	//
+	// hideCol: function(event){
+	// 	event.stopImmediatePropagation();
+	// 	this.$('#c-pop-up').toggle()
+	// },
+	//
+	//
+	// stopCollaborating: function(){
+	// 	$.ajax({
+	// 		type: 'PUT',
+	// 		url: 'users/' + this.model.user['user_id'],
+	// 		data: {user: {collaborate: false, id: this.model.user['id']}},
+	// 		success: function(){
+	// 			$('#collaborate-badge').toggle();
+	// 			$('#un-collaborate-badge').toggle();
+	// 		}
+	// 	})
+	// },
+	//
+	// startCollaborating: function(){
+	//
+	// },
+	//
+	// suggestCollaboration: function(event){
+	// 	var $('#collaboration-request').popup('show')
+	// }
 });
