@@ -3,15 +3,18 @@
 	<div id="login-wrapper"><h1>Locus</h1>
 		<form action="/session" method="POST">
 			<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-	
 			<div id="email">
 			<input type="text" name="user[email]" value="" placeholder="Email"></div>
-	
-	
 			<div id="password">
 			<input type="password" name="user[password]" placeholder="Password"></div>
-	
-			<input type="submit" value="Log in" class="btn btn-login"></input>
+			<input type="submit" value="login" class="btn btn-login"></input>
+		</form>
+		
+		<form action='/session' method="POST">
+			<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+			<input type="hidden" name="user[email]" value="guest@gmail.com">
+			<input type="hidden" name="user[password]" value="guest">
+			<input type="submit" value="guest login" class="btn btn-login"></input>
 		</form>
 	</div>
 </div>
