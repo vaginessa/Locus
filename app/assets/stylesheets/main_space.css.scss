@@ -53,17 +53,17 @@
 }
 
 
-#follower-popup {
-	min-width: 100px;
-	max-width: 60%;
+#follow-popup {
 	min-height: 50px;
-	max-height: 50%;
 	background: #f1f1f1;
 	padding: 5px;
 }
 
-ul#followers {
-	background: #f1f1f1
+ul#follows {
+	display: inline-block;
+	margin: auto;
+	background: #f1f1f1;
+	margin-right: 34px;
 }
 
 a:visited {
@@ -71,17 +71,21 @@ a:visited {
 	color: white;
 }
 
-li.follower-li {
-	width: 100px;
-	font-size: 12px;
-	margin: 0 auto;
-	border-radius: 1px;
-	border: 1px solid black;
-	background: black;
-	padding: 5px;
+a:visited:hover {
+	color: black;
 }
 
-li.follower-li:hover{
+li.follow-li {
+	width: 200px;
+	font-size: 100%;
+	margin: 3px;
+	border-radius: 1px;
+	background: black;
+	padding: 5px;
+	text-align: center;
+}
+
+li.follow-li:hover{
 	color: black;
 	background: white;
 };
@@ -89,6 +93,10 @@ li.follower-li:hover{
 a:link {
 	text-decoration: none;
 	color: white;
+}
+
+a:link:hover {
+	color: black;
 }
 
 

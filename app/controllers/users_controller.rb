@@ -5,6 +5,13 @@ class UsersController < ApplicationController
 
   def show;end
   
+  def index
+    @users = filter_index
+    render :json => @users.to_json(only: [:id, :fname, :lname], include: [:profile])
+  end
+  
+
+  
   def create
     @user = User.new(user_params);
     if @user.save
@@ -19,6 +26,8 @@ class UsersController < ApplicationController
     end
   end
   
+  
+  
   def update
     @user = User.find(params[:id])
     if @user.update!(user_params)
@@ -31,5 +40,17 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:email, :fname, :lname, :password, :collaborate)
+  end
+  
+  def filter_index
+    f = params[:filter]
+    if f == 'followers'
+      current_user.followers
+    elsif f == 'following'
+      current_user.followees
+    else
+      User.all
+    end
+    
   end
 end

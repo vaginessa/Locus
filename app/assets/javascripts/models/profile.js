@@ -3,6 +3,7 @@ Locus.Models.Profile = Backbone.Model.extend({
 	
 	initialize: function(){
 		this.cover_piece = null;
+		$('#follow-popup').popup('hide');
 	},
 	
 	parse: function(payload){

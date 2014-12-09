@@ -1,5 +1,5 @@
-Locus.Collections.Followees = Backbone.Collection.extend({
-	url: "api/follow_units"
+Locus.Collections.FollowUsers = Backbone.Collection.extend({
+	url: "users"
 	
 });
 

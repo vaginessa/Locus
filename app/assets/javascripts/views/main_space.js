@@ -7,12 +7,16 @@ Locus.Views.mainSpace = Backbone.CompositeView.extend({
 		this.listenToOnce(this.collection, "sync", this.addUserSidebar);
 		this.listenTo(this.collection, "sync", this.render);
 		this.listenTo(this.collection, "add", this.render);
+		
+
 	}, 
 	
 	events: {
 		'click #random-tab' : 'getRandomPieces',
 		'click #home-tab' : 'showMainGallery',
-		'click #followers-btn' : 'showFollowers'
+		'click #followers-btn' : 'fetchFollowUsers',
+		'click #following-btn' : 'fetchFollowUsers',
+		'click link' : 'hidePopup'
 	},
 	
 	
@@ -24,6 +28,7 @@ Locus.Views.mainSpace = Backbone.CompositeView.extend({
 		var content = this.template();
 		this.$el.html(content);
 		this.attachSubviews();
+
 		return this;
 	},
 	
@@ -76,21 +81,39 @@ Locus.Views.mainSpace = Backbone.CompositeView.extend({
 		this.addGallery();
 	},
 	
-	showFollowers: function(){
-
-		var followers = this.collection.current_user['followers']
-			
-		var followersList = $('#followers');
-		followersList.empty();
-		_.each(followers, function(follower){
-
-			var profileUrl = '#/profiles/' + follower.profile_id
-			var profileLink = '<a href=' + profileUrl + '>' + follower.follower_fname + " " + follower.follower_lname + '</a>'
-			var follower = $('<li>').addClass('follower-li').html(profileLink);
-			followersList.append(follower);
+	fetchFollowUsers: function(event){
+		var filter = 'following'
+			debugger
+		if(event.currentTarget.id === 'followers-btn'){
+			filter = 'followers'
+		}
+		
+		var view = this;
+		var users = new Locus.Collections.FollowUsers();
+		users.fetch({
+			url: 'users',
+			data: {filter: filter },
+			success: function(){
+				view.showFollowUsers(users, filter);
+			}
+		})
+	},
+	
+	showFollowUsers: function(users, filter){
+		var followList = $('#follows');
+		followList.empty();
+		users.each( function(user){
+			var profileUrl = '#/profiles/' + user.get('profile').id;
+			var profileLink = '<a href=' + profileUrl + '>' + user.get('fname') + " " + user.get('lname') + '</a>';
+			var user = $('<li>').addClass('follow-li').html(profileLink);
+			followList.append(user);
 		});
 		
-		$('#follower-popup').popup('show');
+		$('#follow-popup').popup('show');
+	},
+	
+	hidePopup: function(){
+		
 	}
 
 	
