@@ -7,8 +7,6 @@ Locus.Views.mainSpace = Backbone.CompositeView.extend({
 		this.listenToOnce(this.collection, "sync", this.addUserSidebar);
 		this.listenTo(this.collection, "sync", this.render);
 		this.listenTo(this.collection, "add", this.render);
-		
-
 	}, 
 	
 	events: {
@@ -43,7 +41,7 @@ Locus.Views.mainSpace = Backbone.CompositeView.extend({
 		this.$("#gallery").empty();
 		this.addSubview('#gallery', this.galleryView);
 		if(this.collection.length === 0){
-			this.$('#empty-gallery').show()
+			this.$('#empty-gallery').show();
 		}
 	},
 	
