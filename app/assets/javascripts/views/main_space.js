@@ -83,7 +83,6 @@ Locus.Views.mainSpace = Backbone.CompositeView.extend({
 	
 	fetchFollowUsers: function(event){
 		var filter = 'following'
-			debugger
 		if(event.currentTarget.id === 'followers-btn'){
 			filter = 'followers'
 		}

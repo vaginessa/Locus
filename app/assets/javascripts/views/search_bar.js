@@ -21,7 +21,6 @@ Locus.Views.SearchBar = Backbone.View.extend({
 	
 	searchByTags: function(event){
 		event.preventDefault()
-		debugger
 		this.extractTags();
 		Backbone.history.navigate("search", {trigger: true})
 	},
