@@ -3,7 +3,9 @@ module Api
     
     def show
       @profile = Profile.find(params[:id])
-      @followed, @follow_unit_id = followed_by_current_user?(@profile.user)
+      @followed = followed_by_current_user?(@profile.user)
+      @follow_unit_id = FollowUnit.find_by_ids(current_user.id, @profile.user.id)[0].id
+
       @cover_piece = @profile.cover_piece
       if @cover_piece
         @image = @cover_piece.image

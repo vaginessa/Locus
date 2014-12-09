@@ -11,6 +11,8 @@ json.profile do
     json.c_p_aud @audio
     json.c_p_vid @video
   end
+  json.follow_unit_id @follow_unit_id
+  json.follows @followed
   @profile.cover_piece
   json.artist_statement @profile.artist_statement
   json.created_at @profile.created_at
