@@ -26,7 +26,6 @@ Locus.Views.mainSpace = Backbone.CompositeView.extend({
 		var content = this.template();
 		this.$el.html(content);
 		this.attachSubviews();
-
 		return this;
 	},
 	
@@ -91,12 +90,12 @@ Locus.Views.mainSpace = Backbone.CompositeView.extend({
 			url: 'users',
 			data: {filter: filter },
 			success: function(){
-				view.showFollowUsers(users, filter);
+				view.showFollowUsers(users);
 			}
 		})
 	},
 	
-	showFollowUsers: function(users, filter){
+	showFollowUsers: function(users){
 		var followList = $('#follows');
 		followList.empty();
 		users.each( function(user){

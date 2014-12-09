@@ -1,6 +1,6 @@
 class FollowUnit < ActiveRecord::Base
   validates :follower_id, :followee_id, presence: true
-  validates :follower_id, uniqueness: {scope: :followee_id}
+  validates :follower_id, uniqueness: { scope: :followee_id }
   
   belongs_to(
     :follower,
@@ -15,12 +15,5 @@ class FollowUnit < ActiveRecord::Base
     foreign_key: :followee_id,
     primary_key: :id
   )
-  
-  def self.find_by_ids(follower_id, followee_id)
-    follow_unit = FollowUnit.find_by_sql([
-      'SELECT * FROM follow_units WHERE follower_id = ? AND followee_id = ?',
-      follower_id,
-      followee_id
-    ])
-  end
+
 end

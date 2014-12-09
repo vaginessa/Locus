@@ -10,16 +10,11 @@ Locus.Views.UploadBar = Backbone.CompositeView.extend({
 	template: JST["main_space/upload_bar"],
 	
 	events: {
-		'submit form' : 'hack',
 		'click #random-tab' : 'toggleButton',
 		'click #home-tab' : 'toggleButton',
 		'click #image-button' : 'uploadMedia',
 		'click #audio-button' : 'uploadMedia',
 		'click #video-button' : 'uploadMedia',
-	},
-	
-	hack: function(event){
-		event.preventDefault();
 	},
 	
 	render: function(){

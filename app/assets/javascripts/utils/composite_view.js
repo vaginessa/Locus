@@ -1,9 +1,7 @@
 Backbone.CompositeView = Backbone.View.extend({
 	
 	addSubview: function (selector, subview, options) {
-		if(options === undefined) {
-			options = {}
-		}
+		if(options === undefined) { options = {} }
 		
 		if(options.prepend){ 
 		  this.subviews(selector).unshift(subview);
@@ -14,9 +12,7 @@ Backbone.CompositeView = Backbone.View.extend({
 	},
 	
 	attachSubview: function(selector, subview, options) {
-		if(options === undefined) {
-			options = {}
-		}
+		if(options === undefined) { options = {} }
 		
 		if(options.prepend){
 			this.$(selector).prepend(subview.$el);

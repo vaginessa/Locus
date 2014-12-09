@@ -15,13 +15,11 @@ Locus.Collections.Pieces = Backbone.Collection.extend({
 	},
 	
 	parse: function(payload){
-		
 		if(payload.current_user){
 			this.current_user = { 
 				id: payload.current_user.current_user_id, 
 				fname: payload.current_user.fname, 
 				lname: payload.current_user.lname,
-				following_units: payload.current_user.following_units,
 				followers: payload.current_user.followers,
 				followees: payload.current_user.followees,
 				profile_id: payload.current_user.profile_id
@@ -31,16 +29,6 @@ Locus.Collections.Pieces = Backbone.Collection.extend({
 		
 		return payload.pieces;
 	},
-	
-	findFollowUnit: function(id){
-		_(this.current_user.following_units).each(function(follow_unit){
-			if(follow_unit.unit_id === id){
-				return follow_unit;
-			}
-		})
-	}
-		
-	
 });
 
 Locus.pieces = new Locus.Collections.Pieces;

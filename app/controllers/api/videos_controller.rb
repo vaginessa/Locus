@@ -1,8 +1,6 @@
 module Api
   class VideosController < ApplicationController
   
-    def new;end
-  
     def create
       @video = Video.new(video_params)
       if @video.save!
@@ -16,5 +14,6 @@ module Api
     def video_params
       params.require(:video).permit(:url, :piece_id)
     end
+    
   end
 end

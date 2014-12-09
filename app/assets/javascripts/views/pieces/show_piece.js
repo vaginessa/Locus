@@ -1,6 +1,5 @@
 Locus.Views.PieceShow = Backbone.View.extend({
 
-
 	template: JST["piece/show"],
 	
 	render: function(){
@@ -17,7 +16,7 @@ Locus.Views.PieceShow = Backbone.View.extend({
 	toProfile: function(){
 		var url = '#/profiles/' + this.model.get('profile_id');
 		$('#gallery-item-show').popup('hide');
-		Backbone.history.navigate(url, {trigger:true});
+		Backbone.history.navigate(url, { trigger: true });
 	}
 	
 });

@@ -1,10 +1,8 @@
 module Api
   class AudioController < ApplicationController
-  
-    def new;end
-  
+
     def create
-      @audio = Audio.new(audio_params  )
+      @audio = Audio.new(audio_params)
       if @audio.save!
         render json: @audio
       else
@@ -16,6 +14,7 @@ module Api
     def audio_params
       params.require(:audio).permit(:url, :piece_id)
     end
+    
   end
 end
 

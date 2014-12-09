@@ -13,7 +13,6 @@ module Api
       render json: @piece
     end
     
-    
     def create
       @piece = Piece.new(piece_params)
       @piece.user_id = current_user.id
@@ -42,6 +41,10 @@ module Api
     
     private
     
+    def piece_params
+      params.require(:piece).permit(:title, :statement, :media_type, media: [:url], tags: [:name])
+    end
+    
     def create_tag_units(tag_params, piece_id)
       tag_params.each do |tag_name|
         tag = Tag.find_by_name(tag_name)
@@ -52,40 +55,52 @@ module Api
       end
     end
     
-    def piece_params
-      params.require(:piece).permit(:title, :statement, :media_type, media: [:url], tags: [:name])
-    end
-    
     def filter_index
       f = params[:filter]
       if f == 'feed'
+        feed 
+      elsif f == 'own'
+        own
+      elsif f == 'random'
+        random
+      elsif f == 'search'
+        search
+      end
+    end
+    
+    def feed
+      Piece.find_by_sql([
+        "SELECT pieces.*
+        FROM pieces LEFT OUTER JOIN follow_units ON pieces.user_id = follow_units.followee_id
+        WHERE follow_units.follower_id = ? OR pieces.user_id = ? ORDER BY pieces.updated_at DESC",
+        current_user.id,
+        current_user.id
+      ])
+    end
+    
+    def own
+      Piece.where('user_id= ?', params[:user_id])
+    end
+    
+    def random
+      ignore_ids1 = current_user.followed_pieces.pluck(:id)
+      ignore_ids2 = current_user.pieces.pluck(:id)
+      ignore_ids = ignore_ids1 | ignore_ids2
+      
+      Piece.where('id NOT IN (?)', ignore_ids).order('RANDOM()').limit(10).order('updated_at DESC').to_a
+      (Piece.all - current_user.followed_pieces - current_user.pieces).sample(10)
+    end
+    
+    def search
+      unless params[:tagged] 
+        Piece.all
+      else
         Piece.find_by_sql([
           "SELECT pieces.*
-          FROM pieces LEFT OUTER JOIN follow_units ON pieces.user_id = follow_units.followee_id
-          WHERE follow_units.follower_id = ? OR pieces.user_id = ? ORDER BY pieces.updated_at DESC",
-          current_user.id,
-          current_user.id
+          FROM pieces JOIN tag_units ON pieces.id = tag_units.piece_id JOIN tags ON tags.id = tag_units.tag_id
+          WHERE tags.name IN (?)",
+          params[:tags]
         ])
-      elsif f == 'own'
-        Piece.where('user_id= ?', params[:user_id])
-      elsif f == 'random'
-        ignore_ids1 = current_user.followed_pieces.pluck(:id)
-        ignore_ids2 = current_user.pieces.pluck(:id)
-        ignore_ids = ignore_ids1 | ignore_ids2
-        
-        Piece.where('id NOT IN (?)', ignore_ids).order('RANDOM()').limit(10).order('updated_at DESC').to_a
-        (Piece.all - current_user.followed_pieces - current_user.pieces).sample(10)
-      elsif f == 'search'
-        unless params[:tagged] 
-          Piece.all
-        else
-          Piece.find_by_sql([
-            "SELECT pieces.*
-            FROM pieces JOIN tag_units ON pieces.id = tag_units.piece_id JOIN tags ON tags.id = tag_units.tag_id
-            WHERE tags.name IN (?)",
-            params[:tags]
-          ])
-        end
       end
     end
     

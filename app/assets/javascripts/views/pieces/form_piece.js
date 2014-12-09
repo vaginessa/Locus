@@ -8,11 +8,11 @@ Locus.Views.PieceForm = Backbone.View.extend({
 		this.listenTo(this.model, "update", this.remove)
 	},
 	
+	template: JST["piece/form"],
+	
 	events: {
 		"submit form" : "postPiece",
 	},
-	
-	template: JST["piece/form"],
 	
 	render: function(){
 		var content = this.template({ piece: this.model, media: this.media });
@@ -56,7 +56,7 @@ Locus.Views.PieceForm = Backbone.View.extend({
 			
 	 	})
 		
-		$('#piece-form-tags').css("z-index", '100000')
+		$('#piece-form-tags').css("z-index", '100000') //ugh
 	 },
 	 
 	 extractTags: function(){

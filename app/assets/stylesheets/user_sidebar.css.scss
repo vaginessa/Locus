@@ -1,0 +1,53 @@
+#user-sidebar{
+	float: left;
+	border-radius: 2px;
+	min-height: 100px;
+	width: 200px;
+	margin-right: 10px;
+	display: inline-block;
+	font-weight: bold;
+	padding-left: 5px;
+	font-size: 150%;
+	text-align: top;
+	background-color: #f1f1f1;
+	
+}
+
+#user-sidebar > div {
+	margin: 0px;
+}
+
+#user-sidebar #user-name:hover {
+	cursor: pointer;
+	cursor: hand;
+	font-style: italic;
+}
+
+#user-sidebar #user-name {
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+#user-sidebar .btn {
+	clear: both;
+	border-radius: 2px;
+	color: white;
+	font-size: 15px;
+	background: black;
+	padding: 10px 20px 10px 20px;
+	text-decoration: none;
+	margin: 5px;
+	margin-left: 0px;
+	width: 65px;
+}
+
+#user-sidebar .btn:hover {
+	cursor: pointer;
+	color: black;
+	background: white;
+}
+
+
+#user-sidebar:last-child{
+	margin-bottom: 0px;
+}

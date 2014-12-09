@@ -1,1 +1,1 @@
-json.(@piece, :id, :title, :user_id, :statement )
+json.(@piece, :id, :title, :user_id, :statement)

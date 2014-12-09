@@ -1,9 +1,7 @@
 Locus.Views.ArtistStatementForm = Backbone.View.extend({
+	
 	initialize: function(options){
-		if(!options){
-			options = {}
-		}
-		
+		if(!options){ options = {}; }
 		this.statement = options.text
 	},
 	
@@ -13,8 +11,6 @@ Locus.Views.ArtistStatementForm = Backbone.View.extend({
 		var content = this.template({ statement: this.statement });
 		this.$el.html(content);
 		return this;
-	},
-	
-	
+	}
 	
 });

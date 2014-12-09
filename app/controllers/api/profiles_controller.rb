@@ -31,10 +31,10 @@ module Api
     def profile_params
       params.require(:profile).permit(:cover_piece_id, :artist_statement, :collaborative_statement)
     end
-    
    
     def followed_by_current_user?(user)
       current_user.follows(user)
     end
+    
   end
 end

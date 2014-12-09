@@ -1,8 +1,6 @@
 module Api
   class ImagesController < ApplicationController
   
-    def new;end
-  
     def create
       @image = Image.new(image_params)
       if @image.save!
@@ -17,5 +15,6 @@ module Api
     def image_params
       params.require(:image).permit(:url, :piece_id)
     end
+    
   end
 end

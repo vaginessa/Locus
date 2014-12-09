@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   validates :email, :password_digest, :session_token, presence: true, uniqueness: true
   validates :fname, presence: true
   
-  after_initialize :ensure_session_token, :ensure_collaborate
+  after_initialize :ensure_session_token
   
   has_one :profile
   
@@ -28,12 +28,8 @@ class User < ActiveRecord::Base
   )
   
   has_many :followers, through: :followed_units, source: :follower
-  
-  
   has_many :followees, through: :following_units, source: :followee
   has_many :followed_pieces, through: :followees, source: :pieces
-
-  
   
   def password=(password)
     @password = password
@@ -59,20 +55,10 @@ class User < ActiveRecord::Base
     return nil if @user.nil?
     @user.is_password?(password) ? @user : nil
   end
-
-  def follows(user)
-    following_units.each do |following_unit|
-      return [true, following_unit.id] if user.id == following_unit.followee_id
-    end
-    [false, nil]
-  end
   
   private
   def ensure_session_token
     self.session_token ||= self.class.generate_session_token
   end
 
-  def ensure_collaborate
-    self.collaborate ||= true 
-  end
 end

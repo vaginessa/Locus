@@ -1,0 +1,78 @@
+
+#nav-bar a:link {
+	text-decoration: none;
+	font-size: 150%;
+	color: black;
+}
+
+#nav-bar a:visited {
+    text-decoration: none;
+	color: black;
+}
+
+#nav-bar {
+	margin: -10px;
+	height: 60px;
+	padding: 5px;
+	padding-bottom: -2px;
+	margin-bottom: 20px;
+	text-align: bottom;
+	background-color: #f1f1f1;
+}
+
+
+#logo {
+	margin-top: 12px;
+	text-align: center;
+	display: inline-block;
+	color: black;
+	float: left;
+	font-size: 200%;
+}
+
+
+
+.btn.btn-logout {
+	display: inline-block;
+    font-size: 18px;
+	margin: 0px;
+	margin-left: 5px;
+	margin-top: 24px;
+	padding: 6px 4px 6px 4px;
+	float: left;
+	width: 100px;
+	border-radius: 2px;
+}
+
+ul#search-tags {
+	margin-top: 26px;
+	float: right;
+}
+
+#submit-search {
+	float: right;
+	margin-right: 10px;
+	border-radius: 2px;
+	border: 1px solid black;
+	width: 50px;
+	height: 22px;
+	margin-top: 26px;
+	margin-left: 3px;
+	padding-top: 9px;
+	color: white;
+	background: black;
+	text-align: center;
+	line-height: 15px;
+}
+
+#submit-search:hover {
+	background: white;
+	color: black;
+	cursor: pointer;
+	cursor: hand;
+
+}
+
+a.btn:hover #nav-bar {
+	background: #fffffa ;
+}

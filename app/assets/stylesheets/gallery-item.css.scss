@@ -1,0 +1,166 @@
+
+.piece-statement {
+	min-height: 50px;
+	width: 65%;
+	display: inline-block;
+	border-left: 1px solid white;
+	float: left;
+	font-size: 100%;
+	margin-left: 5px;
+	padding-top: 5px;
+	padding-left: 5px;
+	margin-bottom: 0px;
+	
+}
+
+.title-and-artist {
+	float: left;
+	display: inline-block;
+}
+
+.title-and-artist .piece-title {
+	display: block;
+	float: left;
+	padding: 5px;
+	font-size: 150%;	
+	font-weight: bold;
+	margin: 5px;
+	
+}
+
+.title-and-artist .piece-artist {
+	display: block;
+	float: left;
+	padding: 5px;
+	font-size: 100%;
+}
+
+.gallery-item {
+	padding: 20px;
+	width: 100%;
+	min-height: 100px;
+	margin: 8px;
+	margin-left: -38px;
+	float: left;
+	cursor: pointer;
+	border-radius: 1px;
+	border-bottom: 1px solid black;
+}
+
+.gallery-item:hover {
+	cursor: hand;
+	background-color: #f1f1f1;
+}
+
+.gallery-item > div {
+	float: left;
+	margin-left: 10px;
+}
+
+.gallery-item video {
+	float: left;
+}
+
+.gallery-item img {
+	float: left;
+}
+
+.gallery-item audio {
+	float: left;
+}
+
+
+.gallery-item .piece-info-wrapper {
+	color: white;
+	background-color: black;
+	display: inline-block;
+	border-radius: 2px;
+	float: left;
+	min-height: 60px;
+	width: 30%;
+}
+
+.gallery-item .piece-title {
+	padding: 5px;
+	padding-left: 0px;
+	padding-top: 0px;
+	font-size: 200%;	
+	font-weight: bold;
+	margin: 5px;
+	margin-top: 0px;
+	word-wrap: normal;
+	
+}
+
+.gallery-item .piece-artist {
+	min-height: 10px;
+	min-width: 30px;
+	float: left;
+	padding: 5px;
+	font-size: 80%;
+	color: white !important;
+}
+
+.gallery-item a:link {
+	text-decoration: none;
+	color: green;
+}
+
+.gallery-item a:visited {
+    text-decoration: none;
+	color: white;
+}
+
+.piece-artist:hover {
+	font-style: italic;
+}
+
+#gallery-item-show {
+	margin-top: 180px;
+	margin-bottom: 80px;
+	border-radius: 2px;
+	min-width: 30%;
+	max-width: 65%;
+	min-height: 100px;
+	padding: 10px;
+	background: black;
+	color: white;
+}
+
+.s-piece-info-wrapper {
+	margin-top: 8px;
+	width: 100%;
+}
+
+.title-and-artist {
+	display: inline-block;
+	width: 25%;
+	float: left;
+	word-wrap: normal;
+	margin-right: 5px;
+}
+
+.s-piece-statement{
+	border-left: 1px solid white;
+	display: inline-block;
+	max-width: 30px;
+	min-width: 70%;
+	float: left;
+	margin-left: 5px;
+	padding-left: 5px;
+}
+
+.s-piece-artist {
+	margin-top: 5px;
+	font-size: 75%;
+	cursor: pointer;
+	cursor: hand;
+}
+
+.s-piece-artist:hover {
+	font-style: italic;
+}
+
+.s-piece-title{
+	font-weight: bold;
+}

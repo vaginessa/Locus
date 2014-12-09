@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   
-  
   def new; end
 
   def show;end
@@ -9,8 +8,6 @@ class UsersController < ApplicationController
     @users = filter_index
     render :json => @users.to_json(only: [:id, :fname, :lname], include: [:profile])
   end
-  
-
   
   def create
     @user = User.new(user_params);
@@ -25,8 +22,6 @@ class UsersController < ApplicationController
       render :new
     end
   end
-  
-  
   
   def update
     @user = User.find(params[:id])
@@ -51,6 +46,6 @@ class UsersController < ApplicationController
     else
       User.all
     end
-    
   end
+  
 end

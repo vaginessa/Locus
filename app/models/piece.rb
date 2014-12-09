@@ -38,8 +38,5 @@ class Piece < ActiveRecord::Base
       self.video = Video.new(url: media_params[:url])
     end
   end
-  
-  def follow_unit(current_user_id)
-    FollowUnit.find_by_ids(current_user_id, user_id)
-  end
+
 end

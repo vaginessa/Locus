@@ -1,7 +1,5 @@
 module Api
-  
   class FollowUnitsController < ApplicationController
-    def new;end
     
     def create
       @follow_unit = FollowUnit.new(follow_unit_params)

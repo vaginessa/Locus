@@ -3,9 +3,7 @@ Locus.Models.Image = Backbone.Model.extend({
 	rootUrl: "api/images",
 	
 	mediaHtml: function(options){
-		if(!options){
-			options = {};
-		}
+		if(!options){ options = {};}
 		
 		var url = "'" + this.get('url') + "'";
 		if(options.form){

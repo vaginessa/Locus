@@ -11,23 +11,13 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 	},
 	
 	events: {
-		'click #collaborate-badge' : 'showCollaborateStatement',
 		'click .follow-btn' : 'followUser',
 		'click .unfollow-btn' : 'unfollowUser',
 		'click .set-cover-piece' : 'setCoverPiece',
-		'mouseenter .art.pencil' : 'showEdit',
-		'mouseleave .art.pencil' : 'hideEdit',
+		'mouseenter .art.pencil' : 'toggleEdit',
+		'mouseleave .art.pencil' : 'toggleEdit',
 		'click .art.pencil' : 'editArtistStatement',
-		'mouseenter #collaborate-badge' : 'showCol',
-		'mouseleave #collaborate-badge' : 'hideCol',
-		'mouseenter #un-collaborate-badge' : 'showCol',
-		'mouseleave #un-collaborate-badge' : 'hideCol',
 		'submit form#a-s' : 'submitArtistStatement'
-		
-		// 'click #own-collaborate-badge' : 'stopCollaborating',
-	// 	'click #un-collaborate-badge' : 'startCollaborating',
-	//
-	// 	'click #collaborate-badge' : 'suggestCollaboration'
 	},
 	
 	className: 'profile',
@@ -85,12 +75,6 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 		if(m.get('artist_statemnt') !== null){
 			this.addArtistStatement();
 		}
-		
-		if(m.user['collaborate'] === true){
-			this.addCollaborativeStatement(true);
-		} else {
-			this.addCollaborativeStatement(false);
-		};
 	},
 	
 	addCoverPiece: function(){
@@ -128,14 +112,6 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 		this.addSubview('#artist-statement', this.artistStatementView);
 		
 	},
-	
-	addCollaborativeStatement: function(){
-		if(!this.colStatementView){
-			this.colStatementView = new Locus.Views.CollaborativeStatement({model: this.model.get('collaborative_statment')});
-		}
-		this.addSubview('#collaborative-statement', this.colStatementView);
-	},
-	
 	
 	addGallery: function(){
 		var view = this;
@@ -182,15 +158,10 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 		this.$('.follow-btn').toggle(400);
 	},
 
-	showEdit: function(){
-		$('#edit').show(400);
+	toggleEdit: function(){
+		$('#edit').toggle(400);
 	},
-	
-	hideEdit: function(){
-		
-		$("#edit").hide(400);
-	},
-	
+
 	editArtistStatement: function(){
 		if(this.artistStatementView !== null){
 			this.removeSubview('#artist-statement', this.artistStatementView);
@@ -198,14 +169,6 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 		
 		this.artistStatementView = new Locus.Views.ArtistStatementForm({ text: this.model.get('artist_statement') });
 		this.addArtistStatement();
-	},
-	
-	editCollaborativeStatement: function(){
-		if(this.colStatementView !== null){
-			this.removeSubview('#collaborative-statement', this.colStatementView);
-		}
-		this.colStatementView = new Locus.Views.CollaborativeStatementForm({ text: this.model.get('collaborative_statement') });
-		this.addCollaborativeStatement();
 	},
 	
 	submitArtistStatement: function(event){
@@ -223,36 +186,5 @@ Locus.Views.Profile = Backbone.CompositeView.extend({
 				view.addArtistStatement();
 			}
 		})
-	},
-	
-	// showCol: function(event){
-	// 	event.stopImmediatePropagation();
-	// 	this.$('#c-pop-up').toggle()
-	// },
-	//
-	// hideCol: function(event){
-	// 	event.stopImmediatePropagation();
-	// 	this.$('#c-pop-up').toggle()
-	// },
-	//
-	//
-	// stopCollaborating: function(){
-	// 	$.ajax({
-	// 		type: 'PUT',
-	// 		url: 'users/' + this.model.user['user_id'],
-	// 		data: {user: {collaborate: false, id: this.model.user['id']}},
-	// 		success: function(){
-	// 			$('#collaborate-badge').toggle();
-	// 			$('#un-collaborate-badge').toggle();
-	// 		}
-	// 	})
-	// },
-	//
-	// startCollaborating: function(){
-	//
-	// },
-	//
-	// suggestCollaboration: function(event){
-	// 	var $('#collaboration-request').popup('show')
-	// }
+	}
 });
