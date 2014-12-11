@@ -88,7 +88,7 @@ module Api
       ignore_ids = ignore_ids1 | ignore_ids2
       
       Piece.where('id NOT IN (?)', ignore_ids).order('RANDOM()').limit(10).order('updated_at DESC').to_a
-      (Piece.all - current_user.followed_pieces - current_user.pieces).sample(10)
+      # (Piece.all - current_user.followed_pieces - current_user.pieces).sample(10)
     end
     
     def search
