@@ -4,7 +4,11 @@ module Api
     def show
       @profile = Profile.find(params[:id])
       @followed = followed_by_current_user?(@profile.user)
-      @follow_unit_id = FollowUnit.find_by_ids(current_user.id, @profile.user.id)[0].id
+      @follow_unit_id = FollowUnit.find_by_ids(current_user.id, @profile.user.id)[0]
+      
+      if @follow_unit_id
+        @follow_unit_id = @follow_unit_id.id
+      end
 
       @cover_piece = @profile.cover_piece
       if @cover_piece
