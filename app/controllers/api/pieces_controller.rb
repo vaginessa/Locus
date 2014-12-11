@@ -91,7 +91,7 @@ module Api
       if ignore_ids.length == 0 
         Piece.all.order('RANDOM()').limit(10).order('updated_at DESC').to_a
       else
-        Piece.where('id NOT IN (?) AND ', ignore_ids).order('RANDOM()').limit(10).order('updated_at DESC').to_a
+        Piece.where('id NOT IN (?)', ignore_ids).order('RANDOM()').limit(10).order('updated_at DESC').to_a
       end
       
     end
