@@ -78,6 +78,8 @@ module Api
       ])
     end
     
+    
+  
     def own
       Piece.where('user_id= ?', params[:user_id])
     end
@@ -86,9 +88,12 @@ module Api
       ignore_ids1 = current_user.followed_pieces.pluck(:id)
       ignore_ids2 = current_user.pieces.pluck(:id)
       ignore_ids = ignore_ids1 | ignore_ids2
+      if ignore_ids.length == 0 
+        Piece.all.order('RANDOM()').limit(10).order('updated_at DESC').to_a
+      else
+        Piece.where('id NOT IN (?) AND ', ignore_ids).order('RANDOM()').limit(10).order('updated_at DESC').to_a
+      end
       
-      Piece.where('id NOT IN (?)', ignore_ids).order('RANDOM()').limit(10).order('updated_at DESC').to_a
-      # (Piece.all - current_user.followed_pieces - current_user.pieces).sample(10)
     end
     
     def search
