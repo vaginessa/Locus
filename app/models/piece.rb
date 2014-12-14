@@ -1,5 +1,4 @@
 class Piece < ActiveRecord::Base
-  
   validates :user_id, :media_type, presence: true
   
   belongs_to(
