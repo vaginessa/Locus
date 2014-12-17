@@ -89,9 +89,9 @@ module Api
       ignore_ids2 = current_user.pieces.pluck(:id)
       ignore_ids = ignore_ids1 | ignore_ids2
       if ignore_ids.length == 0 
-        Piece.all.order('RANDOM()').limit(10).order('updated_at DESC')
+        Piece.all.order('RANDOM()').limit(10)# .order('updated_at DESC')
       else
-        Piece.where('id NOT IN (?)', ignore_ids).order('RANDOM()').limit(10).order('updated_at DESC')
+        Piece.where('id NOT IN (?)', ignore_ids).order('RANDOM()').limit(10)# .order('updated_at DESC')
       end
       
     end
