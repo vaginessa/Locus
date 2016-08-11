@@ -10,6 +10,8 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
+
 //= require jquery
 //= require jquery_ujs
 //= require jquery.serializeJSON
@@ -22,6 +24,7 @@
 //= require tag-it.js
 //= require imagesloaded.pkgd.js
 //= require_tree ../templates
+//= require_tree ./fileupload
 //= require_tree ./utils
 //= require_tree ./models
 //= require_tree ./collections

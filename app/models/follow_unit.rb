@@ -17,7 +17,7 @@ class FollowUnit < ActiveRecord::Base
   )
 
   def self.find_by_ids(follower_id, followee_id)
-    follow_unit = FollowUnit.find_by_sql([
+    FollowUnit.find_by_sql([
       'SELECT * FROM follow_units WHERE follower_id = ? AND followee_id = ?',
       follower_id,
       followee_id

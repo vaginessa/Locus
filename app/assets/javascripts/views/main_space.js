@@ -7,7 +7,28 @@ Locus.Views.mainSpace = Backbone.CompositeView.extend({
 		this.listenToOnce(this.collection, "sync", this.addUserSidebar);
 		this.listenTo(this.collection, "sync", this.render);
 		this.listenTo(this.collection, "add", this.render);
-	}, 
+    
+          // Initialize the jQuery File Upload widget:
+        $('#fileupload').fileupload({
+          autoUpload: true,
+          uploadTemplate: function (o) {
+                var rows = $();
+                $.each(o.files, function (index, file) {
+                  console.log(file);
+                    var row = $('<li class="span3">' +
+                        '<div class="thumbnail">' +
+                          '<div class="preview" style="text-align: center;"></div>' +
+                          '<div class="progress progress-success progress-striped active">' +
+                            '<div class="bar" style="width:0%;"></div>' +
+                          '</div>' +
+                        '</div>');
+                    rows = rows.add(row);
+                });
+                return rows;
+            },
+
+	    }); 
+    },
 	
 	events: {
 		'click #random-tab' : 'getRandomPieces',
@@ -31,9 +52,9 @@ Locus.Views.mainSpace = Backbone.CompositeView.extend({
 	
 	addUserSidebar: function() {
 		$("#user-sidebar").empty();
-		var userSideBarView = new Locus.Views.UserSidebar({ user: this.collection.current_user })
+		var userSideBarView = new Locus.Views.UserSidebar({ user: this.collection.current_user });
 
-		this.addSubview('#user-sidebar', userSideBarView)
+		this.addSubview('#user-sidebar', userSideBarView);
 	},
 	
 	addGallery: function() {
@@ -45,7 +66,7 @@ Locus.Views.mainSpace = Backbone.CompositeView.extend({
 	},
 	
 	addPostForm: function(){
-		var pieceFormView = new Locus.Views.PieceForm({ collection: this.collection }) 
+		var pieceFormView = new Locus.Views.PieceForm({ collection: this.collection }); 
 		this.addSubview('#post-form', pieceFormView);
 	},
 	
@@ -60,8 +81,8 @@ Locus.Views.mainSpace = Backbone.CompositeView.extend({
 		randomPieces.fetch({
 			data: {filter: 'random'}
 		});
-		this.randomGalleryView = new Locus.Views.Gallery({collection: randomPieces})
-		this.showRandomPieces()
+		this.randomGalleryView = new Locus.Views.Gallery({collection: randomPieces});
+		this.showRandomPieces();
 	},
 	
 	showRandomPieces: function(randomPieces){
@@ -79,9 +100,9 @@ Locus.Views.mainSpace = Backbone.CompositeView.extend({
 	},
 	
 	fetchFollowUsers: function(event){
-		var filter = 'following'
+		var filter = 'following';
 		if(event.currentTarget.id === 'followers-btn'){
-			filter = 'followers'
+			filter = 'followers';
 		}
 		
 		var view = this;
@@ -92,7 +113,7 @@ Locus.Views.mainSpace = Backbone.CompositeView.extend({
 			success: function(){
 				view.showFollowUsers(users);
 			}
-		})
+		});
 	},
 	
 	showFollowUsers: function(users){
@@ -108,4 +129,4 @@ Locus.Views.mainSpace = Backbone.CompositeView.extend({
 		$('#follow-popup').popup('show');
 	},
 	
-})
+});

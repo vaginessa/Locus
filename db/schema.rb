@@ -15,13 +15,16 @@ ActiveRecord::Schema.define(version: 20141209182033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "audios", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "url",        null: false
     t.integer  "piece_id",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "audios", ["url"], name: "index_audios_on_url", using: :btree
 
   create_table "follow_units", force: true do |t|
     t.integer  "follower_id", null: false
