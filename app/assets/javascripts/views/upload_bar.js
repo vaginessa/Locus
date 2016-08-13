@@ -2,10 +2,10 @@ Locus.Views.UploadBar = Backbone.CompositeView.extend({
 	
 	initialize: function(options){
 		this.user = options.user;
-		filepicker.setKey(fp_key);
 		this.model = new Locus.Models.Piece();
 		this.tags = new Locus.Collections.Tags();
-	},
+          // Initialize the jQuery File Upload widget:
+    },
 	
 	template: JST["main_space/upload_bar"],
 	
@@ -20,12 +20,36 @@ Locus.Views.UploadBar = Backbone.CompositeView.extend({
 	render: function(){
 		var content = this.template();
 		this.$el.addClass("upbar").html(content);
+        this.addFileUpload();
 		return this;
 	},
+
+    addFileUpload: function(){
+        $('#fileupload').fileupload({
+          autoUpload: true,
+          uploadTemplate: function (o) {
+                var rows = $();
+                $.each(o.files, function (index, file) {
+                  console.log(file);
+                    var row = $('<li class="span3">' +
+                        '<div class="thumbnail">' +
+                          '<div class="preview" style="text-align: center;"></div>' +
+                          '<div class="progress progress-success progress-striped active">' +
+                            '<div class="bar" style="width:0%;"></div>' +
+                          '</div>' +
+                        '</div>');
+                    rows = rows.add(row);
+                });
+                return rows;
+            },
+
+	    }); 
+
+    },
 	
 	uploadMedia: function(event) {
 		var view = this;
-		this.tags.fetch()
+		this.tags.fetch();
 		var uploadType = event.currentTarget.id;
 		var picker_options = this.pickerOptions(uploadType);
 		filepicker.pick(picker_options, function(blob) {

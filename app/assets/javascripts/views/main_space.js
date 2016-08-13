@@ -7,28 +7,7 @@ Locus.Views.mainSpace = Backbone.CompositeView.extend({
 		this.listenToOnce(this.collection, "sync", this.addUserSidebar);
 		this.listenTo(this.collection, "sync", this.render);
 		this.listenTo(this.collection, "add", this.render);
-    
-          // Initialize the jQuery File Upload widget:
-        $('#fileupload').fileupload({
-          autoUpload: true,
-          uploadTemplate: function (o) {
-                var rows = $();
-                $.each(o.files, function (index, file) {
-                  console.log(file);
-                    var row = $('<li class="span3">' +
-                        '<div class="thumbnail">' +
-                          '<div class="preview" style="text-align: center;"></div>' +
-                          '<div class="progress progress-success progress-striped active">' +
-                            '<div class="bar" style="width:0%;"></div>' +
-                          '</div>' +
-                        '</div>');
-                    rows = rows.add(row);
-                });
-                return rows;
-            },
-
-	    }); 
-    },
+   }, 
 	
 	events: {
 		'click #random-tab' : 'getRandomPieces',
