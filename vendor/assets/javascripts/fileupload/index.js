@@ -1,0 +1,11 @@
+//= jquery.fileupload-audio
+//= jquery.fileupload-image
+//= jquery.fileupload-jquery-ui
+//= jquery.fileupload-process
+//= jquery.fileupload-ui
+//= jquery.fileupload-validate
+//= jquery.fileupload-video
+//= jquery.fileupload
+//= jquery.iframe-transport
+//= jquery.ui.widget
+//= require_tree .

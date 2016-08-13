@@ -4,6 +4,7 @@
 Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( masonry.pkgd.js )
 Rails.application.config.assets.precompile += %w( packery.pkgd.js )
+Rails.application.config.assets.precompile += %w( jquery.ui.widget.js )
 Rails.application.config.assets.precompile += %w( imagesloaded.pkgd.js )
 
 # Precompile additional assets.

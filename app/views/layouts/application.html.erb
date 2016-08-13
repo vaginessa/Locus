@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Locus</title>
-  <link rel="shortcut icon" href="http://81artists.com/jakemcintyre/_images/black-square-1000px.jpg">
-  <script type="text/javascript" src="https://api.filepicker.io/v1/filepicker.js"></script>
-  <script src="https://vjs.zencdn.net/4.10/video.js"></script>
-  <%= stylesheet_link_tag    'application', media: 'all'%>
-  <%= javascript_include_tag 'application'%>
-  <%= csrf_meta_tags %>
-  <%= javascript_include_tag('packery.pkgd.js') %>
-  <%= javascript_include_tag('imagesloaded.pkgd.js') %>
-  <script src="https://vast-engineering.github.io/jquery-popup-overlay/jquery.popupoverlay.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
-</head>
-<body>
-	<%= yield %>
-	<script type="text/javascript">
-		window.fp_key = '<%= ENV['FILEPICKER_API_KEY'] %>';
-	</script>
-
-</body>
+    <head>
+      <title>Locus</title>
+      <link rel="shortcut icon" href="http://81artists.com/jakemcintyre/_images/black-square-1000px.jpg">
+      <script type="text/javascript" src="https://api.filepicker.io/v1/filepicker.js"></script>
+      <script src="https://vjs.zencdn.net/4.10/video.js"></script>
+      <%= stylesheet_link_tag 'application', media: 'all'%>
+      <%= javascript_include_tag 'application'%>
+      <%= csrf_meta_tags %>
+      <%= javascript_include_tag('jquery.ui.widget.js') %>
+      <%= javascript_include_tag('packery.pkgd.js') %>
+      <%= javascript_include_tag('imagesloaded.pkgd.js') %>
+      <script src="https://vast-engineering.github.io/jquery-popup-overlay/jquery.popupoverlay.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
+    </head>
+    <body>
+        <%= yield %>
+    </body>
 </html>
