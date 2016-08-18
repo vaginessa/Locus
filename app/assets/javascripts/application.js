@@ -13,6 +13,7 @@
 
 
 //= require jquery
+//= require bootstrap
 //= require jquery_ujs
 //= require jquery.serializeJSON
 //= require underscore
@@ -23,9 +24,9 @@
 //= require packery.pkgd.js
 //= require tag-it.js
 //= require imagesloaded.pkgd.js
-//= jquery.ui.widget
-//= jquery.iframe-transport
-//= jquery.fileupload
+//= require jquery.ui.widget
+//= require jquery.iframe-transport
+//= require jquery.fileupload
 //= require_tree ../templates
 //= require_tree ./utils
 //= require_tree ./models
