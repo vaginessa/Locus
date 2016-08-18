@@ -1,6 +1,5 @@
-<form id="fileupload" action="//jquery-file-upload.appspot.com/" method="POST" enctype="multipart/form-data">
+<form id="fileupload" action="/api/media" method="POST" enctype="multipart/form-data">
     <!-- Redirect browsers with JavaScript disabled to the origin page -->
-    <noscript><input type="hidden" name="redirect" value="https://blueimp.github.io/jQuery-File-Upload/"></noscript>
     <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
     <div class="fileupload-buttonbar">
         <div class="fileupload-buttons">
@@ -8,7 +7,7 @@
             <span class="fileinput-button">
                 <input type="file" name="files[]" multiple>
             </span>
-            <button type="submit" class="start">Start upload</button>
+            <button type="submit" id="start-upload", class="start">Start upload</button>
             <button type="reset" class="cancel">Cancel upload</button>
             <button type="button" class="delete">Delete</button>
             <!-- The global file processing state -->

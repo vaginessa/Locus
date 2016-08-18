@@ -14,6 +14,7 @@ Locus::Application.routes.draw do
     resources :profiles
     resources :tags
     resources :tag_units
+    resources :media
   end
   
 end

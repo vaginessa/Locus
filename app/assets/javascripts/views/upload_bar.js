@@ -12,42 +12,18 @@ Locus.Views.UploadBar = Backbone.CompositeView.extend({
 	events: {
 		'click #random-tab' : 'toggleButton',
 		'click #home-tab' : 'toggleButton',
-		'click #image-button' : 'uploadMedia',
-		'click #audio-button' : 'uploadMedia',
-		'click #video-button' : 'uploadMedia',
+        'click #start-upload': 'uploadMedia'
 	},
 	
 	render: function(){
 		var content = this.template();
 		this.$el.addClass("upbar").html(content);
-        this.addFileUpload();
 		return this;
 	},
 
-    addFileUpload: function(){
-        $('#fileupload').fileupload({
-          autoUpload: true,
-          uploadTemplate: function (o) {
-                var rows = $();
-                $.each(o.files, function (index, file) {
-                  console.log(file);
-                    var row = $('<li class="span3">' +
-                        '<div class="thumbnail">' +
-                          '<div class="preview" style="text-align: center;"></div>' +
-                          '<div class="progress progress-success progress-striped active">' +
-                            '<div class="bar" style="width:0%;"></div>' +
-                          '</div>' +
-                        '</div>');
-                    rows = rows.add(row);
-                });
-                return rows;
-            },
-
-	    }); 
-
-    },
-	
 	uploadMedia: function(event) {
+        debugger
+
 		
 	},
 	
